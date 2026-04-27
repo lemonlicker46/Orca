@@ -592,7 +592,7 @@ LRESULT CALLBACK LineNumberWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
         for (int i = 1; i <= lineCount && y < ps.rcPaint.bottom; i++) {
             sprintf(buf, "%d", i);
             RECT rc = {0, y, ps.rcPaint.right, y + lineHeight};
-            DrawText(hdc, buf, -1, &rc, DT_RIGHT | DT_VTOP);
+            DrawText(hdc, buf, -1, &rc, DT_RIGHT | DT_NOCLIP);
             y += lineHeight;
         }
         
@@ -722,7 +722,7 @@ void CreateMainLayout(HWND hwnd) {
     /* Set font for line numbers */
     HFONT hFont = CreateFont(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
         ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-        DEFAULT_QUALITY, FIXED_PITCH | FF_DOSDEFAULT, "Courier New");
+        DEFAULT_QUALITY, FIXED_PITCH | FF_MODERN, "Courier New");
     SendMessage(hwndLineNumbers, WM_SETFONT, (WPARAM)hFont, TRUE);
     
     /* Input code pane */
@@ -733,7 +733,7 @@ void CreateMainLayout(HWND hwnd) {
     /* Set monospace font for code editor */
     HFONT hCodeFont = CreateFont(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
         ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-        DEFAULT_QUALITY, FIXED_PITCH | FF_DOSDEFAULT, "Courier New");
+        DEFAULT_QUALITY, FIXED_PITCH | FF_MODERN, "Courier New");
     SendMessage(hwndInput, WM_SETFONT, (WPARAM)hCodeFont, TRUE);
     
     /* Output code pane */
