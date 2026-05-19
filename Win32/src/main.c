@@ -6,6 +6,11 @@
 #include <tchar.h>
 #include <string.h>
 
+#ifndef TCN_RCLICK
+#define TCN_RCLICK (TCN_FIRST - 5)
+#endif
+#include <errno.h>
+
 /* Control IDs */
 #define IDC_CODE_INPUT     1001
 #define IDC_CODE_OUTPUT    1002
@@ -16,6 +21,11 @@
 #define IDC_PROPERTIES     1007
 #define IDC_CODE_TAB       1008
 #define IDC_TAB_CLOSE      1009
+
+/* Tab context menu IDs */
+#define IDM_TAB_CLOSE_SINGLE 4001
+#define IDM_TAB_CLOSE_OTHERS 4002
+#define IDM_TAB_CLOSE_RIGHT  4003
 
 /* Menu IDs */
 #define IDM_FILE_NEW       1101
@@ -66,10 +76,20 @@ static HWND hwndInput, hwndOutput;
 static HWND hwndToolbarMain, hwndToolbarCode;
 static HWND hwndStatusBar;
 static HWND hwndProjectTree;
+static HWND hwndLineNumbers;
 static HWND hwndProperties;
 static HWND hwndCodeTab;
 static HWND hwndTabClose;  /* Close button for tabs */
 static HWND hwndDebugConsole;  /* Debug console window */
+static WNDPROC hwndOldEditorProc;
+static HFONT g_codeFont;
+static int g_lineNumberWidth = 35;
+static int g_rightClickedTab = -1; /* last tab index right-clicked */
+
+/* Layout helper functions */
+void RepositionCodeArea(int clientWidth, int clientHeight);
+void UpdateLineNumbers(HWND hwndEditor, HWND hwndGutter);
+LRESULT CALLBACK EditorSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 /* Debug console functions */
 void InitDebugConsole() {
@@ -523,11 +543,15 @@ void AddFileToProject(const char* filePath) {
 
 /* Load file content into editor - preserve all formatting */
 void LoadFileIntoEditor(const char* filePath) {
+    DebugLog("[EDITOR] LoadFileIntoEditor called with: %s\n", filePath);
     FILE* fp = fopen(filePath, "rb");
     if (!fp) {
+        DebugLog("[ERROR] fopen failed for: %s (errno=%d)\n", filePath, errno);
         MessageBox(hwndMain, "Failed to open file", "Error", MB_ICONERROR);
         return;
     }
+    
+    DebugLog("[EDITOR] File opened successfully\n");
     
     /* Get file size */
     fseek(fp, 0, SEEK_END);
@@ -554,6 +578,7 @@ void LoadFileIntoEditor(const char* filePath) {
     
     /* Set the text - this preserves all whitespace */
     SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)buffer);
+    UpdateLineNumbers(hwndInput, hwndLineNumbers);
     
     GlobalFree((HGLOBAL)buffer);
     
@@ -691,6 +716,8 @@ void OpenFilesWithDialog(HWND hwnd) {
     char files[MAX_OPENED_FILES][MAX_PATH];
     int fileCount = 0;
     
+    DebugLog("[DIALOG] OpenFilesWithDialog called\n");
+    
     memset(&ofn, 0, sizeof(ofn));
     ofn.lStructSize = sizeof(ofn);
     ofn.hwndOwner = hwnd;
@@ -701,27 +728,44 @@ void OpenFilesWithDialog(HWND hwnd) {
     ofn.Flags = OFN_ALLOWMULTISELECT | OFN_EXPLORER | OFN_FILEMUSTEXIST;
     
     if (GetOpenFileName(&ofn)) {
+        DebugLog("[DIALOG] GetOpenFileName returned TRUE\n");
         char* p = fileBuffer;
         
         /* Check if single folder selected or multiple files */
         if (strlen(p) > 0 && p[strlen(p)-1] == '\\') {
             /* Single folder selected */
+            DebugLog("[DIALOG] Folder mode: %s\n", p);
             OpenFolder(hwnd, p);
         } else {
-            /* Multiple files selected */
+            /* Multiple files selected - format: "dir\0file1\0file2\0\0" */
+            DebugLog("[DIALOG] Multi-file mode\n");
             g_isFolderBased = FALSE;
             g_openedFileCount = 0;
             
+            /* First string is the directory path */
+            char dirPath[MAX_PATH];
+            strcpy(dirPath, p);
+            DebugLog("[DIALOG] Directory: %s\n", dirPath);
+            p += strlen(p) + 1;
+            
+            /* Remaining strings are filenames */
             while (*p) {
+                char fullPath[MAX_PATH];
+                sprintf(fullPath, "%s\\%s", dirPath, p);
+                
                 if (fileCount < MAX_OPENED_FILES) {
-                    strcpy(files[fileCount++], p);
-                    AddFileToProject(p);
+                    strcpy(files[fileCount++], fullPath);
+                    DebugLog("[DIALOG] File %d: %s\n", fileCount, fullPath);
+                    AddFileToProject(fullPath);
                 }
                 p += strlen(p) + 1;
             }
             
-            /* If only one file, also load it */
-            if (fileCount == 1) {
+            DebugLog("[DIALOG] Total files selected: %d\n", fileCount);
+            
+            /* Load the first file into editor */
+            if (fileCount > 0) {
+                DebugLog("[DIALOG] Loading first file: %s\n", files[0]);
                 LoadFileIntoEditor(files[0]);
             }
             
@@ -786,27 +830,58 @@ void SaveAllFiles(HWND hwnd) {
     UpdateStatusBar("Save All - Not implemented yet");
 }
 
-/* Line number gutter window */
-static HWND hwndLineNumbers;
-
 /* Update line numbers based on editor content */
+void RepositionCodeArea(int clientWidth, int clientHeight) {
+    int codeLeft = 220 + g_lineNumberWidth;
+    int propertiesWidth = 200;
+    int availableCodeWidth = clientWidth - codeLeft - propertiesWidth - 10;
+    if (availableCodeWidth < 200) availableCodeWidth = 200;
+    int inputWidth = availableCodeWidth / 2;
+
+    MoveWindow(hwndProjectTree, 10, 90, 200, clientHeight - 150, TRUE);
+    MoveWindow(hwndLineNumbers, 220, 115, g_lineNumberWidth, clientHeight - 165, TRUE);
+    MoveWindow(hwndCodeTab, codeLeft, 90, inputWidth, 25, TRUE);
+    MoveWindow(hwndInput, codeLeft, 115, inputWidth, clientHeight - 165, TRUE);
+    MoveWindow(hwndOutput, codeLeft + inputWidth + 10, 90, inputWidth, clientHeight - 150, TRUE);
+    MoveWindow(hwndProperties, clientWidth - propertiesWidth, 90, propertiesWidth, clientHeight - 150, TRUE);
+    PositionTabCloseButton();
+}
+
 void UpdateLineNumbers(HWND hwndEditor, HWND hwndGutter) {
-    char text[65536];
-    SendMessage(hwndEditor, WM_GETTEXT, sizeof(text), (LPARAM)text);
-    
-    int lineCount = 1;
-    for (int i = 0; text[i]; i++) {
-        if (text[i] == '\n') lineCount++;
+    int lineCount = (int)SendMessage(hwndEditor, EM_GETLINECOUNT, 0, 0);
+    if (lineCount < 1) lineCount = 1;
+
+    int digits = 1;
+    for (int n = lineCount; n >= 10; n /= 10) digits++;
+
+    HDC hdc = GetDC(hwndGutter);
+    HFONT hFont = (HFONT)SendMessage(hwndGutter, WM_GETFONT, 0, 0);
+    HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
+    TEXTMETRIC tm;
+    GetTextMetrics(hdc, &tm);
+    int desiredWidth = digits * tm.tmAveCharWidth + 14;
+    if (desiredWidth < 24) desiredWidth = 24;
+    SelectObject(hdc, hOldFont);
+    ReleaseDC(hwndGutter, hdc);
+
+    if (desiredWidth != g_lineNumberWidth) {
+        g_lineNumberWidth = desiredWidth;
+        RECT rc;
+        GetClientRect(hwndMain, &rc);
+        RepositionCodeArea(rc.right - rc.left, rc.bottom - rc.top);
     }
-    
-    char lineNums[65536] = {0};
-    for (int i = 1; i <= lineCount; i++) {
-        char buf[16];
-        sprintf(buf, "%d\n", i);
-        strcat(lineNums, buf);
+
+    InvalidateRect(hwndGutter, NULL, TRUE);
+    UpdateWindow(hwndGutter);
+}
+
+LRESULT CALLBACK EditorSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+    if (msg == WM_VSCROLL || msg == WM_MOUSEWHEEL || msg == EM_SCROLL || msg == WM_KEYDOWN) {
+        LRESULT result = CallWindowProc((WNDPROC)hwndOldEditorProc, hwnd, msg, wParam, lParam);
+        UpdateLineNumbers(hwndInput, hwndLineNumbers);
+        return result;
     }
-    
-    SendMessage(hwndGutter, WM_SETTEXT, 0, (LPARAM)lineNums);
+    return CallWindowProc((WNDPROC)hwndOldEditorProc, hwnd, msg, wParam, lParam);
 }
 
 /* Subclass procedure for line number gutter */
@@ -816,17 +891,14 @@ LRESULT CALLBACK LineNumberWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hwnd, &ps);
         
-        /* Get editor text and count lines */
-        char text[65536] = {0};
-        SendMessage(hwndInput, WM_GETTEXT, sizeof(text), (LPARAM)text);
-        
-        int lineCount = 1;
-        for (int i = 0; text[i]; i++) {
-            if (text[i] == '\n') lineCount++;
-        }
+        int lineCount = (int)SendMessage(hwndInput, EM_GETLINECOUNT, 0, 0);
+        if (lineCount < 1) lineCount = 1;
         
         /* Draw line numbers */
-        HFONT hFont = (HFONT)GetStockObject(ANSI_FIXED_FONT);
+        HFONT hFont = g_codeFont;
+        if (!hFont) {
+            hFont = (HFONT)GetStockObject(ANSI_FIXED_FONT);
+        }
         HFONT hOldFont = (HFONT)SelectObject(hdc, hFont);
         SetBkMode(hdc, TRANSPARENT);
         SetTextColor(hdc, RGB(128, 128, 128));
@@ -835,12 +907,18 @@ LRESULT CALLBACK LineNumberWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
         GetTextMetrics(hdc, &tm);
         int lineHeight = tm.tmHeight + tm.tmExternalLeading;
         
+        RECT editRect = {0};
+        SendMessage(hwndInput, EM_GETRECT, 0, (LPARAM)&editRect);
+        
+        int firstVisibleLine = (int)SendMessage(hwndInput, EM_GETFIRSTVISIBLELINE, 0, 0);
+        int y = editRect.top;
+        
+        int startLine = firstVisibleLine + 1;
         char buf[16];
-        int y = 0;
-        for (int i = 1; i <= lineCount && y < ps.rcPaint.bottom; i++) {
+        for (int i = startLine; i <= lineCount && y < ps.rcPaint.bottom; i++) {
             sprintf(buf, "%d", i);
             RECT rc = {0, y, ps.rcPaint.right, y + lineHeight};
-            DrawText(hdc, buf, -1, &rc, DT_RIGHT | DT_NOCLIP);
+            DrawText(hdc, buf, -1, &rc, DT_RIGHT | DT_NOPREFIX | DT_SINGLELINE | DT_TOP);
             y += lineHeight;
         }
         
@@ -964,15 +1042,12 @@ void CreateMainLayout(HWND hwnd) {
         10, 50, 200, 500, hwnd, (HMENU)IDC_PROJECT_TREE, GetModuleHandle(NULL), NULL);
     
     /* Line number gutter */
-    hwndLineNumbers = CreateWindowEx(0, "STATIC", NULL,
-        WS_CHILD | WS_VISIBLE | SS_RIGHT,
-        220, 50, 35, 500, hwnd, (HMENU)5001, GetModuleHandle(NULL), NULL);
+    hwndLineNumbers = CreateWindowEx(0, "OrcaLineNumberWnd", NULL,
+        WS_CHILD | WS_VISIBLE,
+        220, 115, g_lineNumberWidth, 500, hwnd, (HMENU)5001, GetModuleHandle(NULL), NULL);
     
     /* Set font for line numbers */
-    HFONT hFont = CreateFont(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-        ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-        DEFAULT_QUALITY, FIXED_PITCH | FF_MODERN, "Courier New");
-    SendMessage(hwndLineNumbers, WM_SETFONT, (WPARAM)hFont, TRUE);
+    SendMessage(hwndLineNumbers, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
     
     /* Tab control for code files */
     hwndCodeTab = CreateWindowEx(0, WC_TABCONTROL, NULL,
@@ -980,26 +1055,27 @@ void CreateMainLayout(HWND hwnd) {
         255, 50, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
     
     /* Tab close button (hidden initially) */
-    HWND hwndTabClose = CreateWindowEx(0, "BUTTON", "x",
+    hwndTabClose = CreateWindowEx(0, "BUTTON", "x",
         WS_CHILD | BS_CENTER | BS_FLAT | WS_VISIBLE,
         0, 0, 20, 20, hwnd, (HMENU)IDC_TAB_CLOSE, GetModuleHandle(NULL), NULL);
     
     /* Input code pane - below tabs */
     hwndInput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
-        WS_CHILD | WS_VISIBLE | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_NOHIDESEL,
+        WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_NOHIDESEL,
         255, 75, 415, 475, hwnd, (HMENU)IDC_CODE_INPUT, GetModuleHandle(NULL), NULL);
     
     /* Set monospace font for code editor */
-    HFONT hCodeFont = CreateFont(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+    g_codeFont = CreateFont(18, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
         ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
         DEFAULT_QUALITY, FIXED_PITCH | FF_MODERN, "Courier New");
-    SendMessage(hwndInput, WM_SETFONT, (WPARAM)hCodeFont, TRUE);
+    SendMessage(hwndInput, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
+    hwndOldEditorProc = (WNDPROC)SetWindowLongPtr(hwndInput, GWLP_WNDPROC, (LONG_PTR)EditorSubclassProc);
     
     /* Output code pane */
     hwndOutput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
         WS_CHILD | WS_VISIBLE | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY,
         680, 50, 450, 500, hwnd, (HMENU)IDC_CODE_OUTPUT, GetModuleHandle(NULL), NULL);
-    SendMessage(hwndOutput, WM_SETFONT, (WPARAM)hCodeFont, TRUE);
+    SendMessage(hwndOutput, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
     
     /* Properties window (right pane) */
     hwndProperties = CreateWindowEx(WS_EX_CLIENTEDGE, "LISTBOX", NULL,
@@ -1036,10 +1112,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     /* Initialize debug console */
     InitDebugConsole();
     DebugLog("[INIT] WinMain started\n");
+    DebugLog("[DEBUG] AllocConsole attempted - check for console window\n");
     
     INITCOMMONCONTROLSEX icex = { sizeof(INITCOMMONCONTROLSEX), ICC_BAR_CLASSES };
     InitCommonControlsEx(&icex);
     DebugLog("[INIT] Common controls initialized\n");
+
+    WNDCLASS lnwc = {0};
+    lnwc.lpfnWndProc = LineNumberWndProc;
+    lnwc.hInstance = hInstance;
+    lnwc.lpszClassName = "OrcaLineNumberWnd";
+    lnwc.hCursor = LoadCursor(NULL, IDC_ARROW);
+    lnwc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
+    RegisterClass(&lnwc);
 
     WNDCLASS wc = {0};
     wc.lpfnWndProc = WndProc;
@@ -1094,14 +1179,75 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     };
     hAccel = CreateAcceleratorTable(accels, 16);
     
+    /* Parse command line parameters - load files passed as arguments */
+    if (lpCmdLine && strlen(lpCmdLine) > 0) {
+        DebugLog("[CMDLINE] Processing command line: %s\n", lpCmdLine);
+        char cmdCopy[2048];
+        strcpy(cmdCopy, lpCmdLine);
+        
+        /* Parse arguments separated by spaces/quotes */
+        char filePaths[32][MAX_PATH];
+        int fileCount = 0;
+        
+        char* p = cmdCopy;
+        while (*p && fileCount < 32) {
+            /* Skip whitespace */
+            while (*p && (*p == ' ' || *p == '\t')) p++;
+            if (!*p) break;
+            
+            /* Check if quoted */
+            BOOL isQuoted = (*p == '"');
+            if (isQuoted) p++;
+            
+            /* Extract filename */
+            int idx = 0;
+            while (*p && idx < MAX_PATH - 1) {
+                if (isQuoted && *p == '"') break;
+                if (!isQuoted && (*p == ' ' || *p == '\t')) break;
+                filePaths[fileCount][idx++] = *p;
+                p++;
+            }
+            filePaths[fileCount][idx] = '\0';
+            
+            if (idx > 0) {
+                DebugLog("[CMDLINE] File %d: %s\n", fileCount + 1, filePaths[fileCount]);
+                AddFileToProject(filePaths[fileCount]);
+                fileCount++;
+            }
+            
+            if (isQuoted && *p == '"') p++;
+        }
+        
+        if (fileCount > 0) {
+            g_isFolderBased = FALSE;
+            g_projectOpened = TRUE;
+            PopulateProjectTree(hwndProjectTree, "", TRUE);
+            
+            /* Load first file into editor */
+            DebugLog("[CMDLINE] Loading first file: %s\n", filePaths[0]);
+            LoadFileIntoEditor(filePaths[0]);
+            
+            UpdateSaveMenuState(TRUE);
+            char status[256];
+            sprintf(status, "Loaded %d files from command line", fileCount);
+            UpdateStatusBar(status);
+        }
+    }
+    
     MSG msg;
     DebugLog("[LOOP] Entering message loop\n");
     while (GetMessage(&msg, NULL, 0, 0)) {
         /* Only log important messages */
-        if (msg.message == WM_COMMAND || msg.message == WM_NOTIFY || 
-            msg.message == WM_KEYDOWN || msg.message == WM_LBUTTONDOWN ||
-            msg.message == WM_LBUTTONUP || msg.message == WM_MOUSEMOVE) {
-            DebugLog("[MSG] Message: 0x%X\n", msg.message);
+        if (msg.message == WM_COMMAND) {
+            DebugLog("[LOOP] WM_COMMAND dispatching - ID: 0x%X\n", LOWORD(msg.wParam));
+        } else if (msg.message == WM_NOTIFY) {
+            DebugLog("[LOOP] WM_NOTIFY dispatching\n");
+        } else if (msg.message == WM_KEYDOWN) {
+            DebugLog("[LOOP] WM_KEYDOWN dispatching - Key: 0x%X\n", msg.wParam);
+        } else if (msg.message == WM_LBUTTONDOWN) {
+            DebugLog("[LOOP] WM_LBUTTONDOWN dispatching\n");
+        } else if (msg.message == WM_LBUTTONUP) {
+            DebugLog("[LOOP] WM_LBUTTONUP dispatching\n");
         }
         if (!TranslateAccelerator(hwndMain, hAccel, &msg)) {
             TranslateMessage(&msg);
@@ -1114,9 +1260,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 }
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-    DebugLog("[MSG] WM_CREATE (0x%X)\n", msg);
+    /* Log all important messages at entry point */
     switch (msg) {
     case WM_CREATE:
+        DebugLog("[MSG] WM_CREATE\n");
         DebugLog("[EVENT] WindowCreate\n");
         CreateMenus(hwnd);
         CreateMainLayout(hwnd);
@@ -1129,7 +1276,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         GetClientRect(hwnd, &rc);
         int width = rc.right - rc.left;
         int height = rc.bottom - rc.top;
-        DebugLog("[WM_SIZE] Window resized: %dx%d\n", width, height);
+        DebugLog("[MSG] WM_SIZE\n");
+        DebugLog("[SIZE] Window resized to %dx%d\n", width, height);
         
         /* Resize main toolbar */
         MoveWindow(GetDlgItem(hwnd, IDC_TOOLBAR_MAIN), 0, 0, width, 40, TRUE);
@@ -1141,20 +1289,26 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         MoveWindow(GetDlgItem(hwnd, IDC_PROJECT_TREE), 10, 90, 200, height-150, TRUE);
         
         /* Resize line numbers gutter */
-        MoveWindow(GetDlgItem(hwnd, 5001), 220, 90, 35, height-150, TRUE);
+        MoveWindow(GetDlgItem(hwnd, 5001), 220, 115, g_lineNumberWidth, height-98, TRUE);
         
         /* Resize tab control */
-        int inputWidth = (width - 290) / 2;
-        MoveWindow(GetDlgItem(hwnd, IDC_CODE_TAB), 255, 90, inputWidth, 25, TRUE);
-        
-        /* Resize input pane - below tabs */
-        MoveWindow(GetDlgItem(hwnd, IDC_CODE_INPUT), 255, 115, inputWidth, height-165, TRUE);
+        {
+            int codeLeft = 220 + g_lineNumberWidth;
+            int availableCodeWidth = width - codeLeft - 210;
+            if (availableCodeWidth < 200) availableCodeWidth = 200;
+            int inputWidth = availableCodeWidth / 2;
+            MoveWindow(GetDlgItem(hwnd, IDC_CODE_TAB), codeLeft, 90, inputWidth, 25, TRUE);
+            
+            /* Resize input pane - below tabs */
+            MoveWindow(GetDlgItem(hwnd, IDC_CODE_INPUT), codeLeft, 115, inputWidth, height-165, TRUE);
+            
+            /* Resize output pane */
+            MoveWindow(GetDlgItem(hwnd, IDC_CODE_OUTPUT), codeLeft + inputWidth + 10, 90, inputWidth, height-150, TRUE);
+        }
         
         /* Update tab close button position */
         PositionTabCloseButton();
-        
-        /* Resize output pane */
-        MoveWindow(GetDlgItem(hwnd, IDC_CODE_OUTPUT), 265 + inputWidth, 90, inputWidth, height-150, TRUE);
+        UpdateLineNumbers(hwndInput, hwndLineNumbers);
         
         /* Resize properties */
         MoveWindow(GetDlgItem(hwnd, IDC_PROPERTIES), width - 220, 90, 200, height-150, TRUE);
@@ -1209,6 +1363,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             PostMessage(hwnd, WM_CLOSE, 0, 0);
             break;
             
+        case IDC_CODE_INPUT:
+            if (HIWORD(wParam) == EN_CHANGE || HIWORD(wParam) == EN_VSCROLL) {
+                UpdateLineNumbers(hwndInput, hwndLineNumbers);
+            }
+            break;
+
         /* Tab close button */
         case IDC_TAB_CLOSE:
             DebugLog("[TAB] TabCloseButtonClick(%s)\n", g_activeTab >= 0 ? g_tabs[g_activeTab].title : "none");
@@ -1299,44 +1459,63 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             
         /* Code insertion toolbar */
         case IDT_INSERT_FUNC:
-        case IDT_INSERT_IF:
-        case IDT_INSERT_FOR:
-        case IDT_INSERT_WHILE:
-        case IDT_INSERT_SWITCH:
-        case IDT_INSERT_STRUCT:
-        case IDT_INSERT_UNION:
-        case IDT_INSERT_ENUM:
-        case IDT_INSERT_TYPEDEF:
-        case IDT_INSERT_INCLUDE:
-        case IDT_INSERT_DEFINE:
+            DebugLog("[TOOLBAR] Insert Function button clicked\n");
             InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_IF:
+            DebugLog("[TOOLBAR] Insert If statement button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_FOR:
+            DebugLog("[TOOLBAR] Insert For loop button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_WHILE:
+            DebugLog("[TOOLBAR] Insert While loop button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_SWITCH:
+            DebugLog("[TOOLBAR] Insert Switch statement button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_STRUCT:
+            DebugLog("[TOOLBAR] Insert Struct button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_UNION:
+            DebugLog("[TOOLBAR] Insert Union button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_ENUM:
+            DebugLog("[TOOLBAR] Insert Enum button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_TYPEDEF:
+            DebugLog("[TOOLBAR] Insert Typedef button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_INCLUDE:
+            DebugLog("[TOOLBAR] Insert Include button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        case IDT_INSERT_DEFINE:
+            DebugLog("[TOOLBAR] Insert Define button clicked\n");
+            InsertCodeTemplate(LOWORD(wParam));
+            break;
+        default:
+            DebugLog("[COMMAND] Unknown command ID: 0x%X (wParam=0x%X, lParam=0x%X)\n", LOWORD(wParam), wParam, lParam);
             break;
         }
         break;
         
     case WM_NOTIFY:
-        DebugLog("[MSG] WM_NOTIFY (wParam=%d, lParam=0x%X)\n", wParam, lParam);
-        if (wParam == IDC_CODE_INPUT) {
-            LPNMHDR pnmh = (LPNMHDR)lParam;
-            if (pnmh->code == EN_UPDATE) {
-                DebugLog("[NOTIFY] EN_UPDATE - text changed\n");
-                int start, end;
-                SendMessage(hwndInput, EM_GETSEL, (WPARAM)&start, (LPARAM)&end);
-                if (start != end) {
-                    ShowManipulationToolbar(TRUE);
-                } else {
-                    ShowManipulationToolbar(FALSE);
-                }
-                /* Mark current tab as modified */
-                if (g_activeTab >= 0) {
-                    UpdateTabTitle(g_activeTab, TRUE);
-                }
-            }
-        }
         /* Handle TreeView single-click to open file */
-        else if (wParam == IDC_PROJECT_TREE) {
+        if (wParam == IDC_PROJECT_TREE) {
             LPNMTREEVIEW pnmtv = (LPNMTREEVIEW)lParam;
-            DebugLog("[TREEVIEW] NM code: 0x%X\n", pnmtv->hdr.code);
+            /* Skip paint and internal notifications - keep only user interactions */
+            if ((int)pnmtv->hdr.code >= 0 || pnmtv->hdr.code == TVN_SELCHANGED) {
+                DebugLog("[TREEVIEW] NM code: 0x%X\n", pnmtv->hdr.code);
+            }
             if (pnmtv->hdr.code == TVN_SELCHANGED) {
                 DebugLog("[TREEVIEW] TVN_SELCHANGED - selection changed\n");
                 HTREEITEM hItem = TreeView_GetSelection(hwndProjectTree);
@@ -1350,12 +1529,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     TreeView_GetItem(hwndProjectTree, &tvi);
                     DebugLog("[TREEVIEW] Selected: '%s'\n", buffer);
                     
-                    /* Check if it's a file (not a folder) by checking extension */
-                    char* ext = strrchr(buffer, '.');
-                    if (ext && (stricmp(ext, ".c") == 0 || stricmp(ext, ".h") == 0 || 
-                                stricmp(ext, ".cpp") == 0 || stricmp(ext, ".hpp") == 0)) {
-                        DebugLog("[TREEVIEW] File detected, searching in %d files...\n", g_openedFileCount);
+                    /* Ignore the root "Project Files" folder */
+                    if (strcmp(buffer, "Project Files") == 0) {
+                        DebugLog("[TREEVIEW] Root folder selected, skipping\n");
+                    } else {
+                        DebugLog("[TREEVIEW] File selected, searching in %d files...\n", g_openedFileCount);
                         /* Find the full path from our opened files */
+                        BOOL found = FALSE;
                         for (int i = 0; i < g_openedFileCount; i++) {
                             char* filename = strrchr(g_openedFiles[i], '\\');
                             if (filename) {
@@ -1363,19 +1543,21 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                                 if (strcmp(filename, buffer) == 0) {
                                     DebugLog("[TREEVIEW] FOUND: %s\n", g_openedFiles[i]);
                                     LoadFileIntoEditor(g_openedFiles[i]);
+                                    found = TRUE;
                                     break;
                                 }
                             }
                         }
-                    } else {
-                        DebugLog("[TREEVIEW] Not a C/H file (folder or other)\n");
+                        if (!found) {
+                            DebugLog("[TREEVIEW] File not found in g_openedFiles\n");
+                        }
                     }
                 }
             } else {
                 DebugLog("[TREEVIEW] Unknown NM code: 0x%X\n", pnmtv->hdr.code);
             }
         }
-        /* Handle tab selection changes */
+        /* Handle tab selection changes and right-clicks */
         else if (wParam == IDC_CODE_TAB) {
             LPNMHDR pnmh = (LPNMHDR)lParam;
             if (pnmh->code == TCN_SELCHANGE) {
@@ -1392,12 +1574,71 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     /* Update close button position */
                     PositionTabCloseButton();
                 }
+            } else if (pnmh->code == TCN_RCLICK) {
+                DebugLog("[TAB] TCN_RCLICK\n");
+                POINT pt;
+                GetCursorPos(&pt);
+                POINT hitPt = pt;
+                ScreenToClient(hwndCodeTab, &hitPt);
+                TCHITTESTINFO tchi = {0};
+                tchi.pt = hitPt;
+                int tabIdx = TabCtrl_HitTest(hwndCodeTab, &tchi);
+                if (tabIdx >= 0 && tabIdx < g_tabCount) {
+                    DebugLog("[TAB] Right-clicked tab %d: %s\n", tabIdx, g_tabs[tabIdx].title);
+                    g_rightClickedTab = tabIdx;
+                    HMENU hMenu = CreatePopupMenu();
+                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close");
+                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others");
+                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_RIGHT, "Close To Right");
+                    int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
+                    DestroyMenu(hMenu);
+                    if (cmd == IDM_TAB_CLOSE_SINGLE) {
+                        int result = PromptSaveTab(g_rightClickedTab);
+                        if (result != IDCANCEL) {
+                            CloseTab(g_rightClickedTab);
+                            RefreshTabControl();
+                            if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                                LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                            } else {
+                                SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                            }
+                        }
+                    } else if (cmd == IDM_TAB_CLOSE_OTHERS) {
+                        for (int i = g_tabCount - 1; i >= 0; i--) {
+                            if (i == g_rightClickedTab) continue;
+                            int result = PromptSaveTab(i);
+                            if (result != IDCANCEL) {
+                                CloseTab(i);
+                            }
+                        }
+                        RefreshTabControl();
+                        if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                            LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                        } else {
+                            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                        }
+                    } else if (cmd == IDM_TAB_CLOSE_RIGHT) {
+                        for (int i = g_tabCount - 1; i > g_rightClickedTab; i--) {
+                            int result = PromptSaveTab(i);
+                            if (result != IDCANCEL) {
+                                CloseTab(i);
+                            }
+                        }
+                        RefreshTabControl();
+                        if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                            LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                        } else {
+                            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                        }
+                    }
+                    g_rightClickedTab = -1;
+                }
             }
         }
         break;
         
     case WM_KEYDOWN:
-        DebugLog("[MSG] WM_KEYDOWN (wParam=0x%X)\n", wParam);
+        DebugLog("[KEYBOARD] Key pressed: 0x%X (repeat=%d)\n", wParam, LOWORD(lParam));
         /* Handle Ctrl+A for select all in code pane */
         if (wParam == 0x41 && (GetKeyState(VK_CONTROL) & 0x8000)) {
             /* Ctrl+A - select all text in input pane */
@@ -1409,22 +1650,95 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         break;
         
     case WM_LBUTTONDOWN:
-        DebugLog("[MSG] WM_LBUTTONDOWN at (%d,%d)\n", LOWORD(lParam), HIWORD(lParam));
+        DebugLog("[MOUSE] Left button DOWN at (%d, %d)\n", (int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam));
         break;
         
     case WM_LBUTTONUP:
-        DebugLog("[MSG] WM_LBUTTONUP at (%d,%d)\n", LOWORD(lParam), HIWORD(lParam));
+        DebugLog("[MOUSE] Left button UP at (%d, %d)\n", (int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam));
         break;
+        
+case WM_CONTEXTMENU: {
+        HWND hWndCtrl = (HWND)wParam;
+        if (hWndCtrl == hwndCodeTab) {
+            POINT pt;
+            if ((int)LOWORD(lParam) == -1 && (int)HIWORD(lParam) == -1) {
+                GetCursorPos(&pt);
+            } else {
+                pt.x = (int)LOWORD(lParam);
+                pt.y = (int)HIWORD(lParam);
+            }
+            POINT hitPt = pt;
+            ScreenToClient(hwndCodeTab, &hitPt);
+            TCHITTESTINFO tchi = {0};
+            tchi.pt = hitPt;
+            int tabIdx = TabCtrl_HitTest(hwndCodeTab, &tchi);
+            if (tabIdx >= 0 && tabIdx < g_tabCount) {
+                DebugLog("[TAB] Context menu on tab %d: %s\n", tabIdx, g_tabs[tabIdx].title);
+                g_rightClickedTab = tabIdx;
+                HMENU hMenu = CreatePopupMenu();
+                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close");
+                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others");
+                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_RIGHT, "Close To Right");
+                int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
+                DestroyMenu(hMenu);
+                if (cmd == IDM_TAB_CLOSE_SINGLE) {
+                    int result = PromptSaveTab(g_rightClickedTab);
+                    if (result != IDCANCEL) {
+                        CloseTab(g_rightClickedTab);
+                        RefreshTabControl();
+                        if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                            LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                        } else {
+                            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                        }
+                    }
+                } else if (cmd == IDM_TAB_CLOSE_OTHERS) {
+                    for (int i = g_tabCount - 1; i >= 0; i--) {
+                        if (i == g_rightClickedTab) continue;
+                        int result = PromptSaveTab(i);
+                        if (result != IDCANCEL) {
+                            CloseTab(i);
+                        }
+                    }
+                    RefreshTabControl();
+                    if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                        LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                    } else {
+                        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                    }
+                } else if (cmd == IDM_TAB_CLOSE_RIGHT) {
+                    for (int i = g_tabCount - 1; i > g_rightClickedTab; i--) {
+                        int result = PromptSaveTab(i);
+                        if (result != IDCANCEL) {
+                            CloseTab(i);
+                        }
+                    }
+                    RefreshTabControl();
+                    if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                        LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                    } else {
+                        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                    }
+                }
+                g_rightClickedTab = -1;
+            }
+            return 0;
+        }
+        break;
+    }
         
     case WM_MOUSEMOVE:
         /* Only log occasionally to avoid flooding */
         break;
         
     case WM_CLOSE:
+        DebugLog("[MSG] WM_CLOSE - Window close requested\n");
         /* Prompt to save all modified tabs before closing */
         if (PromptSaveAllTabs() == IDCANCEL) {
+            DebugLog("[EVENT] Close cancelled by user\n");
             return 0;
         }
+        DebugLog("[EVENT] Window closing\n");
         DestroyWindow(hwnd);
         break;
         
