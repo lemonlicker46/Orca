@@ -21,6 +21,9 @@
 #define IDC_PROPERTIES     1007
 #define IDC_CODE_TAB       1008
 #define IDC_TAB_CLOSE      1009
+/* Tab navigation buttons */
+#define IDC_TAB_PREV       1010
+#define IDC_TAB_NEXT       1011
 
 /* Tab context menu IDs */
 #define IDM_TAB_CLOSE_SINGLE 4001
@@ -80,6 +83,8 @@ static HWND hwndLineNumbers;
 static HWND hwndProperties;
 static HWND hwndCodeTab;
 static HWND hwndTabClose;  /* Close button for tabs */
+static HWND hwndTabPrev;   /* Previous-tab button */
+static HWND hwndTabNext;   /* Next-tab button */
 static HWND hwndDebugConsole;  /* Debug console window */
 static WNDPROC hwndOldEditorProc;
 static HFONT g_codeFont;
@@ -136,6 +141,8 @@ typedef struct {
 static TabInfo g_tabs[MAX_TABS];
 static int g_tabCount = 0;
 static int g_activeTab = -1;
+static int g_tabScrollIndex = 0; /* highest-priority visible tab for scroll buttons */
+static BOOL g_ignoreTabSelectionChange = FALSE;
 
 /* Project settings */
 static char g_platform[64] = "Windows";
@@ -180,6 +187,9 @@ void InsertCodeTemplate(int templateId);
 void ShowManipulationToolbar(BOOL show);
 void UpdateStatusBar(LPCTSTR text);
 void PositionTabCloseButton();
+static BOOL TabControlNeedsScroll(void);
+static void UpdateTabNavigationButtons(void);
+static void EnsureTabVisible(int tabIndex);
 
 /* Code templates */
 static const char* codeTemplates[] = {
@@ -452,7 +462,10 @@ void RefreshTabControl() {
     /* Select active tab */
     if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
         TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
+        EnsureTabVisible(g_activeTab);
     }
+    
+    UpdateTabNavigationButtons();
     
     /* Position close button next to active tab */
     PositionTabCloseButton();
@@ -483,6 +496,65 @@ void PositionTabCloseButton() {
         } else {
             ShowWindow(hwndTabClose, SW_HIDE);
         }
+    }
+}
+
+static BOOL TabControlNeedsScroll(void) {
+    if (g_tabCount < 2 || !hwndCodeTab) return FALSE;
+    RECT rc;
+    GetClientRect(hwndCodeTab, &rc);
+    HDC hdc = GetDC(hwndCodeTab);
+    HFONT hFont = (HFONT)SendMessage(hwndCodeTab, WM_GETFONT, 0, 0);
+    HFONT hOld = (HFONT)SelectObject(hdc, hFont ? hFont : GetStockObject(SYSTEM_FONT));
+    int totalWidth = 0;
+    for (int i = 0; i < g_tabCount; i++) {
+        char title[MAX_PATH];
+        char* src = g_tabs[i].title;
+        int len = strlen(src);
+        if (len > 14) {
+            strncpy(title, src, 11);
+            title[11] = '\0';
+            strcat(title, "...");
+        } else {
+            strcpy(title, src);
+        }
+        if (g_tabs[i].isModified) {
+            char temp[MAX_PATH];
+            sprintf(temp, "* %s", title);
+            strcpy(title, temp);
+        }
+        SIZE size;
+        GetTextExtentPoint32(hdc, title, strlen(title), &size);
+        totalWidth += size.cx + 30;
+        if (totalWidth > rc.right - rc.left) {
+            SelectObject(hdc, hOld);
+            ReleaseDC(hwndCodeTab, hdc);
+            return TRUE;
+        }
+    }
+    SelectObject(hdc, hOld);
+    ReleaseDC(hwndCodeTab, hdc);
+    return FALSE;
+}
+
+static void UpdateTabNavigationButtons(void) {
+    BOOL needScroll = TabControlNeedsScroll();
+    if (hwndTabPrev) ShowWindow(hwndTabPrev, needScroll ? SW_SHOW : SW_HIDE);
+    if (hwndTabNext) ShowWindow(hwndTabNext, needScroll ? SW_SHOW : SW_HIDE);
+}
+
+static void EnsureTabVisible(int tabIndex) {
+    if (tabIndex >= 0 && tabIndex < g_tabCount && hwndCodeTab) {
+        int currentSel = TabCtrl_GetCurSel(hwndCodeTab);
+        if (currentSel != tabIndex) {
+            g_ignoreTabSelectionChange = TRUE;
+            TabCtrl_SetCurSel(hwndCodeTab, tabIndex);
+            if (currentSel >= 0) {
+                TabCtrl_SetCurSel(hwndCodeTab, currentSel);
+            }
+            g_ignoreTabSelectionChange = FALSE;
+        }
+        g_tabScrollIndex = tabIndex;
     }
 }
 
@@ -578,6 +650,8 @@ void LoadFileIntoEditor(const char* filePath) {
     
     /* Set the text - this preserves all whitespace */
     SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)buffer);
+    /* Ensure the edit control does not auto-wrap lines */
+    SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
     UpdateLineNumbers(hwndInput, hwndLineNumbers);
     
     GlobalFree((HGLOBAL)buffer);
@@ -595,6 +669,7 @@ void LoadFileIntoEditor(const char* filePath) {
     
     g_activeTab = tabIdx;
     TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
+    EnsureTabVisible(g_activeTab);
     
     UpdateStatusBar(filePath);
 }
@@ -742,23 +817,32 @@ void OpenFilesWithDialog(HWND hwnd) {
             g_isFolderBased = FALSE;
             g_openedFileCount = 0;
             
-            /* First string is the directory path */
+            /* Determine whether a single file or multiple files were selected */
             char dirPath[MAX_PATH];
             strcpy(dirPath, p);
-            DebugLog("[DIALOG] Directory: %s\n", dirPath);
             p += strlen(p) + 1;
             
-            /* Remaining strings are filenames */
-            while (*p) {
-                char fullPath[MAX_PATH];
-                sprintf(fullPath, "%s\\%s", dirPath, p);
-                
+            if (*p == '\0') {
+                /* Single file selected: full path is returned as the first string */
                 if (fileCount < MAX_OPENED_FILES) {
-                    strcpy(files[fileCount++], fullPath);
-                    DebugLog("[DIALOG] File %d: %s\n", fileCount, fullPath);
-                    AddFileToProject(fullPath);
+                    strcpy(files[fileCount++], dirPath);
+                    DebugLog("[DIALOG] Single file selected: %s\n", dirPath);
+                    AddFileToProject(dirPath);
                 }
-                p += strlen(p) + 1;
+            } else {
+                /* Multiple files selected - first string is the directory */
+                DebugLog("[DIALOG] Directory: %s\n", dirPath);
+                while (*p) {
+                    char fullPath[MAX_PATH];
+                    sprintf(fullPath, "%s\\%s", dirPath, p);
+                    
+                    if (fileCount < MAX_OPENED_FILES) {
+                        strcpy(files[fileCount++], fullPath);
+                        DebugLog("[DIALOG] File %d: %s\n", fileCount, fullPath);
+                        AddFileToProject(fullPath);
+                    }
+                    p += strlen(p) + 1;
+                }
             }
             
             DebugLog("[DIALOG] Total files selected: %d\n", fileCount);
@@ -841,6 +925,9 @@ void RepositionCodeArea(int clientWidth, int clientHeight) {
     MoveWindow(hwndProjectTree, 10, 90, 200, clientHeight - 150, TRUE);
     MoveWindow(hwndLineNumbers, 220, 115, g_lineNumberWidth, clientHeight - 165, TRUE);
     MoveWindow(hwndCodeTab, codeLeft, 90, inputWidth, 25, TRUE);
+    /* Position tab navigation buttons on the right side of the tab bar */
+    if (hwndTabPrev) MoveWindow(hwndTabPrev, codeLeft + inputWidth - 50, 88, 22, 22, TRUE);
+    if (hwndTabNext) MoveWindow(hwndTabNext, codeLeft + inputWidth - 26, 88, 22, 22, TRUE);
     MoveWindow(hwndInput, codeLeft, 115, inputWidth, clientHeight - 165, TRUE);
     MoveWindow(hwndOutput, codeLeft + inputWidth + 10, 90, inputWidth, clientHeight - 150, TRUE);
     MoveWindow(hwndProperties, clientWidth - propertiesWidth, 90, propertiesWidth, clientHeight - 150, TRUE);
@@ -911,7 +998,7 @@ LRESULT CALLBACK LineNumberWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
         SendMessage(hwndInput, EM_GETRECT, 0, (LPARAM)&editRect);
         
         int firstVisibleLine = (int)SendMessage(hwndInput, EM_GETFIRSTVISIBLELINE, 0, 0);
-        int y = editRect.top;
+        int y = editRect.top + 1; /* shift down by 1px for better alignment */
         
         int startLine = firstVisibleLine + 1;
         char buf[16];
@@ -1051,13 +1138,20 @@ void CreateMainLayout(HWND hwnd) {
     
     /* Tab control for code files */
     hwndCodeTab = CreateWindowEx(0, WC_TABCONTROL, NULL,
-        WS_CHILD | WS_VISIBLE | TCS_TABS | TCS_MULTILINE,
+        WS_CHILD | WS_VISIBLE | TCS_TABS,
         255, 50, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
     
     /* Tab close button (hidden initially) */
     hwndTabClose = CreateWindowEx(0, "BUTTON", "x",
         WS_CHILD | BS_CENTER | BS_FLAT | WS_VISIBLE,
         0, 0, 20, 20, hwnd, (HMENU)IDC_TAB_CLOSE, GetModuleHandle(NULL), NULL);
+    /* Tab navigation buttons (prev/next) */
+    hwndTabPrev = CreateWindowEx(0, "BUTTON", "<",
+        WS_CHILD | BS_CENTER | BS_PUSHBUTTON | WS_VISIBLE,
+        0, 0, 22, 22, hwnd, (HMENU)IDC_TAB_PREV, GetModuleHandle(NULL), NULL);
+    hwndTabNext = CreateWindowEx(0, "BUTTON", ">",
+        WS_CHILD | BS_CENTER | BS_PUSHBUTTON | WS_VISIBLE,
+        0, 0, 22, 22, hwnd, (HMENU)IDC_TAB_NEXT, GetModuleHandle(NULL), NULL);
     
     /* Input code pane - below tabs */
     hwndInput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
@@ -1069,13 +1163,15 @@ void CreateMainLayout(HWND hwnd) {
         ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
         DEFAULT_QUALITY, FIXED_PITCH | FF_MODERN, "Courier New");
     SendMessage(hwndInput, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
+    SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
     hwndOldEditorProc = (WNDPROC)SetWindowLongPtr(hwndInput, GWLP_WNDPROC, (LONG_PTR)EditorSubclassProc);
     
     /* Output code pane */
     hwndOutput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
-        WS_CHILD | WS_VISIBLE | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY,
+        WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY,
         680, 50, 450, 500, hwnd, (HMENU)IDC_CODE_OUTPUT, GetModuleHandle(NULL), NULL);
     SendMessage(hwndOutput, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
+    SendMessage(hwndOutput, EM_FMTLINES, FALSE, 0);
     
     /* Properties window (right pane) */
     hwndProperties = CreateWindowEx(WS_EX_CLIENTEDGE, "LISTBOX", NULL,
@@ -1298,6 +1394,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             if (availableCodeWidth < 200) availableCodeWidth = 200;
             int inputWidth = availableCodeWidth / 2;
             MoveWindow(GetDlgItem(hwnd, IDC_CODE_TAB), codeLeft, 90, inputWidth, 25, TRUE);
+            /* Position tab navigation buttons on the right side of the tab bar */
+            MoveWindow(GetDlgItem(hwnd, IDC_TAB_PREV), codeLeft + inputWidth - 50, 88, 22, 22, TRUE);
+            MoveWindow(GetDlgItem(hwnd, IDC_TAB_NEXT), codeLeft + inputWidth - 26, 88, 22, 22, TRUE);
             
             /* Resize input pane - below tabs */
             MoveWindow(GetDlgItem(hwnd, IDC_CODE_INPUT), codeLeft, 115, inputWidth, height-165, TRUE);
@@ -1308,6 +1407,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         
         /* Update tab close button position */
         PositionTabCloseButton();
+        UpdateTabNavigationButtons();
         UpdateLineNumbers(hwndInput, hwndLineNumbers);
         
         /* Resize properties */
@@ -1386,6 +1486,21 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                         SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
                     }
                 }
+            }
+            break;
+        /* Tab navigation buttons */
+        case IDC_TAB_PREV:
+            DebugLog("[TAB] Prev button clicked\n");
+            if (g_tabScrollIndex > 0) {
+                g_tabScrollIndex--;
+                EnsureTabVisible(g_tabScrollIndex);
+            }
+            break;
+        case IDC_TAB_NEXT:
+            DebugLog("[TAB] Next button clicked\n");
+            if (g_tabScrollIndex < g_tabCount - 1) {
+                g_tabScrollIndex++;
+                EnsureTabVisible(g_tabScrollIndex);
             }
             break;
             
@@ -1561,11 +1676,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         else if (wParam == IDC_CODE_TAB) {
             LPNMHDR pnmh = (LPNMHDR)lParam;
             if (pnmh->code == TCN_SELCHANGE) {
+                if (g_ignoreTabSelectionChange) break;
                 DebugLog("[TAB] TCN_SELCHANGE\n");
                 int newTab = TabCtrl_GetCurSel(hwndCodeTab);
                 DebugLog("[TAB] Selected tab: %d\n", newTab);
                 if (newTab >= 0 && newTab < g_tabCount) {
                     g_activeTab = newTab;
+                    EnsureTabVisible(newTab);
                     /* Load the file for this tab */
                     if (g_tabs[newTab].filePath[0]) {
                         DebugLog("[TAB] TabClick(%s)\n", g_tabs[newTab].title);
