@@ -645,8 +645,15 @@ void LoadFileIntoEditor(const char* filePath) {
     }
     
     size_t bytesRead = fread(buffer, 1, fileSize, fp);
-    buffer[bytesRead] = '\0';
     fclose(fp);
+    
+    /* Strip UTF-8 BOM if present so ANSI edit control does not get weird characters */
+    if (bytesRead >= 3 && (unsigned char)buffer[0] == 0xEF && (unsigned char)buffer[1] == 0xBB && (unsigned char)buffer[2] == 0xBF) {
+        memmove(buffer, buffer + 3, bytesRead - 3);
+        bytesRead -= 3;
+        DebugLog("[EDITOR] Stripped UTF-8 BOM from file\n");
+    }
+    buffer[bytesRead] = '\0';
     
     /* Set the text - this preserves all whitespace */
     SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)buffer);
