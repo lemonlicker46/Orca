@@ -653,14 +653,41 @@ void LoadFileIntoEditor(const char* filePath) {
         bytesRead -= 3;
         DebugLog("[EDITOR] Stripped UTF-8 BOM from file\n");
     }
-    buffer[bytesRead] = '\0';
-    
+
+    /* Normalize line endings to CRLF for Windows edit control compatibility */
+    char* normalized = (char*)GlobalAlloc(GPTR, bytesRead * 2 + 1);
+    if (!normalized) {
+        GlobalFree((HGLOBAL)buffer);
+        MessageBox(hwndMain, "Out of memory", "Error", MB_ICONERROR);
+        return;
+    }
+
+    char* src = buffer;
+    char* dst = normalized;
+    for (size_t i = 0; i < bytesRead; i++) {
+        if (src[i] == '\n') {
+            if (i == 0 || src[i - 1] != '\r') {
+                *dst++ = '\r';
+            }
+            *dst++ = '\n';
+        } else if (src[i] == '\r') {
+            *dst++ = '\r';
+            if (i + 1 >= bytesRead || src[i + 1] != '\n') {
+                *dst++ = '\n';
+            }
+        } else {
+            *dst++ = src[i];
+        }
+    }
+    *dst = '\0';
+
     /* Set the text - this preserves all whitespace */
-    SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)buffer);
+    SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)normalized);
     /* Ensure the edit control does not auto-wrap lines */
     SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
     UpdateLineNumbers(hwndInput, hwndLineNumbers);
-    
+
+    GlobalFree((HGLOBAL)normalized);
     GlobalFree((HGLOBAL)buffer);
     
     /* Add to tab if not already open */
