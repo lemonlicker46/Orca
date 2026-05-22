@@ -2,10 +2,9 @@
 REM Simple batch Makefile for Orca
 setlocal
 if not exist build mkdir build
-gcc src\main.c -o build\Orca.exe -mwindows -lcomctl32
+powershell -NoProfile -Command "& { $sw=[diagnostics.stopwatch]::StartNew(); & gcc 'src\main.c' -o 'build\Orca.exe' -mwindows -lcomctl32; $code=$LASTEXITCODE; $sw.Stop(); if ($code -ne 0) { Write-Host 'Build failed.'; Write-Host ('Elapsed: {0} ms' -f $sw.Elapsed.TotalMilliseconds.ToString('F3')); exit $code } else { Write-Host 'Build succeeded.'; Write-Host ('Elapsed: {0} ms' -f $sw.Elapsed.TotalMilliseconds.ToString('F3')); exit 0 } }"
+
 if %errorlevel% neq 0 (
-  echo Build failed.
   exit /b %errorlevel%
 )
-echo Build succeeded.
 cmd /k

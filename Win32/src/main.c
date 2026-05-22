@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <commctrl.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include <tchar.h>
 #include <string.h>
 
@@ -131,12 +132,26 @@ void DebugLog(const char* fmt, ...) {
     fflush(stdout);
     
     /* Also write to debug.log file */
-    FILE* logFile = fopen("debug.log", "a");
+    /* Ensure debug.log is written into the Win32 folder (parent of exe's parent) */
+    char modulePath[MAX_PATH];
+    char logPath[MAX_PATH];
+    GetModuleFileNameA(NULL, modulePath, MAX_PATH);
+    /* Strip executable name */
+    char* p = strrchr(modulePath, '\\');
+    if (p) *p = '\0';
+    /* Now modulePath is ..\...\Win32\build -> strip one more component to get Win32 */
+    p = strrchr(modulePath, '\\');
+    if (p) *p = '\0';
+    /* modulePath now points to Win32 root */
+    snprintf(logPath, MAX_PATH, "%s\\debug.log", modulePath);
+    FILE* logFile = fopen(logPath, "a");
     if (logFile) {
         fprintf(logFile, "%s", buffer);
         fclose(logFile);
     }
 }
+
+/* Integrated debug viewer removed: using console/debug.log only */
 
 /* Tab management */
 #define MAX_TABS 32
@@ -1242,27 +1257,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     si.cb = sizeof(si);
     PROCESS_INFORMATION pi;
     
-    /* Create a batch file to show debug console */
-    FILE* bat = fopen("debug_view.bat", "w");
-    fprintf(bat, "@echo off\n");
-    fprintf(bat, "title Orca Debug Console\n");
-    fprintf(bat, "echo === Orca Debug Console ===\n");
-    fprintf(bat, "echo Waiting for debug output...\n");
-    fprintf(bat, "type debug.log\n");
-    fprintf(bat, ":loop\n");
-    fprintf(bat, "  timeout /t 1 >nul\n");
-    fprintf(bat, "  type debug.log\n");
-    fprintf(bat, "  goto loop\n");
-    fclose(bat);
-    
-    /* Start the debug console window */
-    CreateProcess(NULL, "cmd /c debug_view.bat", NULL, NULL, FALSE, 
-                  CREATE_NEW_CONSOLE, NULL, NULL, &si, &pi);
-    
-    /* Initialize debug console */
+    /* Initialize console logging */
     InitDebugConsole();
     DebugLog("[INIT] WinMain started\n");
-    DebugLog("[DEBUG] AllocConsole attempted - check for console window\n");
+    DebugLog("[DEBUG] Console initialized\n");
     
     INITCOMMONCONTROLSEX icex = { sizeof(INITCOMMONCONTROLSEX), ICC_BAR_CLASSES };
     InitCommonControlsEx(&icex);
