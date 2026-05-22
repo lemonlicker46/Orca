@@ -24,6 +24,7 @@
 /* Tab navigation buttons */
 #define IDC_TAB_PREV       1010
 #define IDC_TAB_NEXT       1011
+#define IDC_CODE_SPLITTER  1012
 
 /* Tab context menu IDs */
 #define IDM_TAB_CLOSE_SINGLE 4001
@@ -85,10 +86,18 @@ static HWND hwndCodeTab;
 static HWND hwndTabClose;  /* Close button for tabs */
 static HWND hwndTabPrev;   /* Previous-tab button */
 static HWND hwndTabNext;   /* Next-tab button */
+static HWND hwndCodeSplitter; /* Vertical splitter between code and properties */
 static HWND hwndDebugConsole;  /* Debug console window */
 static WNDPROC hwndOldEditorProc;
 static HFONT g_codeFont;
 static int g_lineNumberWidth = 35;
+static int g_propertiesWidth = 200;
+static int g_currentInputWidth = 0;
+static int g_splitterWidth = 2;
+static BOOL g_isDraggingSplitter = FALSE;
+static int g_splitterDragStartX = 0;
+static int g_splitterStartPropertiesWidth = 0;
+static int g_dragInitialInputWidth = 0;
 static int g_rightClickedTab = -1; /* last tab index right-clicked */
 
 /* Layout helper functions */
@@ -951,10 +960,14 @@ void SaveAllFiles(HWND hwnd) {
 /* Update line numbers based on editor content */
 void RepositionCodeArea(int clientWidth, int clientHeight) {
     int codeLeft = 220 + g_lineNumberWidth;
-    int propertiesWidth = 200;
-    int availableCodeWidth = clientWidth - codeLeft - propertiesWidth - 10;
-    if (availableCodeWidth < 200) availableCodeWidth = 200;
-    int inputWidth = availableCodeWidth / 2;
+    int availableCodeWidth = clientWidth - codeLeft - g_propertiesWidth - g_splitterWidth - 10;
+    if (availableCodeWidth < 240) availableCodeWidth = 240;
+    int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 7 / 10);
+    if (g_currentInputWidth == 0) g_currentInputWidth = inputWidth;
+    int splitterX = codeLeft + inputWidth;
+    int outputX = splitterX + g_splitterWidth + 5;
+    int outputWidth = clientWidth - outputX - g_propertiesWidth - 10;
+    if (outputWidth < 100) outputWidth = 100;
 
     MoveWindow(hwndProjectTree, 10, 90, 200, clientHeight - 150, TRUE);
     MoveWindow(hwndLineNumbers, 220, 115, g_lineNumberWidth, clientHeight - 165, TRUE);
@@ -963,9 +976,11 @@ void RepositionCodeArea(int clientWidth, int clientHeight) {
     if (hwndTabPrev) MoveWindow(hwndTabPrev, codeLeft + inputWidth - 50, 88, 22, 22, TRUE);
     if (hwndTabNext) MoveWindow(hwndTabNext, codeLeft + inputWidth - 26, 88, 22, 22, TRUE);
     MoveWindow(hwndInput, codeLeft, 115, inputWidth, clientHeight - 165, TRUE);
-    MoveWindow(hwndOutput, codeLeft + inputWidth + 10, 90, inputWidth, clientHeight - 150, TRUE);
-    MoveWindow(hwndProperties, clientWidth - propertiesWidth, 90, propertiesWidth, clientHeight - 150, TRUE);
+    MoveWindow(hwndCodeSplitter, splitterX, 90, g_splitterWidth, clientHeight - 150, TRUE);
+    MoveWindow(hwndOutput, outputX, 90, outputWidth, clientHeight - 150, TRUE);
+    MoveWindow(hwndProperties, clientWidth - g_propertiesWidth, 90, g_propertiesWidth, clientHeight - 150, TRUE);
     PositionTabCloseButton();
+    UpdateTabNavigationButtons();
 }
 
 void UpdateLineNumbers(HWND hwndEditor, HWND hwndGutter) {
@@ -1207,6 +1222,11 @@ void CreateMainLayout(HWND hwnd) {
     SendMessage(hwndOutput, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
     SendMessage(hwndOutput, EM_FMTLINES, FALSE, 0);
     
+    /* Splitter handle between code output and properties */
+    hwndCodeSplitter = CreateWindowEx(0, "STATIC", NULL,
+        WS_CHILD | WS_VISIBLE,
+        1140 - g_splitterWidth, 50, g_splitterWidth, 500, hwnd, (HMENU)IDC_CODE_SPLITTER, GetModuleHandle(NULL), NULL);
+
     /* Properties window (right pane) */
     hwndProperties = CreateWindowEx(WS_EX_CLIENTEDGE, "LISTBOX", NULL,
         WS_CHILD | WS_VISIBLE | LBS_SORT | LBS_NOINTEGRALHEIGHT,
@@ -1415,37 +1435,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         /* Resize code toolbar */
         MoveWindow(GetDlgItem(hwnd, IDC_TOOLBAR_CODE), 0, 40, width, 40, TRUE);
         
-        /* Resize project tree */
-        MoveWindow(GetDlgItem(hwnd, IDC_PROJECT_TREE), 10, 90, 200, height-150, TRUE);
-        
-        /* Resize line numbers gutter */
-        MoveWindow(GetDlgItem(hwnd, 5001), 220, 115, g_lineNumberWidth, height-98, TRUE);
-        
-        /* Resize tab control */
-        {
-            int codeLeft = 220 + g_lineNumberWidth;
-            int availableCodeWidth = width - codeLeft - 210;
-            if (availableCodeWidth < 200) availableCodeWidth = 200;
-            int inputWidth = availableCodeWidth / 2;
-            MoveWindow(GetDlgItem(hwnd, IDC_CODE_TAB), codeLeft, 90, inputWidth, 25, TRUE);
-            /* Position tab navigation buttons on the right side of the tab bar */
-            MoveWindow(GetDlgItem(hwnd, IDC_TAB_PREV), codeLeft + inputWidth - 50, 88, 22, 22, TRUE);
-            MoveWindow(GetDlgItem(hwnd, IDC_TAB_NEXT), codeLeft + inputWidth - 26, 88, 22, 22, TRUE);
-            
-            /* Resize input pane - below tabs */
-            MoveWindow(GetDlgItem(hwnd, IDC_CODE_INPUT), codeLeft, 115, inputWidth, height-165, TRUE);
-            
-            /* Resize output pane */
-            MoveWindow(GetDlgItem(hwnd, IDC_CODE_OUTPUT), codeLeft + inputWidth + 10, 90, inputWidth, height-150, TRUE);
-        }
-        
-        /* Update tab close button position */
-        PositionTabCloseButton();
-        UpdateTabNavigationButtons();
-        UpdateLineNumbers(hwndInput, hwndLineNumbers);
-        
-        /* Resize properties */
-        MoveWindow(GetDlgItem(hwnd, IDC_PROPERTIES), width - 220, 90, 200, height-150, TRUE);
+        /* Resize rest of layout */
+        RepositionCodeArea(width, height);
         
         /* Resize status bar */
         MoveWindow(GetDlgItem(hwnd, IDC_STATUSBAR), 0, height-30, width, 30, TRUE);
@@ -1800,14 +1791,112 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         }
         break;
         
-    case WM_LBUTTONDOWN:
-        DebugLog("[MOUSE] Left button DOWN at (%d, %d)\n", (int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam));
+    case WM_SETCURSOR: {
+        if (LOWORD(lParam) == HTCLIENT) {
+            POINT pt;
+            GetCursorPos(&pt);
+            ScreenToClient(hwnd, &pt);
+
+            RECT rc;
+            GetClientRect(hwnd, &rc);
+            int codeLeft = 220 + g_lineNumberWidth;
+            int availableCodeWidth = rc.right - codeLeft - g_propertiesWidth - g_splitterWidth - 10;
+            if (availableCodeWidth < 240) availableCodeWidth = 240;
+            int inputWidth = availableCodeWidth / 2;
+            int splitterX = codeLeft + inputWidth;
+            RECT splitterRect = { splitterX, 90, splitterX + g_splitterWidth, rc.bottom - 150 };
+            if (PtInRect(&splitterRect, pt)) {
+                SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+                return TRUE;
+            }
+        }
         break;
-        
+    }
+    case WM_LBUTTONDOWN: {
+        int x = (int)(short)LOWORD(lParam);
+        int y = (int)(short)HIWORD(lParam);
+        RECT rc;
+        GetClientRect(hwnd, &rc);
+        int codeLeft = 220 + g_lineNumberWidth;
+        int availableCodeWidth = rc.right - codeLeft - g_propertiesWidth - g_splitterWidth - 10;
+        if (availableCodeWidth < 240) availableCodeWidth = 240;
+        int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 8 / 10);
+        int splitterX = codeLeft + inputWidth;
+        RECT splitterRect = { splitterX, 90, splitterX + g_splitterWidth, rc.bottom - 150 };
+        if (x >= splitterRect.left && x < splitterRect.right && y >= splitterRect.top && y < splitterRect.bottom) {
+            g_isDraggingSplitter = TRUE;
+            g_splitterDragStartX = x;
+            g_dragInitialInputWidth = inputWidth;
+            g_splitterStartPropertiesWidth = g_propertiesWidth;
+            SetCapture(hwnd);
+            SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+            return 0;
+        }
+        DebugLog("[MOUSE] Left button DOWN at (%d, %d)\n", x, y);
+        break;
+    }
     case WM_LBUTTONUP:
+        if (g_isDraggingSplitter) {
+            g_isDraggingSplitter = FALSE;
+            ReleaseCapture();
+            return 0;
+        }
         DebugLog("[MOUSE] Left button UP at (%d, %d)\n", (int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam));
         break;
+    case WM_MOUSEMOVE: {
+        int x = (int)(short)LOWORD(lParam);
+        int y = (int)(short)HIWORD(lParam);
+        RECT rc;
+        GetClientRect(hwnd, &rc);
+        int codeLeft = 220 + g_lineNumberWidth;
         
+        if (g_isDraggingSplitter) {
+            int dx = x - g_splitterDragStartX;
+            int newInputWidth = g_dragInitialInputWidth + dx;
+            int minWidth = 150;
+            int maxWidth = rc.right - codeLeft - 100 - g_propertiesWidth;
+            if (newInputWidth < minWidth) newInputWidth = minWidth;
+            if (newInputWidth > maxWidth) newInputWidth = maxWidth;
+            
+            g_currentInputWidth = newInputWidth;
+            
+            int newSplitterX = codeLeft + newInputWidth;
+            int outputX = newSplitterX + g_splitterWidth + 5;
+            int outputWidth = rc.right - outputX - g_propertiesWidth - 10;
+            if (outputWidth < 100) outputWidth = 100;
+            
+            MoveWindow(hwndCodeTab, codeLeft, 90, newInputWidth, 25, TRUE);
+            if (hwndTabPrev) MoveWindow(hwndTabPrev, codeLeft + newInputWidth - 50, 88, 22, 22, TRUE);
+            if (hwndTabNext) MoveWindow(hwndTabNext, codeLeft + newInputWidth - 26, 88, 22, 22, TRUE);
+            MoveWindow(hwndInput, codeLeft, 115, newInputWidth, rc.bottom - 165, TRUE);
+            MoveWindow(hwndCodeSplitter, newSplitterX, 90, g_splitterWidth, rc.bottom - 150, TRUE);
+            MoveWindow(hwndOutput, outputX, 90, outputWidth, rc.bottom - 150, TRUE);
+            UpdateLineNumbers(hwndInput, hwndLineNumbers);
+            return 0;
+        }
+        {
+            int availableCodeWidth = rc.right - codeLeft - g_propertiesWidth - g_splitterWidth - 10;
+            if (availableCodeWidth < 240) availableCodeWidth = 240;
+            int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 8 / 10);
+            int splitterX = codeLeft + inputWidth;
+            RECT splitterRect = { splitterX, 90, splitterX + g_splitterWidth, rc.bottom - 150 };
+            POINT pt = { x, y };
+            if (PtInRect(&splitterRect, pt)) {
+                SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+                return 0;
+            }
+        }
+        break;
+    }
+    case WM_CTLCOLORSTATIC: {
+        if ((HWND)lParam == hwndCodeSplitter) {
+            HDC hdc = (HDC)wParam;
+            SetBkMode(hdc, OPAQUE);
+            SetBkColor(hdc, RGB(140, 140, 140));
+            return (LRESULT)CreateSolidBrush(RGB(140, 140, 140));
+        }
+        break;
+    }
 case WM_CONTEXTMENU: {
         HWND hWndCtrl = (HWND)wParam;
         if (hWndCtrl == hwndCodeTab) {
@@ -1877,10 +1966,6 @@ case WM_CONTEXTMENU: {
         }
         break;
     }
-        
-    case WM_MOUSEMOVE:
-        /* Only log occasionally to avoid flooding */
-        break;
         
     case WM_CLOSE:
         DebugLog("[MSG] WM_CLOSE - Window close requested\n");
