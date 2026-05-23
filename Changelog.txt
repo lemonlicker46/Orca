@@ -1,0 +1,18 @@
+v1.00 - Initial debug release (Apr 25, 2026)
+- Created program icon file
+- Minimal win32 window created including a status bar and menu bar
+- TreeView added
+- fixed bugs for TreeView
+
+v1.01 - (Apr 26, 2026)
+- Added code pane and made some menus do stuff (Apr 26, 2026) PG DOWN, PG UP, HOME, END, CTRL+HOME, CTRL+END are also supported.
+- Made code pane stop wrapping lines, and use a larger font
+- Make code pane work with BOM text file formats as well as non BOM text file formats, after BOM files were showing non ascii characters and breaking the 
+anti-line-wrapping code
+- made keyboard shortcuts trigger their respective menu bar items, eg, CTRL+N/A/Z/Y/X/C/O/S, CTRL+SHIFT+S, CTRL+ALT+SHIFT+S (but we still 
+need to add accelerator keys)
+- got save and browse dialogs working for `file > open project` and `file > save project`
+
+v1.02 - (Apr 27, 2026)
+- added debug console
+- 
