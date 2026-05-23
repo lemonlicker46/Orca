@@ -92,7 +92,7 @@ static HWND hwndDebugConsole;  /* Debug console window */
 static WNDPROC hwndOldEditorProc;
 static HFONT g_codeFont;
 static int g_lineNumberWidth = 35;
-static int g_propertiesWidth = 200;
+static int g_propertiesWidth = 150;
 static int g_currentInputWidth = 0;
 static int g_splitterWidth = 2;
 static BOOL g_isDraggingSplitter = FALSE;
@@ -977,7 +977,7 @@ void RepositionCodeArea(int clientWidth, int clientHeight) {
     int codeLeft = 220 + g_lineNumberWidth;
     int availableCodeWidth = clientWidth - codeLeft - g_propertiesWidth - g_splitterWidth - 10;
     if (availableCodeWidth < 240) availableCodeWidth = 240;
-    int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 7 / 10);
+    int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 85 / 100);
     if (g_currentInputWidth == 0) g_currentInputWidth = inputWidth;
     int splitterX = codeLeft + inputWidth;
     int outputX = splitterX + g_splitterWidth + 5;
@@ -1818,9 +1818,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         int codeLeft = 220 + g_lineNumberWidth;
         int availableCodeWidth = rc.right - codeLeft - g_propertiesWidth - g_splitterWidth - 10;
         if (availableCodeWidth < 240) availableCodeWidth = 240;
-        int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 8 / 10);
+        int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 85 / 100);
         int splitterX = codeLeft + inputWidth;
-        RECT splitterRect = { splitterX, 90, splitterX + g_splitterWidth, rc.bottom - 150 };
+        RECT splitterRect = { splitterX - 5, 90, splitterX + g_splitterWidth + 5, rc.bottom - 150 };
         if (x >= splitterRect.left && x < splitterRect.right && y >= splitterRect.top && y < splitterRect.bottom) {
             g_isDraggingSplitter = TRUE;
             g_splitterDragStartX = x;
@@ -1875,9 +1875,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         {
             int availableCodeWidth = rc.right - codeLeft - g_propertiesWidth - g_splitterWidth - 10;
             if (availableCodeWidth < 240) availableCodeWidth = 240;
-            int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 8 / 10);
+            int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 85 / 100);
             int splitterX = codeLeft + inputWidth;
-            RECT splitterRect = { splitterX, 90, splitterX + g_splitterWidth, rc.bottom - 150 };
+            RECT splitterRect = { splitterX - 5, 90, splitterX + g_splitterWidth + 5, rc.bottom - 150 };
             POINT pt = { x, y };
             if (PtInRect(&splitterRect, pt)) {
                 SetCursor(LoadCursor(NULL, IDC_SIZEWE));

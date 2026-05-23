@@ -1,0 +1,2267 @@
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (886, 136)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (886, 177)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (884, 181)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (884, 181)
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (1061, 217)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (1061, 216)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x304C8)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (1119, 246)
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x304C8)
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x104FE)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x104FE)
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_COMMAND dispatching - ID: 0x44E
+[MSG] WM_COMMAND received (wParam=0x44E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Directory: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler
+[DIALOG] File 1: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compile.c
+[DIALOG] File 2: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compilep.h
+[DIALOG] File 3: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\dumpcd.c
+[DIALOG] File 4: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\mrsw.c
+[DIALOG] File 5: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\simulate.c
+[DIALOG] File 6: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\tc.c
+[DIALOG] Total files selected: 6
+[DIALOG] Loading first file: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compile.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compile.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'compile.c'
+[TREEVIEW] File selected, searching in 6 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compile.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compile.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'compilep.h'
+[TREEVIEW] File selected, searching in 6 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compilep.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\compilep.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dumpcd.c'
+[TREEVIEW] File selected, searching in 6 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\dumpcd.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\dumpcd.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'mrsw.c'
+[TREEVIEW] File selected, searching in 6 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\mrsw.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\mrsw.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'simulate.c'
+[TREEVIEW] File selected, searching in 6 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\simulate.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\simulate.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'tc.c'
+[TREEVIEW] File selected, searching in 6 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\tc.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\compiler\tc.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (249, 30)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (249, 30)
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (240, 95)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (240, 95)
+[LOOP] WM_COMMAND dispatching - ID: 0x44E
+[MSG] WM_COMMAND received (wParam=0x44E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Directory: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder
+[DIALOG] File 1: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[DIALOG] File 2: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[DIALOG] File 3: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[DIALOG] File 4: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[DIALOG] File 5: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[DIALOG] File 6: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[DIALOG] File 7: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[DIALOG] File 8: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[DIALOG] File 9: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[DIALOG] File 10: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[DIALOG] File 11: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[DIALOG] File 12: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[DIALOG] File 13: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.c
+[DIALOG] File 14: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.h
+[DIALOG] File 15: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds16tbl.c
+[DIALOG] File 16: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds32tbl.c
+[DIALOG] File 17: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.c
+[DIALOG] File 18: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.h
+[DIALOG] File 19: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\modrm.c
+[DIALOG] File 20: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.c
+[DIALOG] File 21: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.h
+[DIALOG] Total files selected: 21
+[DIALOG] Loading first file: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'bytefns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'bytefns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'comm1632.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'comm1632.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoder.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoderp.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds16tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds32tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dwordfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dwordfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'floatfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'floatfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'lds16tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds16tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds16tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'lds32tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds32tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds32tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'miscfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'miscfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'modrm.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\modrm.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\modrm.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'wordfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'wordfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[TAB] TCN_SELCHANGE
+[TAB] Selected tab: 1
+[TAB] TabClick(bytefns.h)
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[EDITOR] File opened successfully
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[TAB] TCN_SELCHANGE
+[TAB] Selected tab: 0
+[TAB] TabClick(bytefns.c)
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] File opened successfully
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (1087, 53)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (1087, 53)
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x104FE)
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'bytefns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x104FE)
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'bytefns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'comm1632.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'comm1632.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoder.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoderp.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds16tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds32tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dwordfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dwordfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'floatfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'floatfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'lds16tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds16tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds16tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'lds32tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds32tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds32tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'miscfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'miscfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'modrm.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\modrm.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\modrm.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'wordfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'wordfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[MSG] WM_SIZE
+[SIZE] Window resized to 0x0
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
