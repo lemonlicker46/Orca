@@ -1,18 +1,43 @@
 v1.00 - Initial debug release (Apr 25, 2026)
 - Created program icon file
 - Minimal win32 window created including a status bar and menu bar
+
 - TreeView added
 - fixed bugs for TreeView
 
 v1.01 - (Apr 26, 2026)
 - Added code pane and made some menus do stuff (Apr 26, 2026) PG DOWN, PG UP, HOME, END, CTRL+HOME, CTRL+END are also supported.
 - Made code pane stop wrapping lines, and use a larger font
-- Make code pane work with BOM text file formats as well as non BOM text file formats, after BOM files were showing non ascii characters and breaking the 
-anti-line-wrapping code
+
+- added horizontal scrollbar
+- Make code pane work with BOM text file formats as well as non BOM text file formats, after BOM files were showing non ascii characters 
+and breaking the anti-line-wrapping code
+
 - made keyboard shortcuts trigger their respective menu bar items, eg, CTRL+N/A/Z/Y/X/C/O/S, CTRL+SHIFT+S, CTRL+ALT+SHIFT+S (but we still 
 need to add accelerator keys)
-- got save and browse dialogs working for `file > open project` and `file > save project`
 
 v1.02 - (Apr 27, 2026)
+- got save and browse dialogs working as well as the file I/O for `File > Open Project` and `File > Save Project` /  `File > Save Project As` / 
+`File > Save All` menu options
 - added debug console
-- 
+
+- added tabs bar for to open files by clicking them in TreeView
+- fixed several bugs for the tabs bar, such as clipping problems
+
+v1.03 - (Apr 31, 2026)
+- added right click menu to close a tab, or several. Having a little `x` button on each tab was abandoned.
+- added scroll buttons to scroll tabs if there's more tabs than what fits in the tabs bar
+- added line numbers to code pane
+
+- fixed line number bugs and alignment problems
+
+v1.04 - (May 22, 2026)
+- added resize handle to the right of the code pane
+- fixed bugs regarding the resizing of the code pane and made the code pane wider by default
+- made a config.ini to store GUI settings and other configs
+
+- added compile time timer to make.cmd 
+
+v1.04 - (May 23, 2026)
+- replaced some magic numbers with #defines with meaningful names
+

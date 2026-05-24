@@ -1,0 +1,2789 @@
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=0
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_SIZE
+[SIZE] Window resized to 0x0
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x30052A)
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x30052A)
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x10614)
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x10614)
+[CONFIG] Saved CodePaneWidth=150 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=150
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_SIZE
+[SIZE] Window resized to 0x0
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[KEYBOARD] Key pressed: 0x11 (repeat=1)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[KEYBOARD] Key pressed: 0x11 (repeat=1)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4C
+[KEYBOARD] Key pressed: 0x4C (repeat=1)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[KEYBOARD] Key pressed: 0x11 (repeat=1)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4F
+[MSG] WM_COMMAND received (wParam=0x1044E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Directory: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder
+[DIALOG] File 1: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[DIALOG] File 2: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[DIALOG] File 3: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[DIALOG] File 4: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[DIALOG] File 5: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[DIALOG] File 6: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[DIALOG] File 7: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[DIALOG] File 8: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[DIALOG] File 9: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[DIALOG] File 10: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[DIALOG] File 11: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[DIALOG] File 12: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[DIALOG] File 13: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.c
+[DIALOG] File 14: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.h
+[DIALOG] File 15: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds16tbl.c
+[DIALOG] File 16: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds32tbl.c
+[DIALOG] File 17: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.c
+[DIALOG] File 18: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.h
+[DIALOG] File 19: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\modrm.c
+[DIALOG] File 20: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.c
+[DIALOG] File 21: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.h
+[DIALOG] Total files selected: 21
+[DIALOG] Loading first file: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'bytefns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'bytefns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'comm1632.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'comm1632.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoder.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoderp.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds16tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds32tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dwordfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TAB] TCN_SELCHANGE
+[TAB] Selected tab: 3
+[TAB] TabClick(comm1632.h)
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[EDITOR] File opened successfully
+[LOOP] WM_LBUTTONUP dispatching
+[TAB] Context menu on tab 3: comm1632.h
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (599, 32)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (599, 32)
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_COMMAND dispatching - ID: 0x44E
+[MSG] WM_COMMAND received (wParam=0x44E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Directory: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder
+[DIALOG] File 1: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[DIALOG] File 2: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.h
+[DIALOG] File 3: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.c
+[DIALOG] File 4: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\comm1632.h
+[DIALOG] File 5: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[DIALOG] File 6: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[DIALOG] File 7: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[DIALOG] File 8: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[DIALOG] File 9: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[DIALOG] File 10: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[DIALOG] File 11: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[DIALOG] File 12: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[DIALOG] File 13: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.c
+[DIALOG] File 14: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\floatfns.h
+[DIALOG] File 15: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds16tbl.c
+[DIALOG] File 16: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\lds32tbl.c
+[DIALOG] File 17: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.c
+[DIALOG] File 18: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\miscfns.h
+[DIALOG] File 19: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\modrm.c
+[DIALOG] File 20: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.c
+[DIALOG] File 21: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\wordfns.h
+[DIALOG] Total files selected: 21
+[DIALOG] Loading first file: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\bytefns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'common.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\common.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoder.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoder.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'decoderp.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\decoderp.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds16tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds16tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'ds32tbl.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\ds32tbl.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dwordfns.c'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'dwordfns.h'
+[TREEVIEW] File selected, searching in 21 files...
+[TREEVIEW] FOUND: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Documents\windows_stuff\nt5src\XPSP1\xpsrc1\base\wow64\mscpu\decoder\dwordfns.h
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[TREEVIEW] Unknown NM code: 0xFFFFFE64
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4F
+[MSG] WM_COMMAND received (wParam=0x1044E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Single file selected: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[DIALOG] Total files selected: 1
+[DIALOG] Loading first file: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c'
+[TREEVIEW] File selected, searching in 1 files...
+[TREEVIEW] FOUND: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFFD
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x703DA)
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x703DA)
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFFD
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x703DA)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x703DA)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x53
+[MSG] WM_COMMAND received (wParam=0x1044F, lParam=0x0)
+[MENU] FileSaveMenuItemClick
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (472, 114)
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (476, 111)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (484, 109)
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (491, 107)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (491, 107)
+[LOOP] WM_COMMAND dispatching - ID: 0x44E
+[MSG] WM_COMMAND received (wParam=0x44E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x703DA)
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x703DA)
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Single file selected: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[DIALOG] Total files selected: 1
+[DIALOG] Loading first file: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (387, 51)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (387, 50)
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x703DA)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x703DA)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x703DA)
+[LOOP] WM_LBUTTONUP dispatching
+[TAB] Context menu on tab 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[KEYBOARD] Key pressed: 0x11 (repeat=1)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4F
+[MSG] WM_COMMAND received (wParam=0x1044E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Single file selected: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[DIALOG] Total files selected: 1
+[DIALOG] Loading first file: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] WM_LBUTTONUP dispatching
+[TAB] Context menu on tab 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[CONFIG] Saved CodePaneWidth=870 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[LOOP] Exiting message loop
+[INIT] WinMain started
+[DEBUG] Console initialized
+[INIT] Common controls initialized
+[CONFIG] Loaded config from C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini, CodePaneWidth=870
+[MSG] WM_CREATE
+[EVENT] WindowCreate
+[FUNC] CreateMenus called
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[FUNC] CreateMenus complete
+[MSG] WM_SIZE
+[SIZE] Window resized to 1364x729
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] Entering message loop
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[KEYBOARD] Key pressed: 0x11 (repeat=1)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4F
+[MSG] WM_COMMAND received (wParam=0x1044E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Single file selected: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[DIALOG] Total files selected: 1
+[DIALOG] Loading first file: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] WM_LBUTTONUP dispatching
+[MSG] WM_SIZE
+[SIZE] Window resized to 1360x677
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TAB] Context menu on tab 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[LOOP] WM_LBUTTONDOWN dispatching
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x505C0)
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c'
+[TREEVIEW] File selected, searching in 1 files...
+[TREEVIEW] FOUND: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x505C0)
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFFD
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFFB
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'Project Files'
+[TREEVIEW] Root folder selected, skipping
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFFD
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c'
+[TREEVIEW] File selected, searching in 1 files...
+[TREEVIEW] FOUND: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (324, 113)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x505C0)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x104B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x8
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x104B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x8
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x47
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x104B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x43
+[MSG] WM_COMMAND received (wParam=0x104B4, lParam=0x0)
+[MENU] EditCopyMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x27
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0xD
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60103E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x104B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x43
+[MSG] WM_COMMAND received (wParam=0x104B4, lParam=0x0)
+[MENU] EditCopyMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x60203E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x104B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x8
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x53
+[MSG] WM_COMMAND received (wParam=0x1044F, lParam=0x0)
+[MENU] FileSaveMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x57
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x57
+[TAB] Context menu on tab 0: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4F
+[MSG] WM_COMMAND received (wParam=0x1044E, lParam=0x0)
+[MENU] FileOpenProjectMenuItemClick
+[DIALOG] OpenFilesWithDialog called
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x505C0)
+[DIALOG] GetOpenFileName returned TRUE
+[DIALOG] Multi-file mode
+[DIALOG] Single file selected: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[DIALOG] Total files selected: 1
+[DIALOG] Loading first file: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE6B
+[TREEVIEW] Unknown NM code: 0xFFFFFE6A
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFFE
+[TREEVIEW] Unknown NM code: 0xFFFFFE6F
+[TREEVIEW] NM code: 0xFFFFFE6E
+[TREEVIEW] TVN_SELCHANGED - selection changed
+[TREEVIEW] Selected: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c'
+[TREEVIEW] File selected, searching in 1 files...
+[TREEVIEW] FOUND: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] LoadFileIntoEditor called with: C:\Users\kris\Desktop\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.c
+[EDITOR] File opened successfully
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x505C0)
+[TREEVIEW] Unknown NM code: 0xFFFFFFF9
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFFD
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONUP dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFFF8
+[MSG] WM_COMMAND received (wParam=0x10003E9, lParam=0x505C0)
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x44
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x44
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x44
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x44
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x44
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_COMMAND dispatching - ID: 0x4B6
+[MSG] WM_COMMAND received (wParam=0x4B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[TREEVIEW] Unknown NM code: 0xFFFFFFEF
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x5A
+[MSG] WM_COMMAND received (wParam=0x104B1, lParam=0x0)
+[MENU] EditUndoMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x59
+[MSG] WM_COMMAND received (wParam=0x104B2, lParam=0x0)
+[MENU] EditRedoMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x43
+[MSG] WM_COMMAND received (wParam=0x104B4, lParam=0x0)
+[MENU] EditCopyMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x104B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x58
+[MSG] WM_COMMAND received (wParam=0x104B3, lParam=0x0)
+[MENU] EditCutMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x56
+[MSG] WM_COMMAND received (wParam=0x104B5, lParam=0x0)
+[MENU] EditPasteMenuItemClick
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x41
+[MSG] WM_COMMAND received (wParam=0x104B6, lParam=0x0)
+[MENU] EditSelectAllMenuItemClick
+[LOOP] WM_KEYDOWN dispatching - Key: 0x8
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (245, 63)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (245, 63)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x11
+[LOOP] WM_KEYDOWN dispatching - Key: 0x10
+[LOOP] WM_KEYDOWN dispatching - Key: 0x4E
+[MSG] WM_COMMAND received (wParam=0x1044D, lParam=0x0)
+[MENU] FileNewProjectMenuItemClick
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFE67
+[TREEVIEW] Unknown NM code: 0xFFFFFFF4
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_KEYDOWN dispatching - Key: 0x46
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_LBUTTONDOWN dispatching
+[LOOP] WM_LBUTTONUP dispatching
+[LOOP] WM_KEYDOWN dispatching - Key: 0x8
+[MSG] WM_COMMAND received (wParam=0x40003E9, lParam=0x505C0)
+[MSG] WM_COMMAND received (wParam=0x30003E9, lParam=0x505C0)
+[LOOP] WM_LBUTTONDOWN dispatching
+[MOUSE] Left button DOWN at (300, 102)
+[LOOP] WM_LBUTTONUP dispatching
+[MOUSE] Left button UP at (300, 102)
+[MSG] WM_CLOSE - Window close requested
+[EVENT] Window closing
+[MSG] WM_COMMAND received (wParam=0x20003E9, lParam=0x505C0)
+[CONFIG] Saved CodePaneWidth=866 to C:\Users\kris\Desktop\Orca-main\Win32\build\config.ini
+[LOOP] Exiting message loop

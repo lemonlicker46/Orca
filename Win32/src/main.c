@@ -99,12 +99,16 @@ static BOOL g_isDraggingSplitter = FALSE;
 static int g_splitterDragStartX = 0;
 static int g_splitterStartPropertiesWidth = 0;
 static int g_dragInitialInputWidth = 0;
+static char g_configPath[MAX_PATH] = "";
 static int g_rightClickedTab = -1; /* last tab index right-clicked */
 
 /* Layout helper functions */
 void RepositionCodeArea(int clientWidth, int clientHeight);
 void UpdateLineNumbers(HWND hwndEditor, HWND hwndGutter);
 LRESULT CALLBACK EditorSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+void InitializeConfigPath(void);
+void LoadConfig(void);
+void SaveConfig(void);
 
 /* Debug console functions */
 void InitDebugConsole() {
@@ -148,6 +152,42 @@ void DebugLog(const char* fmt, ...) {
     if (logFile) {
         fprintf(logFile, "%s", buffer);
         fclose(logFile);
+    }
+}
+
+void InitializeConfigPath(void) {
+    char modulePath[MAX_PATH];
+    if (GetModuleFileNameA(NULL, modulePath, MAX_PATH)) {
+        char* p = strrchr(modulePath, '\\');
+        if (p) *p = '\0';
+        snprintf(g_configPath, MAX_PATH, "%s\\config.ini", modulePath);
+    } else {
+        strcpy(g_configPath, "config.ini");
+    }
+}
+
+void LoadConfig(void) {
+    if (g_configPath[0] == '\0') {
+        InitializeConfigPath();
+    }
+    int width = GetPrivateProfileIntA("Layout", "CodePaneWidth", 0, g_configPath);
+    if (width > 0) {
+        g_currentInputWidth = width;
+    }
+    DebugLog("[CONFIG] Loaded config from %s, CodePaneWidth=%d\n", g_configPath, g_currentInputWidth);
+}
+
+void SaveConfig(void) {
+    if (g_configPath[0] == '\0') {
+        InitializeConfigPath();
+    }
+    if (g_currentInputWidth > 0) {
+        char buffer[32];
+        snprintf(buffer, sizeof(buffer), "%d", g_currentInputWidth);
+        WritePrivateProfileStringA("Layout", "CodePaneWidth", buffer, g_configPath);
+        DebugLog("[CONFIG] Saved CodePaneWidth=%d to %s\n", g_currentInputWidth, g_configPath);
+    } else {
+        DebugLog("[CONFIG] No CodePaneWidth to save, skipping\n");
     }
 }
 
@@ -1293,6 +1333,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE+1);
     RegisterClass(&wc);
 
+    LoadConfig();
+
     hwndMain = CreateWindow("OrcaMainWnd", "Orca - C Code Generator & Manipulator", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT, 1400, 800, NULL, NULL, hInstance, NULL);
     
@@ -1729,7 +1771,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     HMENU hMenu = CreatePopupMenu();
                     AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close");
                     AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others");
-                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_RIGHT, "Close To Right");
                     int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
                     DestroyMenu(hMenu);
                     if (cmd == IDM_TAB_CLOSE_SINGLE) {
@@ -1820,7 +1861,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         if (availableCodeWidth < 240) availableCodeWidth = 240;
         int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 85 / 100);
         int splitterX = codeLeft + inputWidth;
-        RECT splitterRect = { splitterX - 5, 90, splitterX + g_splitterWidth + 5, rc.bottom - 150 };
+        RECT splitterRect = { splitterX - 5, 115, splitterX + g_splitterWidth + 5, rc.bottom - 150 };
         if (x >= splitterRect.left && x < splitterRect.right && y >= splitterRect.top && y < splitterRect.bottom) {
             g_isDraggingSplitter = TRUE;
             g_splitterDragStartX = x;
@@ -1877,7 +1918,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             if (availableCodeWidth < 240) availableCodeWidth = 240;
             int inputWidth = (g_currentInputWidth > 0) ? g_currentInputWidth : (availableCodeWidth * 85 / 100);
             int splitterX = codeLeft + inputWidth;
-            RECT splitterRect = { splitterX - 5, 90, splitterX + g_splitterWidth + 5, rc.bottom - 150 };
+            RECT splitterRect = { splitterX - 5, 115, splitterX + g_splitterWidth + 5, rc.bottom - 150 };
             POINT pt = { x, y };
             if (PtInRect(&splitterRect, pt)) {
                 SetCursor(LoadCursor(NULL, IDC_SIZEWE));
@@ -1916,7 +1957,6 @@ case WM_CONTEXTMENU: {
                 HMENU hMenu = CreatePopupMenu();
                 AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close");
                 AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others");
-                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_RIGHT, "Close To Right");
                 int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
                 DestroyMenu(hMenu);
                 if (cmd == IDM_TAB_CLOSE_SINGLE) {
@@ -1977,6 +2017,7 @@ case WM_CONTEXTMENU: {
         break;
         
     case WM_DESTROY:
+        SaveConfig();
         PostQuitMessage(0);
         break;
         

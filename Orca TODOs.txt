@@ -1,0 +1,8 @@
+- remember code pane resizes (make config.ini)
+- limit tab width on long filenames, the tab will have 25 chars max and then ... if its longer
+- have more than one undo/redo level
+- make current tab easier to see in the tabs bar
+- connect different compilers to the run, project settings, and compile options. 
+- The project settings will open a dialog box, one tab inside which is 'compiler options', here we can type compiler flags in a single input field (but the problem is some compilers might care about where the compiler flags go positionally as program args+params so we need to think about that...
+- make libraries and break main.c up, a file should be 1000-1500 lines max.
+- repositionable tabs
