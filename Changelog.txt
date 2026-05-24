@@ -32,8 +32,8 @@ v1.03 - (Apr 31, 2026)
 - fixed line number bugs and alignment problems
 
 v1.04 - (May 22, 2026)
-- Made files with too long of filename be truncated to something like 'longfilen...' for the tabs, so that tabs don't become too wide, anything after 11 chars (not
-including the file extension, becomes ..., which is 14 chars max. The extension is also then hidden because something like longfilen....c is confusing.
+- Made files with too long of filename be truncated to something like 'longfilenam...' for the tabs, so that tabs don't become too wide, anything after 11 chars (not
+including the file extension, becomes ..., which is 14 chars max. The extension is also then hidden because something like 'longfilenam....c' is confusing.
 - added resize handle to the right of the code pane
 - fixed bugs regarding the resizing of the code pane and made the code pane wider by default
 - made a config.ini to store GUI settings and other configs
@@ -63,5 +63,5 @@ the max or min width of 870 or 150 on too wide/narrow of value. As well as inter
 - fixed bug where tab name was changing to ******, Only the TreeView should get the asterisk and only ONE of them.
 
 - config.ini is now being written by orca to \orca\ instead of to \orca\win32\build, this prevents config.ini from constantly being committed to the github repo
-- added CTRL+w as well as CTRL+SHIFT+W support for closing the current tab / closing all other tabs
+- added CTRL+W as well as CTRL+SHIFT+W support for closing the current tab / closing all other tabs
 - added helper text to tabs bar right click menu for CTRL+W / CTRL+SHIFT+W
