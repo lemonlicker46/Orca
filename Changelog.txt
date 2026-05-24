@@ -1,58 +1,6 @@
-v1.00 - Initial debug release (Apr 25, 2026)
-- Created program icon file
-- Minimal win32 window created including a status bar and menu bar
+- removed the close button for tabs, as it was showing in the complete wrong part of the screen anyway and we can just use the tab's right click menu anyway
+- fixed bugs where the asterisk prefix was not disappearing when it should
+- fixed a few compiler warnings when building the orca executable.
 
-- TreeView added
-- fixed bugs for TreeView
-
-v1.01 - (Apr 26, 2026)
-- Added code pane and made some menus do stuff (Apr 26, 2026) PG DOWN, PG UP, HOME, END, CTRL+HOME, CTRL+END are also supported.
-- Made code pane stop wrapping lines, and use a larger font
-
-- added horizontal scrollbar
-- Make code pane work with BOM text file formats as well as non BOM text file formats, after BOM files were showing non ascii characters 
-and breaking the anti-line-wrapping code
-
-- made keyboard shortcuts trigger their respective menu bar items, e.g. CTRL+N/A/Z/Y/X/C/O/S, CTRL+SHIFT+S, CTRL+ALT+SHIFT+S (but we still 
-need to add accelerator keys)
-
-v1.02 - (Apr 27, 2026)
-- got save and browse dialogs working as well as the file I/O for `File > Open Project` and `File > Save Project` /  `File > Save Project As` / 
-`File > Save All` menu options
-- added debug console
-
-- added tabs bar for to open files by clicking them in TreeView
-- fixed several bugs for the tabs bar, such as clipping problems
-
-v1.03 - (Apr 31, 2026)
-- added right click menu to close a tab, or several. Having a little `x` button on each tab was abandoned.
-- added scroll buttons to scroll tabs if there's more tabs than what fits in the tabs bar
-- added line numbers to code pane
-
-- fixed line number bugs and alignment problems
-
-v1.04 - (May 22, 2026)
-- Made files with too long of filename be truncated to something like 'longfilen...' for the tabs, so that tabs don't become too wide, anything after 11 chars (not
-including the file extension, becomes ..., which is 14 chars max. The extension is also then hidden because something like longfilen....c is confusing.
-- added resize handle to the right of the code pane
-- fixed bugs regarding the resizing of the code pane and made the code pane wider by default
-- made a config.ini to store GUI settings and other configs
-
-- added compile time timer to make.cmd 
-
-v1.04 - (May 24, 2026)
-- replaced some magic numbers with #defines with meaningful names
-- changed output folder for debug.log to \orca\ instead of \orca\win32\ to avoid it constantly being committed to github repo
-- removed 'close to right' tabs bar right click menu
-- made current tab easier to see in tabs bar by coloring it a darker shade of gray
-- resizing the source window small enough now also makes the < and > tab scroll buttons appear.
-- made sure sizing the source pane smaller then bigger does not destroy or corrupt how any GUI elements look
-- made TreeView have an asterisk prefix for filenames, if the file has been changed but is unsaved.
-- made orca reset the CodePaneWidth to 150 at least, or 870 at most by having orca overwrite the config with the max or min width, thus preventing someone editing the
-ini file in notepad from writing
-- orca now internally fixes any too wide/narrow or invalid values for CodePaneWidth in the config.ini, resetting to default width on invalid values, and reverting to
-the max or min width of 870 or 150 on too wide/narrow of value. As well as internally, it attempts to overwrite sane values to the config.ini too.
-- TreeView now prompts to save if we try to close a tab that has unsaved changes, if we try to close the main window, it prompts to save any unsaved file.
-- fixed bugfixes regarding the asterisk prefix as well as prompt to save on file change.
-
-- removed the close button for tabs, as it was showing in the complete wrong part of the screen anyway and we can just use the tab's right click menu anway
+- fixed bug where line breaks were being inserted in-between every line in a given file that was saved.
+- fixed bug where tab name was changing to ******, Only the TreeView should get the asterisk and only ONE of them.
