@@ -32,6 +32,8 @@ v1.03 - (Apr 31, 2026)
 - fixed line number bugs and alignment problems
 
 v1.04 - (May 22, 2026)
+- Made files with too long of filename be truncated to something like 'longfilen...' for the tabs, so that tabs don't become too wide, anything after 11 chars (not
+including the file extension, becomes ..., which is 14 chars max. The extension is also then hidden because something like longfilen....c is confusing.
 - added resize handle to the right of the code pane
 - fixed bugs regarding the resizing of the code pane and made the code pane wider by default
 - made a config.ini to store GUI settings and other configs
