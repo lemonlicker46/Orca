@@ -245,6 +245,36 @@ static int g_activeTab = -1;
 static int g_tabScrollIndex = 0; /* highest-priority visible tab for scroll buttons */
 static BOOL g_ignoreTabSelectionChange = FALSE;
 
+/* Recursive helper to update a treeview item by filename anywhere in the tree */
+static BOOL UpdateTreeItemRecursive(HWND hwndTree, HTREEITEM hItem, const char* displayName, const char* searchName) {
+    for (HTREEITEM it = hItem; it; it = TreeView_GetNextSibling(hwndTree, it)) {
+        TVITEM tvi;
+        char buffer[MAX_PATH];
+        tvi.mask = TVIF_TEXT | TVIF_HANDLE;
+        tvi.hItem = it;
+        tvi.pszText = buffer;
+        tvi.cchTextMax = sizeof(buffer);
+        TreeView_GetItem(hwndTree, &tvi);
+
+        const char* comparePtr = buffer;
+        if (buffer[0] == '*') comparePtr = buffer + 1;
+        if (strcmp(comparePtr, displayName) == 0) {
+            TVITEM updateItem;
+            updateItem.mask = TVIF_TEXT | TVIF_HANDLE;
+            updateItem.hItem = it;
+            updateItem.pszText = (LPSTR)searchName;
+            TreeView_SetItem(hwndTree, &updateItem);
+            return TRUE;
+        }
+
+        HTREEITEM child = TreeView_GetChild(hwndTree, it);
+        if (child) {
+            if (UpdateTreeItemRecursive(hwndTree, child, displayName, searchName)) return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 /* Project settings */
 static char g_platform[64] = "Windows";
 static char g_compiler[64] = "GCC";
@@ -506,6 +536,31 @@ void CloseTab(int tabIdx) {
     }
 }
 
+/* Close a tab after prompting to save if there are unsaved changes */
+int CloseTabWithPrompt(int tabIdx) {
+    if (tabIdx < 0 || tabIdx >= g_tabCount) return IDYES;
+    
+    /* Check if tab has unsaved changes (marked with asterisk) and prompt to save */
+    int result = PromptSaveTab(tabIdx);
+    
+    /* If user canceled, leave the tab open */
+    if (result == IDCANCEL) return IDCANCEL;
+
+    /* If user chose 'No', clear the modified state in memory and in the treeview */
+    if (result == IDNO) {
+        if (g_tabs[tabIdx].isModified) {
+            g_tabs[tabIdx].isModified = FALSE;
+            UpdateTreeViewItemModified(g_tabs[tabIdx].filePath, FALSE);
+            UpdateTabTitle(tabIdx, FALSE);
+        }
+    }
+
+    /* Close the tab */
+    CloseTab(tabIdx);
+
+    return result;
+}
+
 /* Update TreeView item text to include/exclude asterisk for modified files */
 void UpdateTreeViewItemModified(const char* filePath, BOOL isModified) {
     if (!filePath || !hwndProjectTree) return;
@@ -523,41 +578,10 @@ void UpdateTreeViewItemModified(const char* filePath, BOOL isModified) {
         strcpy(searchName, displayName);
     }
     
-    /* Find root item */
     HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
     if (!hRoot) return;
-    
-    /* Iterate through children of root */
-    HTREEITEM hItem = TreeView_GetChild(hwndProjectTree, hRoot);
-    while (hItem) {
-        TVITEM tvi;
-        char buffer[MAX_PATH];
-        tvi.mask = TVIF_TEXT | TVIF_HANDLE;
-        tvi.hItem = hItem;
-        tvi.pszText = buffer;
-        tvi.cchTextMax = sizeof(buffer);
-        TreeView_GetItem(hwndProjectTree, &tvi);
-        
-        /* Check if this is the item (with or without existing asterisk) */
-        char compareBuffer[MAX_PATH];
-        strcpy(compareBuffer, buffer);
-        
-        /* Remove asterisk if present for comparison */
-        const char* comparePtr = compareBuffer;
-        if (compareBuffer[0] == '*') comparePtr = compareBuffer + 1;
-        
-        if (strcmp(comparePtr, displayName) == 0) {
-            /* Found the item - update it */
-            TVITEM updateItem;
-            updateItem.mask = TVIF_TEXT | TVIF_HANDLE;
-            updateItem.hItem = hItem;
-            updateItem.pszText = searchName;
-            TreeView_SetItem(hwndProjectTree, &updateItem);
-            return;
-        }
-        
-        hItem = TreeView_GetNextSibling(hwndProjectTree, hItem);
-    }
+
+    UpdateTreeItemRecursive(hwndProjectTree, hRoot, displayName, searchName);
 }
 
 void UpdateTabTitle(int tabIdx, BOOL isModified) {
@@ -576,10 +600,6 @@ void UpdateTabTitle(int tabIdx, BOOL isModified) {
         strcat(title, "...");
     } else {
         strcpy(title, src);
-    }
-    
-    if (isModified) {
-        sprintf(title, "* %s", title);
     }
     
     TCITEM tci;
@@ -608,9 +628,6 @@ void RefreshTabControl() {
             strcpy(title, src);
         }
         
-        if (g_tabs[i].isModified) {
-            sprintf(title, "* %s", title);
-        }
         tci.pszText = title;
         TabCtrl_InsertItem(hwndCodeTab, i, &tci);
     }
@@ -674,11 +691,6 @@ static BOOL TabControlNeedsScroll(void) {
         } else {
             strcpy(title, src);
         }
-        if (g_tabs[i].isModified) {
-            char temp[MAX_PATH];
-            sprintf(temp, "* %s", title);
-            strcpy(title, temp);
-        }
         SIZE size;
         GetTextExtentPoint32(hdc, title, strlen(title), &size);
         totalWidth += size.cx + 30;
@@ -726,11 +738,12 @@ int PromptSaveTab(int tabIdx) {
     
     if (result == IDYES) {
         /* Save the file */
-        FILE* fp = fopen(g_tabs[tabIdx].filePath, "w");
+        FILE* fp = fopen(g_tabs[tabIdx].filePath, "wb");
         if (fp) {
             char content[65536];
             SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
-            fputs(content, fp);
+            size_t len = strlen(content);
+            if (len > 0) fwrite(content, 1, len, fp);
             fclose(fp);
             g_tabs[tabIdx].isModified = FALSE;
             UpdateTabTitle(tabIdx, FALSE);
@@ -750,6 +763,47 @@ int PromptSaveAllTabs() {
         if (result == IDCANCEL) return IDCANCEL;
     }
     return IDYES;
+}
+
+/* Activate the currently selected file in the project tree */
+void ActivateSelectedTreeFile(void) {
+    HTREEITEM hItem = TreeView_GetSelection(hwndProjectTree);
+    if (!hItem) return;
+
+    TVITEM tvi;
+    char buffer[MAX_PATH];
+    tvi.mask = TVIF_TEXT | TVIF_HANDLE;
+    tvi.hItem = hItem;
+    tvi.pszText = buffer;
+    tvi.cchTextMax = MAX_PATH;
+    TreeView_GetItem(hwndProjectTree, &tvi);
+
+    if (strcmp(buffer, "Project Files") == 0) {
+        DebugLog("[TREEVIEW] Root folder selected, skipping\n");
+        return;
+    }
+
+    DebugLog("[TREEVIEW] Activating selected: '%s'\n", buffer);
+    BOOL found = FALSE;
+    for (int i = 0; i < g_openedFileCount; i++) {
+        char* filename = strrchr(g_openedFiles[i], '\\');
+        if (filename) filename++;
+        else filename = g_openedFiles[i];
+
+        const char* compareBuffer = buffer;
+        if (buffer[0] == '*') compareBuffer = buffer + 1;
+
+        if (strcmp(filename, compareBuffer) == 0) {
+            DebugLog("[TREEVIEW] FOUND: %s\n", g_openedFiles[i]);
+            LoadFileIntoEditor(g_openedFiles[i]);
+            found = TRUE;
+            break;
+        }
+    }
+
+    if (!found) {
+        DebugLog("[TREEVIEW] File not found in g_openedFiles\n");
+    }
 }
 
 void ClearAllTabs() {
@@ -1072,9 +1126,10 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
             char content[65536];
             SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
             
-            FILE* fp = fopen(fileBuffer, "w");
+            FILE* fp = fopen(fileBuffer, "wb");
             if (fp) {
-                fputs(content, fp);
+                size_t len = strlen(content);
+                if (len > 0) fwrite(content, 1, len, fp);
                 fclose(fp);
                 UpdateStatusBar(fileBuffer);
                 /* Clear modified state */
@@ -1092,10 +1147,23 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
         char content[65536];
         SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
         
-        if (g_openedFileCount > 0) {
-            FILE* fp = fopen(g_openedFiles[0], "w");
+        if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+            FILE* fp = fopen(g_tabs[g_activeTab].filePath, "wb");
             if (fp) {
-                fputs(content, fp);
+                size_t len = strlen(content);
+                if (len > 0) fwrite(content, 1, len, fp);
+                fclose(fp);
+                UpdateStatusBar(g_tabs[g_activeTab].filePath);
+                /* Clear modified state */
+                g_tabs[g_activeTab].isModified = FALSE;
+                UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
+                UpdateTabTitle(g_activeTab, FALSE);
+            }
+        } else if (g_openedFileCount > 0) {
+            FILE* fp = fopen(g_openedFiles[0], "wb");
+            if (fp) {
+                size_t len = strlen(content);
+                if (len > 0) fwrite(content, 1, len, fp);
                 fclose(fp);
                 UpdateStatusBar(g_openedFiles[0]);
                 /* Clear modified state */
@@ -1349,15 +1417,19 @@ void CreateMainLayout(HWND hwnd) {
     hwndCodeTab = CreateWindowEx(0, WC_TABCONTROL, NULL,
         WS_CHILD | WS_VISIBLE | TCS_TABS | TCS_OWNERDRAWFIXED,
         255, 50, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
-    
+
+    #if 0 //this is broken , I dont think its needed anyhow because there is the right click menu to close tabs
     /* Tab close button (hidden initially) */
     hwndTabClose = CreateWindowEx(0, "BUTTON", "x",
         WS_CHILD | BS_CENTER | BS_FLAT | WS_VISIBLE,
         0, 0, 20, 20, hwnd, (HMENU)IDC_TAB_CLOSE, GetModuleHandle(NULL), NULL);
+    #endif
+
     /* Tab navigation buttons (prev/next) */
     hwndTabPrev = CreateWindowEx(0, "BUTTON", "<",
         WS_CHILD | BS_CENTER | BS_PUSHBUTTON | WS_VISIBLE,
         0, 0, 22, 22, hwnd, (HMENU)IDC_TAB_PREV, GetModuleHandle(NULL), NULL);
+
     hwndTabNext = CreateWindowEx(0, "BUTTON", ">",
         WS_CHILD | BS_CENTER | BS_PUSHBUTTON | WS_VISIBLE,
         0, 0, 22, 22, hwnd, (HMENU)IDC_TAB_NEXT, GetModuleHandle(NULL), NULL);
@@ -1653,10 +1725,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         case IDC_TAB_CLOSE:
             DebugLog("[TAB] TabCloseButtonClick(%s)\n", g_activeTab >= 0 ? g_tabs[g_activeTab].title : "none");
             if (g_activeTab >= 0) {
-                /* Prompt to save if modified */
-                int result = PromptSaveTab(g_activeTab);
+                int result = CloseTabWithPrompt(g_activeTab);
                 if (result != IDCANCEL) {
-                    CloseTab(g_activeTab);
                     RefreshTabControl();
                     
                     /* Load the new active tab's content */
@@ -1721,13 +1791,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     MessageBox(hwnd, "No code to compile", "Compile", MB_ICONINFORMATION);
                 } else {
                     /* Save to temp file and compile */
-                    FILE* fp = fopen("build\temp.c", "w");
+                    FILE* fp = fopen("build\\temp.c", "wb");
                     if (fp) {
-                        fputs(content, fp);
+                        size_t len = strlen(content);
+                        if (len > 0) fwrite(content, 1, len, fp);
                         fclose(fp);
                         UpdateStatusBar("Compiling...");
                         /* Note: Actual compilation would require running GCC */
-                        MessageBox(hwnd, "Compile feature ready. GCC would compile build\temp.c", "Compile", MB_ICONINFORMATION);
+                        MessageBox(hwnd, "Compile feature ready. GCC would compile build\\temp.c", "Compile", MB_ICONINFORMATION);
                     }
                 }
             }
@@ -1806,54 +1877,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     case WM_NOTIFY:
         /* Handle TreeView single-click to open file */
         if (wParam == IDC_PROJECT_TREE) {
-            LPNMTREEVIEW pnmtv = (LPNMTREEVIEW)lParam;
-            /* Skip paint and internal notifications - keep only user interactions */
-            if ((int)pnmtv->hdr.code >= 0 || pnmtv->hdr.code == TVN_SELCHANGED) {
-                DebugLog("[TREEVIEW] NM code: 0x%X\n", pnmtv->hdr.code);
-            }
-            if (pnmtv->hdr.code == TVN_SELCHANGED) {
+            LPNMHDR pnmh = (LPNMHDR)lParam;
+            int code = pnmh ? pnmh->code : 0;
+            DebugLog("[TREEVIEW] NM code: 0x%X\n", code);
+            if (code == TVN_SELCHANGED) {
                 DebugLog("[TREEVIEW] TVN_SELCHANGED - selection changed\n");
-                HTREEITEM hItem = TreeView_GetSelection(hwndProjectTree);
-                if (hItem) {
-                    TVITEM tvi;
-                    char buffer[MAX_PATH];
-                    tvi.mask = TVIF_TEXT | TVIF_HANDLE;
-                    tvi.hItem = hItem;
-                    tvi.pszText = buffer;
-                    tvi.cchTextMax = MAX_PATH;
-                    TreeView_GetItem(hwndProjectTree, &tvi);
-                    DebugLog("[TREEVIEW] Selected: '%s'\n", buffer);
-                    
-                    /* Ignore the root "Project Files" folder */
-                    if (strcmp(buffer, "Project Files") == 0) {
-                        DebugLog("[TREEVIEW] Root folder selected, skipping\n");
-                    } else {
-                        DebugLog("[TREEVIEW] File selected, searching in %d files...\n", g_openedFileCount);
-                        /* Find the full path from our opened files */
-                        BOOL found = FALSE;
-                        for (int i = 0; i < g_openedFileCount; i++) {
-                            char* filename = strrchr(g_openedFiles[i], '\\');
-                            if (filename) {
-                                filename++;
-                                /* Compare filename, handling asterisk prefix for modified files */
-                                const char* compareBuffer = buffer;
-                                if (buffer[0] == '*') compareBuffer = buffer + 1;
-                                
-                                if (strcmp(filename, compareBuffer) == 0) {
-                                    DebugLog("[TREEVIEW] FOUND: %s\n", g_openedFiles[i]);
-                                    LoadFileIntoEditor(g_openedFiles[i]);
-                                    found = TRUE;
-                                    break;
-                                }
-                            }
-                        }
-                        if (!found) {
-                            DebugLog("[TREEVIEW] File not found in g_openedFiles\n");
-                        }
-                    }
-                }
+                ActivateSelectedTreeFile();
+            } else if (code == NM_CLICK || code == NM_DBLCLK) {
+                DebugLog("[TREEVIEW] Click/double-click on tree item\n");
+                ActivateSelectedTreeFile();
             } else {
-                DebugLog("[TREEVIEW] Unknown NM code: 0x%X\n", pnmtv->hdr.code);
+                DebugLog("[TREEVIEW] Unknown NM code: 0x%X\n", code);
             }
         }
         /* Handle tab selection changes and right-clicks */
@@ -1893,9 +1927,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
                     DestroyMenu(hMenu);
                     if (cmd == IDM_TAB_CLOSE_SINGLE) {
-                        int result = PromptSaveTab(g_rightClickedTab);
+                        int result = CloseTabWithPrompt(g_rightClickedTab);
                         if (result != IDCANCEL) {
-                            CloseTab(g_rightClickedTab);
                             RefreshTabControl();
                             if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
                                 LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
@@ -1906,9 +1939,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     } else if (cmd == IDM_TAB_CLOSE_OTHERS) {
                         for (int i = g_tabCount - 1; i >= 0; i--) {
                             if (i == g_rightClickedTab) continue;
-                            int result = PromptSaveTab(i);
-                            if (result != IDCANCEL) {
-                                CloseTab(i);
+                            int result = CloseTabWithPrompt(i);
+                            if (result == IDCANCEL) {
+                                break;  /* User cancelled, stop closing tabs */
                             }
                         }
                         RefreshTabControl();
@@ -1919,9 +1952,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                         }
                     } else if (cmd == IDM_TAB_CLOSE_RIGHT) {
                         for (int i = g_tabCount - 1; i > g_rightClickedTab; i--) {
-                            int result = PromptSaveTab(i);
-                            if (result != IDCANCEL) {
-                                CloseTab(i);
+                            int result = CloseTabWithPrompt(i);
+                            if (result == IDCANCEL) {
+                                break;  /* User cancelled, stop closing tabs */
                             }
                         }
                         RefreshTabControl();
@@ -2123,9 +2156,8 @@ case WM_CONTEXTMENU: {
                 int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
                 DestroyMenu(hMenu);
                 if (cmd == IDM_TAB_CLOSE_SINGLE) {
-                    int result = PromptSaveTab(g_rightClickedTab);
+                    int result = CloseTabWithPrompt(g_rightClickedTab);
                     if (result != IDCANCEL) {
-                        CloseTab(g_rightClickedTab);
                         RefreshTabControl();
                         if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
                             LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
@@ -2136,9 +2168,9 @@ case WM_CONTEXTMENU: {
                 } else if (cmd == IDM_TAB_CLOSE_OTHERS) {
                     for (int i = g_tabCount - 1; i >= 0; i--) {
                         if (i == g_rightClickedTab) continue;
-                        int result = PromptSaveTab(i);
-                        if (result != IDCANCEL) {
-                            CloseTab(i);
+                        int result = CloseTabWithPrompt(i);
+                        if (result == IDCANCEL) {
+                            break;  /* User cancelled, stop closing tabs */
                         }
                     }
                     RefreshTabControl();
@@ -2149,8 +2181,8 @@ case WM_CONTEXTMENU: {
                     }
                 } else if (cmd == IDM_TAB_CLOSE_RIGHT) {
                     for (int i = g_tabCount - 1; i > g_rightClickedTab; i--) {
-                        int result = PromptSaveTab(i);
-                        if (result != IDCANCEL) {
+                        int result = CloseTabWithPrompt(i);
+                        if (result == IDCANCEL) {
                             CloseTab(i);
                         }
                     }
