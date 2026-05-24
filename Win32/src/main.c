@@ -90,7 +90,6 @@ static HWND hwndTabClose;  /* Close button for tabs */
 static HWND hwndTabPrev;   /* Previous-tab button */
 static HWND hwndTabNext;   /* Next-tab button */
 static HWND hwndCodeSplitter; /* Vertical splitter between code and properties */
-static HWND hwndDebugConsole;  /* Debug console window */
 static WNDPROC hwndOldEditorProc;
 static HFONT g_codeFont;
 static int g_lineNumberWidth = 35;
@@ -302,6 +301,9 @@ void OpenFilesWithDialog(HWND hwnd);
 void OpenFolder(HWND hwnd, const char* folderPath);
 void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat);
 void LoadFileIntoEditor(const char* filePath);
+int PromptSaveTab(int tabIdx);
+void UpdateTreeViewItemModified(const char* filePath, BOOL isModified);
+void UpdateTabTitle(int tabIdx, BOOL isModified);
 void SaveFileWithDialog(HWND hwnd, BOOL saveAs);
 void SaveAllFiles(HWND hwnd);
 BOOL IsCOrHFile(const char* ext);
@@ -347,6 +349,7 @@ void InsertCodeTemplate(int templateId) {
 
 /* Project Settings Dialog */
 INT_PTR CALLBACK ProjectSettingsDlg(HWND hdlg, UINT msg, WPARAM wParam, LPARAM lParam) {
+    (void)lParam;
     static HWND hPlatform, hCompiler, hArch;
     switch (msg) {
     case WM_INITDIALOG:
@@ -436,7 +439,6 @@ void ManipulateSelection(int manipId) {
     GetSelectedText(hwndInput, sel, 4096);
     
     char result[8192] = {0};
-    char* out = result;
     
     switch (manipId) {
     case IDM_WRAP_IF:
@@ -977,9 +979,6 @@ void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat) {
         }
     } else {
         /* Folder-based mode - show tree structure */
-        char folders[MAX_PATH][MAX_PATH];
-        int folderCount = 0;
-        
         tvis.hParent = TVI_ROOT;
         tvis.hInsertAfter = TVI_LAST;
         tvis.item.mask = TVIF_TEXT;
@@ -1016,6 +1015,7 @@ void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat) {
 
 /* Open folder and populate tree */
 void OpenFolder(HWND hwnd, const char* folderPath) {
+    (void)hwnd;
     g_isFolderBased = TRUE;
     g_openedFileCount = 0;
     
@@ -1182,6 +1182,7 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
 
 /* Save all files (placeholder) */
 void SaveAllFiles(HWND hwnd) {
+    (void)hwnd;
     UpdateStatusBar("Save All - Not implemented yet");
 }
 
@@ -1418,13 +1419,6 @@ void CreateMainLayout(HWND hwnd) {
         WS_CHILD | WS_VISIBLE | TCS_TABS | TCS_OWNERDRAWFIXED,
         255, 50, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
 
-    #if 0 //this is broken , I dont think its needed anyhow because there is the right click menu to close tabs
-    /* Tab close button (hidden initially) */
-    hwndTabClose = CreateWindowEx(0, "BUTTON", "x",
-        WS_CHILD | BS_CENTER | BS_FLAT | WS_VISIBLE,
-        0, 0, 20, 20, hwnd, (HMENU)IDC_TAB_CLOSE, GetModuleHandle(NULL), NULL);
-    #endif
-
     /* Tab navigation buttons (prev/next) */
     hwndTabPrev = CreateWindowEx(0, "BUTTON", "<",
         WS_CHILD | BS_CENTER | BS_PUSHBUTTON | WS_VISIBLE,
@@ -1472,7 +1466,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     /* Initialize debug console - spawn separate window */
     STARTUPINFO si = {0};
     si.cb = sizeof(si);
-    PROCESS_INFORMATION pi;
+    (void)hPrevInstance;
+    (void)lpCmdLine;
     
     /* Initialize console logging */
     InitDebugConsole();
@@ -1878,12 +1873,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         /* Handle TreeView single-click to open file */
         if (wParam == IDC_PROJECT_TREE) {
             LPNMHDR pnmh = (LPNMHDR)lParam;
-            int code = pnmh ? pnmh->code : 0;
+            int code = pnmh ? (int)pnmh->code : 0;
             DebugLog("[TREEVIEW] NM code: 0x%X\n", code);
-            if (code == TVN_SELCHANGED) {
+            if (code == (int)TVN_SELCHANGED) {
                 DebugLog("[TREEVIEW] TVN_SELCHANGED - selection changed\n");
                 ActivateSelectedTreeFile();
-            } else if (code == NM_CLICK || code == NM_DBLCLK) {
+            } else if (code == (int)NM_CLICK || code == (int)NM_DBLCLK) {
                 DebugLog("[TREEVIEW] Click/double-click on tree item\n");
                 ActivateSelectedTreeFile();
             } else {
@@ -2136,11 +2131,11 @@ case WM_CONTEXTMENU: {
         HWND hWndCtrl = (HWND)wParam;
         if (hWndCtrl == hwndCodeTab) {
             POINT pt;
-            if ((int)LOWORD(lParam) == -1 && (int)HIWORD(lParam) == -1) {
+            if ((short)LOWORD(lParam) == -1 && (short)HIWORD(lParam) == -1) {
                 GetCursorPos(&pt);
             } else {
-                pt.x = (int)LOWORD(lParam);
-                pt.y = (int)HIWORD(lParam);
+                pt.x = (int)(short)LOWORD(lParam);
+                pt.y = (int)(short)HIWORD(lParam);
             }
             POINT hitPt = pt;
             ScreenToClient(hwndCodeTab, &hitPt);
