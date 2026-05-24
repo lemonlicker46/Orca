@@ -47,5 +47,8 @@ v1.04 - (May 24, 2026)
 - made current tab easier to see in tabs bar by coloring it a darker shade of gray
 - resizing the source window small enough now also makes the < and > tab scroll buttons appear.
 - made sure sizing the source pane smaller then bigger does not destroy or corrupt how any GUI elements look
--
-
+- made TreeView have an asterix prefix for filenames, if the file has been changed but is unsaved.
+- made orca reset the CodePaneWidth to 150 at least, or 870 at most by having orca overwrite the config with the max or min width, thus preventing someone editing the
+ini file in notepad from writing
+- orca now internally fixes any too wide/narrow or invalid values for CodePaneWidth in the config.ini, resetting to default width on invalid values, and reverting to
+the max or min width of 870 or 150 on too wide/narrow of value. As well as internally, it attempts to overwrite sane values to the config.ini too.

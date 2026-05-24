@@ -3,7 +3,9 @@
 #include <windows.h>
 #include <commctrl.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
+#include <limits.h>
 #include <tchar.h>
 #include <string.h>
 
@@ -95,6 +97,9 @@ static int g_lineNumberWidth = 35;
 static int g_propertiesWidth = 150;
 static int g_currentInputWidth = 0;
 static int g_splitterWidth = 2;
+static const int CONFIG_CODEPANE_MIN_WIDTH = 150;
+static const int CONFIG_CODEPANE_MAX_WIDTH = 870;
+
 static BOOL g_isDraggingSplitter = FALSE;
 static int g_splitterDragStartX = 0;
 static int g_splitterStartPropertiesWidth = 0;
@@ -169,13 +174,41 @@ void InitializeConfigPath(void) {
     }
 }
 
+static int ClampCodePaneWidth(int width) {
+    if (width < CONFIG_CODEPANE_MIN_WIDTH) return CONFIG_CODEPANE_MIN_WIDTH;
+    if (width > CONFIG_CODEPANE_MAX_WIDTH) return CONFIG_CODEPANE_MAX_WIDTH;
+    return width;
+}
+
+static int ParseConfigCodePaneWidth(const char* path) {
+    char buffer[32] = {0};
+    GetPrivateProfileStringA("Layout", "CodePaneWidth", "", buffer, sizeof(buffer), path);
+    if (buffer[0] == '\0') {
+        return 0;
+    }
+
+    char* endPtr = NULL;
+    long parsed = strtol(buffer, &endPtr, 10);
+    if (endPtr == buffer || *endPtr != '\0' || parsed <= 0 || parsed > INT_MAX) {
+        return 0;
+    }
+    return (int)parsed;
+}
+
 void LoadConfig(void) {
     if (g_configPath[0] == '\0') {
         InitializeConfigPath();
     }
-    int width = GetPrivateProfileIntA("Layout", "CodePaneWidth", 0, g_configPath);
+    int width = ParseConfigCodePaneWidth(g_configPath);
     if (width > 0) {
-        g_currentInputWidth = width;
+        int clamped = ClampCodePaneWidth(width);
+        if (clamped != width) {
+            DebugLog("[CONFIG] Config width %d out of bounds; clamping to %d\n", width, clamped);
+        }
+        g_currentInputWidth = clamped;
+    } else {
+        DebugLog("[CONFIG] Invalid or missing CodePaneWidth; resetting to default internal width\n");
+        g_currentInputWidth = 0;
     }
     DebugLog("[CONFIG] Loaded config from %s, CodePaneWidth=%d\n", g_configPath, g_currentInputWidth);
 }
@@ -185,12 +218,13 @@ void SaveConfig(void) {
         InitializeConfigPath();
     }
     if (g_currentInputWidth > 0) {
+        int clamped = ClampCodePaneWidth(g_currentInputWidth);
         char buffer[32];
-        snprintf(buffer, sizeof(buffer), "%d", g_currentInputWidth);
+        snprintf(buffer, sizeof(buffer), "%d", clamped);
         WritePrivateProfileStringA("Layout", "CodePaneWidth", buffer, g_configPath);
-        DebugLog("[CONFIG] Saved CodePaneWidth=%d to %s\n", g_currentInputWidth, g_configPath);
+        DebugLog("[CONFIG] Saved CodePaneWidth=%d to %s\n", clamped, g_configPath);
     } else {
-        DebugLog("[CONFIG] No CodePaneWidth to save, skipping\n");
+        DebugLog("[CONFIG] Internal width is default so SaveConfig will skip writing CodePaneWidth\n");
     }
 }
 
@@ -472,6 +506,60 @@ void CloseTab(int tabIdx) {
     }
 }
 
+/* Update TreeView item text to include/exclude asterisk for modified files */
+void UpdateTreeViewItemModified(const char* filePath, BOOL isModified) {
+    if (!filePath || !hwndProjectTree) return;
+    
+    /* Get the filename from the path */
+    const char* displayName = strrchr(filePath, '\\');
+    if (displayName) displayName++;
+    else displayName = filePath;
+    
+    /* Build the name to search for (with or without asterisk) */
+    char searchName[MAX_PATH];
+    if (isModified) {
+        snprintf(searchName, sizeof(searchName), "*%s", displayName);
+    } else {
+        strcpy(searchName, displayName);
+    }
+    
+    /* Find root item */
+    HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
+    if (!hRoot) return;
+    
+    /* Iterate through children of root */
+    HTREEITEM hItem = TreeView_GetChild(hwndProjectTree, hRoot);
+    while (hItem) {
+        TVITEM tvi;
+        char buffer[MAX_PATH];
+        tvi.mask = TVIF_TEXT | TVIF_HANDLE;
+        tvi.hItem = hItem;
+        tvi.pszText = buffer;
+        tvi.cchTextMax = sizeof(buffer);
+        TreeView_GetItem(hwndProjectTree, &tvi);
+        
+        /* Check if this is the item (with or without existing asterisk) */
+        char compareBuffer[MAX_PATH];
+        strcpy(compareBuffer, buffer);
+        
+        /* Remove asterisk if present for comparison */
+        const char* comparePtr = compareBuffer;
+        if (compareBuffer[0] == '*') comparePtr = compareBuffer + 1;
+        
+        if (strcmp(comparePtr, displayName) == 0) {
+            /* Found the item - update it */
+            TVITEM updateItem;
+            updateItem.mask = TVIF_TEXT | TVIF_HANDLE;
+            updateItem.hItem = hItem;
+            updateItem.pszText = searchName;
+            TreeView_SetItem(hwndProjectTree, &updateItem);
+            return;
+        }
+        
+        hItem = TreeView_GetNextSibling(hwndProjectTree, hItem);
+    }
+}
+
 void UpdateTabTitle(int tabIdx, BOOL isModified) {
     if (tabIdx < 0 || tabIdx >= g_tabCount) return;
     
@@ -646,6 +734,7 @@ int PromptSaveTab(int tabIdx) {
             fclose(fp);
             g_tabs[tabIdx].isModified = FALSE;
             UpdateTabTitle(tabIdx, FALSE);
+            UpdateTreeViewItemModified(g_tabs[tabIdx].filePath, FALSE);
         } else {
             MessageBox(hwndMain, "Failed to save file", "Error", MB_ICONERROR);
             return IDCANCEL;
@@ -988,6 +1077,12 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
                 fputs(content, fp);
                 fclose(fp);
                 UpdateStatusBar(fileBuffer);
+                /* Clear modified state */
+                if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                    g_tabs[g_activeTab].isModified = FALSE;
+                    UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
+                    UpdateTabTitle(g_activeTab, FALSE);
+                }
             } else {
                 MessageBox(hwnd, "Failed to save file", "Error", MB_ICONERROR);
             }
@@ -1003,6 +1098,12 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
                 fputs(content, fp);
                 fclose(fp);
                 UpdateStatusBar(g_openedFiles[0]);
+                /* Clear modified state */
+                if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                    g_tabs[g_activeTab].isModified = FALSE;
+                    UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
+                    UpdateTabTitle(g_activeTab, FALSE);
+                }
             }
         } else {
             /* No file open, do Save As */
@@ -1533,7 +1634,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             break;
             
         case IDC_CODE_INPUT:
-            if (HIWORD(wParam) == EN_CHANGE || HIWORD(wParam) == EN_VSCROLL) {
+            if (HIWORD(wParam) == EN_CHANGE) {
+                /* Mark current file as modified and update TreeView */
+                if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                    if (!g_tabs[g_activeTab].isModified) {
+                        g_tabs[g_activeTab].isModified = TRUE;
+                        UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, TRUE);
+                        UpdateTabTitle(g_activeTab, TRUE);
+                    }
+                }
+                UpdateLineNumbers(hwndInput, hwndLineNumbers);
+            } else if (HIWORD(wParam) == EN_VSCROLL) {
                 UpdateLineNumbers(hwndInput, hwndLineNumbers);
             }
             break;
@@ -1724,7 +1835,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                             char* filename = strrchr(g_openedFiles[i], '\\');
                             if (filename) {
                                 filename++;
-                                if (strcmp(filename, buffer) == 0) {
+                                /* Compare filename, handling asterisk prefix for modified files */
+                                const char* compareBuffer = buffer;
+                                if (buffer[0] == '*') compareBuffer = buffer + 1;
+                                
+                                if (strcmp(filename, compareBuffer) == 0) {
                                     DebugLog("[TREEVIEW] FOUND: %s\n", g_openedFiles[i]);
                                     LoadFileIntoEditor(g_openedFiles[i]);
                                     found = TRUE;
