@@ -136,7 +136,7 @@ void DebugLog(const char* fmt, ...) {
     fflush(stdout);
     
     /* Also write to debug.log file */
-    /* Ensure debug.log is written into the Win32 folder (parent of exe's parent) */
+    /* Ensure debug.log is written into the root Orca folder */
     char modulePath[MAX_PATH];
     char logPath[MAX_PATH];
     GetModuleFileNameA(NULL, modulePath, MAX_PATH);
@@ -146,7 +146,10 @@ void DebugLog(const char* fmt, ...) {
     /* Now modulePath is ..\...\Win32\build -> strip one more component to get Win32 */
     p = strrchr(modulePath, '\\');
     if (p) *p = '\0';
-    /* modulePath now points to Win32 root */
+    /* Strip one more component to get to root Orca folder */
+    p = strrchr(modulePath, '\\');
+    if (p) *p = '\0';
+    /* modulePath now points to root Orca folder */
     snprintf(logPath, MAX_PATH, "%s\\debug.log", modulePath);
     FILE* logFile = fopen(logPath, "a");
     if (logFile) {

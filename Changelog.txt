@@ -13,7 +13,7 @@ v1.01 - (Apr 26, 2026)
 - Make code pane work with BOM text file formats as well as non BOM text file formats, after BOM files were showing non ascii characters 
 and breaking the anti-line-wrapping code
 
-- made keyboard shortcuts trigger their respective menu bar items, eg, CTRL+N/A/Z/Y/X/C/O/S, CTRL+SHIFT+S, CTRL+ALT+SHIFT+S (but we still 
+- made keyboard shortcuts trigger their respective menu bar items, e.g. CTRL+N/A/Z/Y/X/C/O/S, CTRL+SHIFT+S, CTRL+ALT+SHIFT+S (but we still 
 need to add accelerator keys)
 
 v1.02 - (Apr 27, 2026)
@@ -38,6 +38,8 @@ v1.04 - (May 22, 2026)
 
 - added compile time timer to make.cmd 
 
-v1.04 - (May 23, 2026)
+v1.04 - (May 24, 2026)
 - replaced some magic numbers with #defines with meaningful names
+- changed output folder for debug.log to \orca\ instead of \orca\win32\ to avoid it constantly being committed to github repo
+- removed 'close to right' tabs bar right click menu
 
