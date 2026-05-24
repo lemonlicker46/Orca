@@ -61,3 +61,7 @@ the max or min width of 870 or 150 on too wide/narrow of value. As well as inter
 
 - fixed bug where line breaks were being inserted in-between every line in a given file that was saved.
 - fixed bug where tab name was changing to ******, Only the TreeView should get the asterisk and only ONE of them.
+
+- config.ini is now being written by orca to \orca\ instead of to \orca\win32\build, this prevents config.ini from constantly being committed to the github repo
+- added CTRL+w as well as CTRL+SHIFT+W support for closing the current tab / closing all other tabs
+- added helper text to tabs bar right click menu for CTRL+W / CTRL+SHIFT+W

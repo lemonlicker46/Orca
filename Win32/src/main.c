@@ -167,7 +167,7 @@ void InitializeConfigPath(void) {
     if (GetModuleFileNameA(NULL, modulePath, MAX_PATH)) {
         char* p = strrchr(modulePath, '\\');
         if (p) *p = '\0';
-        snprintf(g_configPath, MAX_PATH, "%s\\config.ini", modulePath);
+        snprintf(g_configPath, MAX_PATH, "%s\\..\\..\\config.ini", modulePath);
     } else {
         strcpy(g_configPath, "config.ini");
     }
@@ -1529,6 +1529,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         {FVIRTKEY | FCONTROL | FSHIFT, 0x53, IDM_FILE_SAVEAS},     /* Ctrl+Shift+S */
         {FVIRTKEY | FCONTROL | FSHIFT, 0x41, IDM_FILE_SAVEALL},    /* Ctrl+Shift+A */
         {FVIRTKEY | FCONTROL | FSHIFT, 0x50, IDM_PROJECT_NEW},     /* Ctrl+Shift+P */
+        {FVIRTKEY | FCONTROL, 0x57, IDM_TAB_CLOSE_SINGLE},         /* Ctrl+W */
+        {FVIRTKEY | FCONTROL | FSHIFT, 0x57, IDM_TAB_CLOSE_OTHERS},/* Ctrl+Shift+W */
         {FVIRTKEY | FCONTROL, 0x5A, IDM_EDIT_UNDO},                 /* Ctrl+Z */
         {FVIRTKEY | FCONTROL, 0x59, IDM_EDIT_REDO},                 /* Ctrl+Y */
         {FVIRTKEY | FCONTROL, 0x58, IDM_EDIT_CUT},                  /* Ctrl+X */
@@ -1539,7 +1541,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         {FVIRTKEY, 0x74, IDM_BUILD_COMPILE},                        /* F5 */
         {FVIRTKEY, 0x75, IDM_BUILD_RUN},                            /* F6 */
     };
-    hAccel = CreateAcceleratorTable(accels, 16);
+    hAccel = CreateAcceleratorTable(accels, sizeof(accels) / sizeof(accels[0]));
     
     /* Parse command line parameters - load files passed as arguments */
     if (lpCmdLine && strlen(lpCmdLine) > 0) {
@@ -1733,6 +1735,40 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 }
             }
             break;
+        case IDM_TAB_CLOSE_SINGLE:
+            DebugLog("[SHORTCUT] Close active tab or window\n");
+            if (g_activeTab >= 0) {
+                int result = CloseTabWithPrompt(g_activeTab);
+                if (result != IDCANCEL) {
+                    RefreshTabControl();
+                    if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                        LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                    } else {
+                        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                    }
+                }
+            } else {
+                PostMessage(hwnd, WM_CLOSE, 0, 0);
+            }
+            break;
+        case IDM_TAB_CLOSE_OTHERS:
+            DebugLog("[SHORTCUT] Close other tabs\n");
+            if (g_activeTab >= 0) {
+                for (int i = g_tabCount - 1; i >= 0; i--) {
+                    if (i == g_activeTab) continue;
+                    int result = CloseTabWithPrompt(i);
+                    if (result == IDCANCEL) {
+                        break;
+                    }
+                }
+                RefreshTabControl();
+                if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                    LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+                } else {
+                    SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                }
+            }
+            break;
         /* Tab navigation buttons */
         case IDC_TAB_PREV:
             DebugLog("[TAB] Prev button clicked\n");
@@ -1917,8 +1953,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                     DebugLog("[TAB] Right-clicked tab %d: %s\n", tabIdx, g_tabs[tabIdx].title);
                     g_rightClickedTab = tabIdx;
                     HMENU hMenu = CreatePopupMenu();
-                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close");
-                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others");
+                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close\tCtrl+W");
+                    AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others\tCtrl+Shift+W");
                     int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
                     DestroyMenu(hMenu);
                     if (cmd == IDM_TAB_CLOSE_SINGLE) {
@@ -2146,8 +2182,8 @@ case WM_CONTEXTMENU: {
                 DebugLog("[TAB] Context menu on tab %d: %s\n", tabIdx, g_tabs[tabIdx].title);
                 g_rightClickedTab = tabIdx;
                 HMENU hMenu = CreatePopupMenu();
-                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close");
-                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others");
+                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_SINGLE, "Close\tCtrl+W");
+                AppendMenu(hMenu, MF_STRING, IDM_TAB_CLOSE_OTHERS, "Close Others\tCtrl+Shift+W");
                 int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndCodeTab, NULL);
                 DestroyMenu(hMenu);
                 if (cmd == IDM_TAB_CLOSE_SINGLE) {
