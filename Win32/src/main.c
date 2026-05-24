@@ -325,6 +325,7 @@ INT_PTR CALLBACK ProjectSettingsDlg(HWND hdlg, UINT msg, WPARAM wParam, LPARAM l
             EndDialog(hdlg, IDCANCEL);
         }
         break;
+    
     }
     return FALSE;
 }
@@ -1245,7 +1246,7 @@ void CreateMainLayout(HWND hwnd) {
     
     /* Tab control for code files */
     hwndCodeTab = CreateWindowEx(0, WC_TABCONTROL, NULL,
-        WS_CHILD | WS_VISIBLE | TCS_TABS,
+        WS_CHILD | WS_VISIBLE | TCS_TABS | TCS_OWNERDRAWFIXED,
         255, 50, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
     
     /* Tab close button (hidden initially) */
@@ -1820,6 +1821,50 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             }
         }
         break;
+    
+    case WM_DRAWITEM: {
+        LPDRAWITEMSTRUCT dis = (LPDRAWITEMSTRUCT)lParam;
+        if (!dis) break;
+        /* Only handle tab control owner-draw */
+        if (dis->CtlType == ODT_TAB && dis->hwndItem == hwndCodeTab) {
+            RECT rc = dis->rcItem;
+            HDC hdc = dis->hDC;
+            /* Get tab text */
+            char textBuf[256] = {0};
+            TCITEMA tci;
+            tci.mask = TCIF_TEXT;
+            tci.pszText = textBuf;
+            tci.cchTextMax = sizeof(textBuf);
+            TabCtrl_GetItem(hwndCodeTab, (int)dis->itemID, &tci);
+
+            /* Determine if this tab is the active one */
+            int cur = TabCtrl_GetCurSel(hwndCodeTab);
+            BOOL isActive = ((int)dis->itemID == cur);
+
+            /* Choose background color: slightly darker (subtle) for active tab */
+            /* Use a lighter darkening so tab names remain clearly visible */
+            COLORREF activeColor = RGB(210,210,210); /* subtle darker gray */
+            COLORREF normalColor = GetSysColor(COLOR_3DFACE);
+
+            HBRUSH hBrush = CreateSolidBrush(isActive ? activeColor : normalColor);
+            FillRect(hdc, &rc, hBrush);
+            DeleteObject(hBrush);
+
+            /* Draw border for clarity */
+            HPEN hPen = CreatePen(PS_SOLID, 1, RGB(120,120,120));
+            HPEN hOldPen = (HPEN)SelectObject(hdc, hPen);
+            MoveToEx(hdc, rc.left, rc.bottom - 1, NULL);
+            LineTo(hdc, rc.right, rc.bottom - 1);
+            SelectObject(hdc, hOldPen);
+            DeleteObject(hPen);
+
+            /* Draw text in black, transparent background */
+            SetTextColor(hdc, RGB(0,0,0));
+            SetBkMode(hdc, TRANSPARENT);
+            DrawTextA(hdc, textBuf, -1, &rc, DT_SINGLELINE | DT_VCENTER | DT_CENTER);
+        }
+        break;
+    }
         
     case WM_KEYDOWN:
         DebugLog("[KEYBOARD] Key pressed: 0x%X (repeat=%d)\n", wParam, LOWORD(lParam));

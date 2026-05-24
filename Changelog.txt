@@ -44,4 +44,8 @@ v1.04 - (May 24, 2026)
 - replaced some magic numbers with #defines with meaningful names
 - changed output folder for debug.log to \orca\ instead of \orca\win32\ to avoid it constantly being committed to github repo
 - removed 'close to right' tabs bar right click menu
+- made current tab easier to see in tabs bar by coloring it a darker shade of gray
+- resizing the source window small enough now also makes the < and > tab scroll buttons appear.
+- made sure sizing the source pane smaller then bigger does not destroy or corrupt how any GUI elements look
+-
 
