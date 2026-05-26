@@ -65,3 +65,4 @@ the max or min width of 870 or 150 on too wide/narrow of value. As well as inter
 - config.ini is now being written by orca to \orca\ instead of to \orca\win32\build, this prevents config.ini from constantly being committed to the github repo
 - added CTRL+W as well as CTRL+SHIFT+W support for closing the current tab / closing all other tabs
 - added helper text to tabs bar right click menu for CTRL+W / CTRL+SHIFT+W
+- made window be maximized by default on program launch, rather than slightly restored down

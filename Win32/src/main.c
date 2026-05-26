@@ -1486,24 +1486,52 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     lnwc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
     RegisterClass(&lnwc);
 
-    WNDCLASS wc = {0};
-    wc.lpfnWndProc = WndProc;
-    wc.hInstance = hInstance;
+    WNDCLASSEX wc = {0};
+    wc.cbSize = sizeof(wc);
     wc.lpfnWndProc = WndProc;
     wc.hInstance = hInstance;
     wc.lpszClassName = "OrcaMainWnd";
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     
     /* Load custom icon for high resolution displays */
-    HICON hIcon = (HICON)LoadImage(hInstance, "res\\MainProgramIconLarge.ico",
+    char modulePath[MAX_PATH];
+    char iconPath[MAX_PATH];
+    if (GetModuleFileNameA(NULL, modulePath, MAX_PATH)) {
+        char* p = strrchr(modulePath, '\\');
+        if (p) *p = '\0';
+
+        snprintf(iconPath, MAX_PATH, "%s\\res\\MainProgramIconLarge.ico", modulePath);
+        if (GetFileAttributesA(iconPath) == INVALID_FILE_ATTRIBUTES) {
+            char parentDir[MAX_PATH];
+            strcpy(parentDir, modulePath);
+            p = strrchr(parentDir, '\\');
+            if (p) {
+                *p = '\0';
+                snprintf(iconPath, MAX_PATH, "%s\\res\\MainProgramIconLarge.ico", parentDir);
+            }
+        }
+    } else {
+        strcpy(iconPath, "res\\MainProgramIconLarge.ico");
+    }
+
+    HICON hIcon = (HICON)LoadImageA(NULL, iconPath,
         IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE | LR_SHARED);
+    HICON hIconSm = NULL;
+    if (hIcon) {
+        hIconSm = (HICON)LoadImageA(NULL, iconPath,
+            IMAGE_ICON, GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON),
+            LR_LOADFROMFILE | LR_SHARED);
+    }
     if (!hIcon) {
-        /* Fallback to system icon if custom icon not found */
         hIcon = LoadIcon(NULL, IDI_APPLICATION);
     }
+    if (!hIconSm) {
+        hIconSm = LoadIcon(NULL, IDI_APPLICATION);
+    }
     wc.hIcon = hIcon;
+    wc.hIconSm = hIconSm;
     wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE+1);
-    RegisterClass(&wc);
+    RegisterClassEx(&wc);
 
     LoadConfig();
 
@@ -1513,10 +1541,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     /* Set custom icon for window (titlebar, taskbar, alt+tab) */
     if (hIcon) {
         SendMessage(hwndMain, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
-        SendMessage(hwndMain, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
+        SendMessage(hwndMain, WM_SETICON, ICON_SMALL, (LPARAM)hIconSm);
     }
     
-    ShowWindow(hwndMain, nCmdShow);
+    /* Start maximized by default */
+    ShowWindow(hwndMain, SW_SHOWMAXIMIZED);
     UpdateWindow(hwndMain);
 
     HACCEL hAccel;
