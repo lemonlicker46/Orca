@@ -275,6 +275,8 @@ static const unsigned int icon_image_1_len = 2440;
 #define IDM_FILE_SAVEAS    1104
 #define IDM_FILE_SAVEALL   1105
 #define IDM_FILE_EXIT      1106
+#define IDM_FILE_NEW_FILE  1107
+#define IDM_FILE_OPEN_FILE 1108
 #define IDM_EDIT_UNDO      1201
 #define IDM_EDIT_REDO      1202
 #define IDM_EDIT_CUT       1203
@@ -544,6 +546,7 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs);
 void SaveAllFiles(HWND hwnd);
 BOOL IsCOrHFile(const char* ext);
 void AddFileToProject(const char* filePath);
+void AddUntitledToTreeView(void);
 
 /* Forward declarations */
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -808,6 +811,13 @@ void UpdateTreeViewItemModified(const char* filePath, BOOL isModified) {
     if (displayName) displayName++;
     else displayName = filePath;
     
+    /* Handle untitled files - check if active tab is untitled */
+    if ((filePath[0] == '\0' || displayName[0] == '\0') && g_activeTab >= 0 && g_activeTab < g_tabCount) {
+        if (strcmp(g_tabs[g_activeTab].title, "untitled") == 0) {
+            displayName = "untitled";
+        }
+    }
+    
     /* Build the name to search for (with or without asterisk) */
     char searchName[MAX_PATH];
     if (isModified) {
@@ -975,7 +985,52 @@ int PromptSaveTab(int tabIdx) {
     int result = MessageBox(hwndMain, msg, "Save", MB_YESNOCANCEL | MB_ICONQUESTION);
     
     if (result == IDYES) {
-        /* Save the file */
+        /* Check if this is an untitled file - if so, need SaveAs dialog */
+        if (g_tabs[tabIdx].filePath[0] == '\0' || strcmp(g_tabs[tabIdx].title, "untitled") == 0) {
+            DebugLog("[SAVE] Untitled file in PromptSaveTab, opening SaveAs dialog\n");
+            OPENFILENAME ofn;
+            char fileBuffer[MAX_PATH] = {0};
+            
+            memset(&ofn, 0, sizeof(ofn));
+            ofn.lStructSize = sizeof(ofn);
+            ofn.hwndOwner = hwndMain;
+            ofn.lpstrFile = fileBuffer;
+            ofn.nMaxFile = sizeof(fileBuffer);
+            ofn.lpstrFilter = "C Files (*.c)\0*.c\0Header Files (*.h)\0*.h\0All Files (*.*)\0*.*\0";
+            ofn.lpstrDefExt = "c";
+            ofn.Flags = OFN_EXPLORER | OFN_OVERWRITEPROMPT;
+            
+            if (GetSaveFileName(&ofn)) {
+                char content[65536];
+                SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
+                
+                FILE* fp = fopen(fileBuffer, "wb");
+                if (fp) {
+                    size_t len = strlen(content);
+                    if (len > 0) fwrite(content, 1, len, fp);
+                    fclose(fp);
+                    /* Update the tab's filepath and title */
+                    strcpy(g_tabs[tabIdx].filePath, fileBuffer);
+                    char* filename = strrchr(fileBuffer, '\\');
+                    if (filename) filename++;
+                    else filename = fileBuffer;
+                    strcpy(g_tabs[tabIdx].title, filename);
+                    AddFileToProject(fileBuffer);
+                    g_tabs[tabIdx].isModified = FALSE;
+                    UpdateTabTitle(tabIdx, FALSE);
+                    UpdateTreeViewItemModified(g_tabs[tabIdx].filePath, FALSE);
+                    return IDYES;
+                } else {
+                    MessageBox(hwndMain, "Failed to save file", "Error", MB_ICONERROR);
+                    return IDCANCEL;
+                }
+            } else {
+                /* User cancelled the SaveAs dialog */
+                return IDCANCEL;
+            }
+        }
+        
+        /* Regular file save */
         FILE* fp = fopen(g_tabs[tabIdx].filePath, "wb");
         if (fp) {
             char content[65536];
@@ -1019,6 +1074,23 @@ void ActivateSelectedTreeFile(void) {
     if (strcmp(buffer, "Project Files") == 0) {
         DebugLog("[TREEVIEW] Root folder selected, skipping\n");
         return;
+    }
+
+    /* Handle untitled tab special case */
+    if (strcmp(buffer, "untitled") == 0) {
+        DebugLog("[TREEVIEW] Untitled tab selected\n");
+        /* Find and activate the untitled tab */
+        for (int i = 0; i < g_tabCount; i++) {
+            if (strcmp(g_tabs[i].title, "untitled") == 0) {
+                g_activeTab = i;
+                TabCtrl_SetCurSel(hwndCodeTab, i);
+                EnsureTabVisible(i);
+                if (g_tabs[i].filePath[0] != '\0') {
+                    LoadFileIntoEditor(g_tabs[i].filePath);
+                }
+                return;
+            }
+        }
     }
 
     DebugLog("[TREEVIEW] Activating selected: '%s'\n", buffer);
@@ -1265,6 +1337,19 @@ void OpenFolder(HWND hwnd, const char* folderPath) {
     UpdateStatusBar(status);
 }
 
+/* Add untitled tab to the treeview */
+void AddUntitledToTreeView(void) {
+    TVINSERTSTRUCT tvis;
+    HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
+    if (!hRoot) return;
+    
+    tvis.hParent = hRoot;
+    tvis.hInsertAfter = TVI_FIRST;
+    tvis.item.mask = TVIF_TEXT;
+    tvis.item.pszText = "untitled";
+    TreeView_InsertItem(hwndProjectTree, &tvis);
+}
+
 /* Open files with dialog */
 void OpenFilesWithDialog(HWND hwnd) {
     OPENFILENAME ofn;
@@ -1285,6 +1370,11 @@ void OpenFilesWithDialog(HWND hwnd) {
     
     if (GetOpenFileName(&ofn)) {
         DebugLog("[DIALOG] GetOpenFileName returned TRUE\n");
+        ClearAllTabs();
+        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+        SendMessage(hwndOutput, WM_SETTEXT, 0, (LPARAM)"");
+        TreeView_DeleteAllItems(hwndProjectTree);
+        g_openedFileCount = 0;
         char* p = fileBuffer;
         
         /* Check if single folder selected or multiple files */
@@ -1296,7 +1386,6 @@ void OpenFilesWithDialog(HWND hwnd) {
             /* Multiple files selected - format: "dir\0file1\0file2\0\0" */
             DebugLog("[DIALOG] Multi-file mode\n");
             g_isFolderBased = FALSE;
-            g_openedFileCount = 0;
             
             /* Determine whether a single file or multiple files were selected */
             char dirPath[MAX_PATH];
@@ -1368,8 +1457,22 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
                 if (len > 0) fwrite(content, 1, len, fp);
                 fclose(fp);
                 UpdateStatusBar(fileBuffer);
-                /* Clear modified state */
+                /* Clear modified state and update tab if it was untitled */
                 if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                    /* Check if this was an untitled tab */
+                    if (g_tabs[g_activeTab].filePath[0] == '\0' || strcmp(g_tabs[g_activeTab].title, "untitled") == 0) {
+                        /* Update the tab's filepath and title to the new filename */
+                        strcpy(g_tabs[g_activeTab].filePath, fileBuffer);
+                        char* filename = strrchr(fileBuffer, '\\');
+                        if (filename) filename++;
+                        else filename = fileBuffer;
+                        strcpy(g_tabs[g_activeTab].title, filename);
+                        /* Add to opened files list */
+                        AddFileToProject(fileBuffer);
+                        /* Update treeview to show the real filename instead of untitled */
+                        PopulateProjectTree(hwndProjectTree, "", TRUE);
+                        RefreshTabControl();
+                    }
                     g_tabs[g_activeTab].isModified = FALSE;
                     UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
                     UpdateTabTitle(g_activeTab, FALSE);
@@ -1384,6 +1487,12 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
         SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
         
         if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+            /* Check if this is an untitled file - if so, force SaveAs dialog */
+            if (g_tabs[g_activeTab].filePath[0] == '\0' || strcmp(g_tabs[g_activeTab].title, "untitled") == 0) {
+                DebugLog("[SAVE] Untitled file detected, forcing SaveAs dialog\n");
+                SaveFileWithDialog(hwnd, TRUE);
+                return;
+            }
             FILE* fp = fopen(g_tabs[g_activeTab].filePath, "wb");
             if (fp) {
                 size_t len = strlen(content);
@@ -1538,14 +1647,18 @@ void CreateMenus(HWND hwnd) {
     HMENU hEdit = CreateMenu();
     HMENU hProject = CreateMenu();
     HMENU hBuild = CreateMenu();
+    HMENU hTools = CreateMenu();
+    HMENU hOptions = CreateMenu();
     
     /* File menu with keyboard shortcuts */
-    AppendMenu(hFile, MF_STRING, IDM_FILE_NEW, "&New Project\tCtrl+Shift+N");
-    AppendMenu(hFile, MF_STRING, IDM_FILE_OPEN, "&Open Project...\tCtrl+O");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_NEW_FILE, "&New File\tCtrl+N");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_NEW, "New &Project\tCtrl+Shift+N");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_OPEN_FILE, "&Open File\tCtrl+O");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_OPEN, "Open P&roject...\tCtrl+Shift+O");
     AppendMenu(hFile, MF_SEPARATOR, 0, NULL);
     AppendMenu(hFile, MF_STRING, IDM_FILE_SAVE, "&Save\tCtrl+S");
     AppendMenu(hFile, MF_STRING, IDM_FILE_SAVEAS, "Save &As...\tCtrl+Shift+S");
-    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVEALL, "Save A&ll\tCtrl+Shift+A");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVEALL, "Save A&ll\tCtrl+Shift+Alt+S");
     AppendMenu(hFile, MF_SEPARATOR, 0, NULL);
     AppendMenu(hFile, MF_STRING, IDM_FILE_EXIT, "E&xit\tAlt+F4");
     
@@ -1570,6 +1683,8 @@ void CreateMenus(HWND hwnd) {
     AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hEdit, "&Edit");
     AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hProject, "&Project");
     AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hBuild, "&Build");
+    AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hTools, "&Tools");
+    AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hOptions, "&Options");
     
     SetMenu(hwnd, hMenuBar);
     DebugLog("[FUNC] CreateMenus complete\n");
@@ -1815,6 +1930,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     hAccel = CreateAcceleratorTable(accels, sizeof(accels) / sizeof(accels[0]));
     
     /* Parse command line parameters - load files passed as arguments */
+    BOOL filesLoaded = FALSE;
     if (lpCmdLine && strlen(lpCmdLine) > 0) {
         DebugLog("[CMDLINE] Processing command line: %s\n", lpCmdLine);
         char cmdCopy[2048];
@@ -1866,7 +1982,33 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             char status[256];
             sprintf(status, "Loaded %d files from command line", fileCount);
             UpdateStatusBar(status);
+            filesLoaded = TRUE;
         }
+    }
+    
+    /* If no files were loaded from any source, create untitled tab */
+    if (!filesLoaded) {
+        DebugLog("[INIT] No files loaded - creating untitled tab\n");
+        g_projectOpened = TRUE;
+        int untitledTab = CreateNewTab("", "untitled");
+        if (untitledTab >= 0) {
+            g_activeTab = untitledTab;
+            RefreshTabControl();
+            /* Add to treeview */
+            TVINSERTSTRUCT tvis;
+            tvis.hParent = TVI_ROOT;
+            tvis.hInsertAfter = TVI_LAST;
+            tvis.item.mask = TVIF_TEXT;
+            tvis.item.pszText = "Project Files";
+            HTREEITEM hRoot = TreeView_InsertItem(hwndProjectTree, &tvis);
+            
+            tvis.hParent = hRoot;
+            tvis.item.pszText = "untitled";
+            TreeView_InsertItem(hwndProjectTree, &tvis);
+            TreeView_Expand(hwndProjectTree, hRoot, TVE_EXPAND);
+        }
+        UpdateSaveMenuState(TRUE);
+        UpdateStatusBar("Ready");
     }
     
     MSG msg;
@@ -1943,15 +2085,32 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             g_projectOpened = TRUE;
             TreeView_DeleteAllItems(hwndProjectTree);
             UpdateSaveMenuState(TRUE);
+            /* Create initial untitled tab */
+            {
+                int untitledTab = CreateNewTab("", "untitled");
+                if (untitledTab >= 0) {
+                    g_activeTab = untitledTab;
+                    RefreshTabControl();
+                    /* Add to treeview */
+                    TVINSERTSTRUCT tvis;
+                    tvis.hParent = TVI_ROOT;
+                    tvis.hInsertAfter = TVI_LAST;
+                    tvis.item.mask = TVIF_TEXT;
+                    tvis.item.pszText = "Project Files";
+                    HTREEITEM hRoot = TreeView_InsertItem(hwndProjectTree, &tvis);
+                    
+                    tvis.hParent = hRoot;
+                    tvis.item.pszText = "untitled";
+                    TreeView_InsertItem(hwndProjectTree, &tvis);
+                    TreeView_Expand(hwndProjectTree, hRoot, TVE_EXPAND);
+                }
+            }
             UpdateStatusBar("New project created");
             break;
         case IDM_FILE_OPEN:
             DebugLog("[MENU] FileOpenProjectMenuItemClick\n");
             /* Prompt to save before opening new project */
             if (PromptSaveAllTabs() == IDCANCEL) break;
-            ClearAllTabs();
-            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-            SendMessage(hwndOutput, WM_SETTEXT, 0, (LPARAM)"");
             OpenFilesWithDialog(hwnd);
             g_projectOpened = TRUE;
             UpdateSaveMenuState(TRUE);
