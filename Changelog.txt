@@ -53,50 +53,50 @@ v1.12 - (May 12, 2026)
 - changed output folder for debug.log to \orca\ instead of \orca\win32\ to avoid it constantly being committed to GitHub repo
 - removed 'close to right' tabs bar right click menu
 
-v1.12 - (May 14, 2026)
+v1.13 - (May 14, 2026)
 - made current tab easier to see in tabs bar by coloring it a darker shade of gray
 - resizing the source window small enough now also makes the < and > tab scroll buttons appear.
 
-v1.13 - (May 16, 2026)
+v1.14 - (May 16, 2026)
 - made sure sizing the source pane smaller then bigger does not destroy or corrupt how any GUI elements look
 - made TreeView have an asterisk prefix for filenames, if the file has been changed but is unsaved.
 
-v1.14 - (May 17, 2026)
+v1.15 - (May 17, 2026)
 - made orca reset the 'CodePaneWidth' to 150 at least, or 870 at most by having orca overwrite the config with the max or min width, thus preventing someone editing the ini file in notepad from writing
 - orca now internally fixes any too wide/narrow or invalid values for 'CodePaneWidth' in the config.ini, resetting to default width on invalid values, and reverting to the max or min width of 870 or 150 on too wide/narrow of value. As well as internally, it attempts to overwrite sane values to the config.ini too.
 
-v1.15 - (May 18, 2026)
+v1.16 - (May 18, 2026)
 - TreeView now prompts to save if we try to close a tab that has unsaved changes, if we try to close the main window, it prompts to save any unsaved file.
 - fixed bugfixes regarding the asterisk prefix as well as prompt to save on file change.
 
-v1.16 - (May 19, 2026)
+v1.17 - (May 19, 2026)
 - removed the close button for tabs, as it was showing in the complete wrong part of the screen anyway and we can just use the tab's right click menu anyway
 - fixed bugs where the asterisk prefix was not disappearing when it should
 
-v1.17 - (May 20, 2026)
+v1.18 - (May 20, 2026)
 - fixed a few compiler warnings when building the orca executable.
 - fixed bug where line breaks were being inserted in-between every line in a given file that was saved.
 
-v1.18 - (May 21, 2026)
+v1.19 - (May 21, 2026)
 - fixed bug where tab name was changing to ******, Only the TreeView should get the asterisk and only ONE of them.
 - config.ini is now being written by orca to \orca\ instead of to \orca\win32\build, this prevents config.ini from constantly being committed to the GitHub repo
 
-v1.19 - (May 22, 2026)
+v1.20 - (May 22, 2026)
 - added CTRL+W as well as CTRL+SHIFT+W support for closing the current tab / closing all other tabs
 - added helper text to tabs bar right click menu for CTRL+W / CTRL+SHIFT+W
 
-v1.20 - (May 23, 2026)
+v1.21 - (May 23, 2026)
 - made window be maximized by default on program launch, rather than slightly restored down
 - made tool called IMG2CARRAY for converting icons and bitmap files into an array of unsigned char.
 
-v1.21 - (May 24, 2026)
+v1.22 - (May 24, 2026)
 - cleaned up make.cmd by removing IMG2CARRAY build process from make.cmd
 - "Untitled" tab now shows by default on program launch, as well as for certain keyboard shortcuts / File menu items
 
-v1.22 - (May 26, 2026)
+v1.23 - (May 26, 2026)
 - Added Open File and New File options to the File menu
 - Added Tools and Options menu
 
-v1.23 - (May 27, 2026)
+v1.24 - (May 27, 2026)
 - Swapped some file keyboard shortcuts and helper text, using `SHIFT` with something is for New/Open Project, using just `CTRL + N` and `CTRL + O` is for making/opening files
 - Fixed bug where doing File > Open Project / `CTRL + SHIFT + O` was instantly destroying all open tabs instead of waiting for files to be selected first.
