@@ -542,6 +542,8 @@ void LoadFileIntoEditor(const char* filePath);
 int PromptSaveTab(int tabIdx);
 void UpdateTreeViewItemModified(const char* filePath, BOOL isModified);
 void UpdateTabTitle(int tabIdx, BOOL isModified);
+void RefreshTabControl(void);
+void EnsureUntitledTabExists(void);
 void SaveFileWithDialog(HWND hwnd, BOOL saveAs);
 void SaveAllFiles(HWND hwnd);
 BOOL IsCOrHFile(const char* ext);
@@ -763,6 +765,19 @@ int CreateNewTab(const char* filePath, const char* title) {
     return idx;
 }
 
+void EnsureUntitledTabExists(void) {
+    if (g_tabCount > 0) {
+        return;
+    }
+
+    int untitledTab = CreateNewTab("", "untitled");
+    if (untitledTab >= 0) {
+        g_activeTab = untitledTab;
+        RefreshTabControl();
+        DebugLog("[TAB] Recreated untitled tab after closing the last tab\n");
+    }
+}
+
 void CloseTab(int tabIdx) {
     if (tabIdx < 0 || tabIdx >= g_tabCount) return;
     
@@ -798,6 +813,11 @@ int CloseTabWithPrompt(int tabIdx) {
 
     /* Close the tab */
     CloseTab(tabIdx);
+
+    /* If the last tab was closed, recreate an untitled tab immediately. */
+    if (g_tabCount == 0) {
+        EnsureUntitledTabExists();
+    }
 
     return result;
 }
@@ -1091,6 +1111,17 @@ void ActivateSelectedTreeFile(void) {
                 return;
             }
         }
+
+        /* If no untitled tab exists, create a fresh one and activate it. */
+        DebugLog("[TREEVIEW] No untitled tab found, creating one\n");
+        int untitledTab = CreateNewTab("", "untitled");
+        if (untitledTab >= 0) {
+            g_activeTab = untitledTab;
+            RefreshTabControl();
+            TabCtrl_SetCurSel(hwndCodeTab, untitledTab);
+            EnsureTabVisible(untitledTab);
+        }
+        return;
     }
 
     DebugLog("[TREEVIEW] Activating selected: '%s'\n", buffer);
@@ -1137,6 +1168,16 @@ void AddFileToProject(const char* filePath) {
 /* Load file content into editor - preserve all formatting */
 void LoadFileIntoEditor(const char* filePath) {
     DebugLog("[EDITOR] LoadFileIntoEditor called with: %s\n", filePath);
+
+    if (!filePath || filePath[0] == '\0') {
+        DebugLog("[EDITOR] Untitled tab detected, clearing editor\n");
+        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+        SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
+        UpdateLineNumbers(hwndInput, hwndLineNumbers);
+        UpdateStatusBar("untitled");
+        return;
+    }
+
     FILE* fp = fopen(filePath, "rb");
     if (!fp) {
         DebugLog("[ERROR] fopen failed for: %s (errno=%d)\n", filePath, errno);

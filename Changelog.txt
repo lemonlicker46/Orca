@@ -100,3 +100,7 @@ v1.23 - (May 26, 2026)
 v1.24 - (May 27, 2026)
 - Swapped some file keyboard shortcuts and helper text, using `SHIFT` with something is for New/Open Project, using just `CTRL + N` and `CTRL + O` is for making/opening files
 - Fixed bug where doing File > Open Project / `CTRL + SHIFT + O` was instantly destroying all open tabs instead of waiting for files to be selected first.
+
+v1.25 - (May 28, 2026)
+- closing an untitled tab now automatically creates a new untitled tab, otherwise clicking on 'untitled' in TreeView was not creating a tab for it
+- fixed bug where creating a new untitled tab automatically was showing a 'failed to open  file' error dialog box.
