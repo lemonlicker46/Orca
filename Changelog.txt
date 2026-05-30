@@ -104,3 +104,9 @@ v1.24 - (May 27, 2026)
 v1.25 - (May 28, 2026)
 - closing an untitled tab now automatically creates a new untitled tab, otherwise clicking on 'untitled' in TreeView was not creating a tab for it
 - fixed bug where creating a new untitled tab automatically was showing a 'failed to open  file' error dialog box.
+
+v1.26 - (may 30, 2026)
+- finally got just `CTRL + N` / `CTRL + O` working, the only caveat (for now) is that multi file selection is not working, however `CTRL + SHIFT + N` / `CTRL + SHIFT + O` allows that anyway.
+- got new tabs with the same name be automatically suffixed with a number and the number will be incremented if it's already in the workspace.
+- got the ability to delete files within the IDE with the  `DEL` keyboard key working.
+- made treeview open a file as a tab on double click, rather than as a single click.

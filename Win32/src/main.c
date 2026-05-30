@@ -2,6 +2,7 @@
 #define _WIN32_IE 0x0501
 #include <windows.h>
 #include <commctrl.h>
+#include <shellapi.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -329,6 +330,7 @@ static HWND hwndTabPrev;   /* Previous-tab button */
 static HWND hwndTabNext;   /* Next-tab button */
 static HWND hwndCodeSplitter; /* Vertical splitter between code and properties */
 static WNDPROC hwndOldEditorProc;
+static WNDPROC hwndOldTreeProc;
 static HFONT g_codeFont;
 static int g_lineNumberWidth = 35;
 static int g_propertiesWidth = 150;
@@ -348,6 +350,7 @@ static int g_rightClickedTab = -1; /* last tab index right-clicked */
 void RepositionCodeArea(int clientWidth, int clientHeight);
 void UpdateLineNumbers(HWND hwndEditor, HWND hwndGutter);
 LRESULT CALLBACK EditorSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK TreeViewSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void InitializeConfigPath(void);
 void LoadConfig(void);
 void SaveConfig(void);
@@ -474,6 +477,7 @@ typedef struct {
     char title[MAX_PATH];
     BOOL isModified;
     HWND editorWnd;
+    char content[65536];
 } TabInfo;
 
 static TabInfo g_tabs[MAX_TABS];
@@ -561,6 +565,8 @@ void InsertCodeTemplate(int templateId);
 void ShowManipulationToolbar(BOOL show);
 void UpdateStatusBar(LPCTSTR text);
 void PositionTabCloseButton();
+static void SaveCurrentEditorBufferToTab(int tabIdx);
+static void RestoreEditorBufferFromTab(int tabIdx);
 static BOOL TabControlNeedsScroll(void);
 static void UpdateTabNavigationButtons(void);
 static void EnsureTabVisible(int tabIndex);
@@ -750,6 +756,112 @@ int FindTabByPath(const char* filePath) {
     return -1;
 }
 
+BOOL IsFileAlreadyOpen(const char* filePath) {
+    for (int i = 0; i < g_openedFileCount; i++) {
+        if (strcmp(g_openedFiles[i], filePath) == 0) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+static int GetUntitledIndex(const char* name) {
+    if (!name) return 0;
+    if (name[0] == '*') name++;
+    if (strncmp(name, "untitled", 8) != 0) return 0;
+    if (name[8] == '\0') return 1;
+    for (const char* p = name + 8; *p; p++) {
+        if (*p < '0' || *p > '9') return 0;
+    }
+    int idx = atoi(name + 8);
+    return idx > 0 ? idx : 0;
+}
+
+static void GenerateUniqueUntitledName(char* buffer, size_t bufferSize) {
+    int maxIndex = 0;
+    BOOL foundUntitled = FALSE;
+    HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
+    if (hRoot) {
+        for (HTREEITEM child = TreeView_GetChild(hwndProjectTree, hRoot); child; child = TreeView_GetNextSibling(hwndProjectTree, child)) {
+            char text[MAX_PATH];
+            TVITEM tvi;
+            tvi.mask = TVIF_TEXT | TVIF_HANDLE;
+            tvi.hItem = child;
+            tvi.pszText = text;
+            tvi.cchTextMax = MAX_PATH;
+            if (TreeView_GetItem(hwndProjectTree, &tvi)) {
+                int idx = GetUntitledIndex(text);
+                if (idx > 0) {
+                    foundUntitled = TRUE;
+                    if (idx > maxIndex) maxIndex = idx;
+                }
+            }
+        }
+    }
+    for (int i = 0; i < g_tabCount; i++) {
+        int idx = GetUntitledIndex(g_tabs[i].title);
+        if (idx > 0) {
+            foundUntitled = TRUE;
+            if (idx > maxIndex) maxIndex = idx;
+        }
+    }
+
+    if (!foundUntitled) {
+        strncpy(buffer, "untitled", bufferSize - 1);
+        buffer[bufferSize - 1] = '\0';
+    } else {
+        snprintf(buffer, bufferSize, "untitled%d", maxIndex + 1);
+    }
+}
+
+static BOOL TreeViewContainsText(HWND hwndTree, const char* text) {
+    HTREEITEM hItem = TreeView_GetRoot(hwndTree);
+    if (!hItem) return FALSE;
+
+    char buffer[MAX_PATH];
+    TVITEM tvi;
+    tvi.mask = TVIF_TEXT | TVIF_HANDLE;
+    tvi.pszText = buffer;
+    tvi.cchTextMax = MAX_PATH;
+
+    for (HTREEITEM child = TreeView_GetChild(hwndTree, hItem); child; child = TreeView_GetNextSibling(hwndTree, child)) {
+        tvi.hItem = child;
+        if (TreeView_GetItem(hwndTree, &tvi)) {
+            if (strcmp(buffer, text) == 0 || strcmp(buffer, text[0] == '*' ? text + 1 : text) == 0) {
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+static void AddTreeItem(HWND hwndTree, const char* displayName, const char* fullPath) {
+    HTREEITEM hRoot = TreeView_GetRoot(hwndTree);
+    if (!hRoot) {
+        TVINSERTSTRUCT tvis;
+        tvis.hParent = TVI_ROOT;
+        tvis.hInsertAfter = TVI_LAST;
+        tvis.item.mask = TVIF_TEXT;
+        tvis.item.pszText = "Project Files";
+        hRoot = TreeView_InsertItem(hwndTree, &tvis);
+    }
+
+    TVINSERTSTRUCT tvis;
+    tvis.hParent = hRoot;
+    tvis.hInsertAfter = TVI_LAST;
+    tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
+    tvis.item.pszText = (char*)displayName;
+    char* persistentPath = NULL;
+    if (fullPath && fullPath[0] != '\0') {
+        size_t len = strlen(fullPath) + 1;
+        persistentPath = (char*)GlobalAlloc(GPTR, len);
+        if (persistentPath) strcpy(persistentPath, fullPath);
+    }
+    tvis.item.lParam = (LPARAM)persistentPath;
+    TreeView_InsertItem(hwndTree, &tvis);
+    TreeView_Expand(hwndTree, hRoot, TVE_EXPAND);
+}
+
 int CreateNewTab(const char* filePath, const char* title) {
     if (g_tabCount >= MAX_TABS) {
         MessageBox(hwndMain, "Too many tabs open", "Error", MB_ICONWARNING);
@@ -761,6 +873,7 @@ int CreateNewTab(const char* filePath, const char* title) {
     strcpy(g_tabs[idx].title, title);
     g_tabs[idx].isModified = FALSE;
     g_tabs[idx].editorWnd = NULL;
+    g_tabs[idx].content[0] = '\0';
     
     return idx;
 }
@@ -833,9 +946,7 @@ void UpdateTreeViewItemModified(const char* filePath, BOOL isModified) {
     
     /* Handle untitled files - check if active tab is untitled */
     if ((filePath[0] == '\0' || displayName[0] == '\0') && g_activeTab >= 0 && g_activeTab < g_tabCount) {
-        if (strcmp(g_tabs[g_activeTab].title, "untitled") == 0) {
-            displayName = "untitled";
-        }
+        displayName = g_tabs[g_activeTab].title;
     }
     
     /* Build the name to search for (with or without asterisk) */
@@ -985,9 +1096,6 @@ static void EnsureTabVisible(int tabIndex) {
         if (currentSel != tabIndex) {
             g_ignoreTabSelectionChange = TRUE;
             TabCtrl_SetCurSel(hwndCodeTab, tabIndex);
-            if (currentSel >= 0) {
-                TabCtrl_SetCurSel(hwndCodeTab, currentSel);
-            }
             g_ignoreTabSelectionChange = FALSE;
         }
         g_tabScrollIndex = tabIndex;
@@ -1085,54 +1193,78 @@ void ActivateSelectedTreeFile(void) {
 
     TVITEM tvi;
     char buffer[MAX_PATH];
-    tvi.mask = TVIF_TEXT | TVIF_HANDLE;
+    tvi.mask = TVIF_TEXT | TVIF_HANDLE | TVIF_PARAM;
     tvi.hItem = hItem;
     tvi.pszText = buffer;
     tvi.cchTextMax = MAX_PATH;
     TreeView_GetItem(hwndProjectTree, &tvi);
+
+    const char* fullPath = (const char*)tvi.lParam;
 
     if (strcmp(buffer, "Project Files") == 0) {
         DebugLog("[TREEVIEW] Root folder selected, skipping\n");
         return;
     }
 
+    const char* compareBuffer = buffer;
+    if (buffer[0] == '*') {
+        compareBuffer = buffer + 1;
+    }
+
+    if (fullPath && fullPath[0] != '\0') {
+        FILE* fp = fopen(fullPath, "rb");
+        if (fp) {
+            fclose(fp);
+            DebugLog("[TREEVIEW] Opening file from stored path: %s\n", fullPath);
+            char* filename = strrchr(fullPath, '\\');
+            if (filename) filename++;
+            else filename = (char*)fullPath;
+            int tabIdx = FindTabByPath(fullPath);
+            if (tabIdx == -1) {
+                tabIdx = CreateNewTab(fullPath, filename);
+                RefreshTabControl();
+            }
+            g_activeTab = tabIdx;
+            TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
+            EnsureTabVisible(g_activeTab);
+            LoadFileIntoEditor(fullPath);
+            return;
+        }
+        DebugLog("[TREEVIEW] Stored path is invalid, falling back to project file list: %s\n", fullPath);
+    }
+
     /* Handle untitled tab special case */
-    if (strcmp(buffer, "untitled") == 0) {
-        DebugLog("[TREEVIEW] Untitled tab selected\n");
-        /* Find and activate the untitled tab */
+    if (strncmp(compareBuffer, "untitled", 8) == 0) {
+        DebugLog("[TREEVIEW] Untitled-like tab selected: %s\n", compareBuffer);
         for (int i = 0; i < g_tabCount; i++) {
-            if (strcmp(g_tabs[i].title, "untitled") == 0) {
+            if (strcmp(g_tabs[i].title, compareBuffer) == 0) {
                 g_activeTab = i;
                 TabCtrl_SetCurSel(hwndCodeTab, i);
                 EnsureTabVisible(i);
-                if (g_tabs[i].filePath[0] != '\0') {
-                    LoadFileIntoEditor(g_tabs[i].filePath);
-                }
+                RestoreEditorBufferFromTab(i);
                 return;
             }
         }
 
-        /* If no untitled tab exists, create a fresh one and activate it. */
-        DebugLog("[TREEVIEW] No untitled tab found, creating one\n");
-        int untitledTab = CreateNewTab("", "untitled");
+        /* If the selected tree item has no matching tab yet, create it. */
+        int untitledTab = CreateNewTab("", compareBuffer);
         if (untitledTab >= 0) {
             g_activeTab = untitledTab;
             RefreshTabControl();
             TabCtrl_SetCurSel(hwndCodeTab, untitledTab);
             EnsureTabVisible(untitledTab);
+            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+            UpdateLineNumbers(hwndInput, hwndLineNumbers);
         }
         return;
     }
 
-    DebugLog("[TREEVIEW] Activating selected: '%s'\n", buffer);
+    DebugLog("[TREEVIEW] Activating selected: '%s'\n", compareBuffer);
     BOOL found = FALSE;
     for (int i = 0; i < g_openedFileCount; i++) {
         char* filename = strrchr(g_openedFiles[i], '\\');
         if (filename) filename++;
         else filename = g_openedFiles[i];
-
-        const char* compareBuffer = buffer;
-        if (buffer[0] == '*') compareBuffer = buffer + 1;
 
         if (strcmp(filename, compareBuffer) == 0) {
             DebugLog("[TREEVIEW] FOUND: %s\n", g_openedFiles[i]);
@@ -1158,6 +1290,39 @@ BOOL IsCOrHFile(const char* ext) {
     return (stricmp(ext, ".c") == 0 || stricmp(ext, ".h") == 0 || stricmp(ext, ".cpp") == 0 || stricmp(ext, ".hpp") == 0);
 }
 
+static void SaveCurrentEditorBufferToTab(int tabIdx) {
+    if (tabIdx < 0 || tabIdx >= g_tabCount) return;
+
+    char content[65536];
+    SendMessage(hwndInput, WM_GETTEXT, sizeof(content) - 1, (LPARAM)content);
+    content[sizeof(content) - 1] = '\0';
+
+    strncpy(g_tabs[tabIdx].content, content, sizeof(g_tabs[tabIdx].content) - 1);
+    g_tabs[tabIdx].content[sizeof(g_tabs[tabIdx].content) - 1] = '\0';
+
+    DebugLog("[TAB] Saved buffer for tab %d (%s), len=%u, preview='%s'\n",
+        tabIdx, g_tabs[tabIdx].title, (unsigned)strlen(g_tabs[tabIdx].content),
+        g_tabs[tabIdx].content[0] ? g_tabs[tabIdx].content : "<empty>");
+}
+
+static void RestoreEditorBufferFromTab(int tabIdx) {
+    if (tabIdx < 0 || tabIdx >= g_tabCount) return;
+
+    DebugLog("[TAB] Restoring tab %d (%s), cachedLen=%u, filePath='%s'\n",
+        tabIdx, g_tabs[tabIdx].title, (unsigned)strlen(g_tabs[tabIdx].content),
+        g_tabs[tabIdx].filePath[0] ? g_tabs[tabIdx].filePath : "<untitled>");
+
+    if (g_tabs[tabIdx].content[0] != '\0' || g_tabs[tabIdx].filePath[0] == '\0') {
+        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)g_tabs[tabIdx].content);
+        SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
+        UpdateLineNumbers(hwndInput, hwndLineNumbers);
+        DebugLog("[TAB] Restored cached text into editor for tab %d\n", tabIdx);
+    } else {
+        DebugLog("[TAB] Reloading file contents for tab %d from disk\n", tabIdx);
+        LoadFileIntoEditor(g_tabs[tabIdx].filePath);
+    }
+}
+
 /* Add file to project tracking */
 void AddFileToProject(const char* filePath) {
     if (g_openedFileCount < MAX_OPENED_FILES) {
@@ -1172,6 +1337,9 @@ void LoadFileIntoEditor(const char* filePath) {
     if (!filePath || filePath[0] == '\0') {
         DebugLog("[EDITOR] Untitled tab detected, clearing editor\n");
         SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+        if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+            g_tabs[g_activeTab].content[0] = '\0';
+        }
         SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
         UpdateLineNumbers(hwndInput, hwndLineNumbers);
         UpdateStatusBar("untitled");
@@ -1195,6 +1363,20 @@ void LoadFileIntoEditor(const char* filePath) {
     if (fileSize <= 0) {
         fclose(fp);
         SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+        /* Add to tab if not already open */
+        char* filename = strrchr(filePath, '\\');
+        if (filename) filename++;
+        else filename = (char*)filePath;
+        int tabIdx = FindTabByPath(filePath);
+        if (tabIdx == -1) {
+            tabIdx = CreateNewTab(filePath, filename);
+            RefreshTabControl();
+        }
+        g_tabs[tabIdx].content[0] = '\0';
+        g_activeTab = tabIdx;
+        TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
+        EnsureTabVisible(g_activeTab);
+        UpdateStatusBar(filePath);
         return;
     }
     
@@ -1243,31 +1425,149 @@ void LoadFileIntoEditor(const char* filePath) {
     }
     *dst = '\0';
 
+    char* filename = strrchr(filePath, '\\');
+    if (filename) filename++;
+    else filename = (char*)filePath;
+
+    int tabIdx = FindTabByPath(filePath);
+    if (tabIdx == -1) {
+        tabIdx = CreateNewTab(filePath, filename);
+        RefreshTabControl();
+    }
+
     /* Set the text - this preserves all whitespace */
     SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)normalized);
+    strncpy(g_tabs[tabIdx].content, normalized, sizeof(g_tabs[tabIdx].content) - 1);
+    g_tabs[tabIdx].content[sizeof(g_tabs[tabIdx].content) - 1] = '\0';
     /* Ensure the edit control does not auto-wrap lines */
     SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
     UpdateLineNumbers(hwndInput, hwndLineNumbers);
 
     GlobalFree((HGLOBAL)normalized);
     GlobalFree((HGLOBAL)buffer);
-    
-    /* Add to tab if not already open */
-    char* filename = strrchr(filePath, '\\');
-    if (filename) filename++;
-    else filename = (char*)filePath;
-    
-    int tabIdx = FindTabByPath(filePath);
-    if (tabIdx == -1) {
-        tabIdx = CreateNewTab(filePath, filename);
-        RefreshTabControl();
-    }
-    
+
     g_activeTab = tabIdx;
     TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
     EnsureTabVisible(g_activeTab);
     
     UpdateStatusBar(filePath);
+}
+
+void RemoveFileFromProject(const char* filePath) {
+    for (int i = 0; i < g_openedFileCount; i++) {
+        if (strcmp(g_openedFiles[i], filePath) == 0) {
+            for (int j = i; j < g_openedFileCount - 1; j++) {
+                strcpy(g_openedFiles[j], g_openedFiles[j + 1]);
+            }
+            g_openedFileCount--;
+            break;
+        }
+    }
+}
+
+void PromptDeleteSelectedTreeItem(void) {
+    HTREEITEM hItem = TreeView_GetSelection(hwndProjectTree);
+    if (!hItem) return;
+
+    TVITEM tvi;
+    char buffer[MAX_PATH];
+    tvi.mask = TVIF_TEXT | TVIF_HANDLE | TVIF_PARAM;
+    tvi.hItem = hItem;
+    tvi.pszText = buffer;
+    tvi.cchTextMax = MAX_PATH;
+    TreeView_GetItem(hwndProjectTree, &tvi);
+
+    const char* fullPath = (const char*)tvi.lParam;
+    if (strcmp(buffer, "Project Files") == 0) return;
+
+    /* If this tree item represents an untitled/unsaved tab (no path), prompt and remove the tab */
+    if (!fullPath || fullPath[0] == '\0') {
+        char msg[MAX_PATH + 64];
+        snprintf(msg, sizeof(msg), "Delete '%s'? This will remove the tab and the project entry.", buffer);
+        int confirm = MessageBoxA(hwndMain, msg, "Confirm Delete", MB_YESNO | MB_ICONWARNING);
+        if (confirm == IDYES) {
+            DebugLog("[TREEVIEW] Deleting untitled tree item: %s\n", buffer);
+            /* Remove any matching tab by title */
+            for (int i = 0; i < g_tabCount; i++) {
+                if (strcmp(g_tabs[i].title, buffer) == 0) {
+                    CloseTab(i);
+                    break;
+                }
+            }
+            TreeView_DeleteItem(hwndProjectTree, hItem);
+            RefreshTabControl();
+            if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+            } else {
+                SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                UpdateLineNumbers(hwndInput, hwndLineNumbers);
+            }
+        }
+        return;
+    }
+
+    /* Existing file path case - ask the user for confirmation before delegating to Shell */
+    char confirmMsg[MAX_PATH + 128];
+    snprintf(confirmMsg, sizeof(confirmMsg), "Delete '%s'? This will move the file to the Recycle Bin.", fullPath);
+    int userChoice = MessageBoxA(hwndMain, confirmMsg, "Confirm Delete", MB_YESNO | MB_ICONWARNING);
+    if (userChoice != IDYES) return;
+
+    DWORD attrs = GetFileAttributesA(fullPath);
+    if (attrs == INVALID_FILE_ATTRIBUTES) {
+        /* File isn't present on disk - just remove from tree/project and close any tab */
+        DebugLog("[TREEVIEW] File not found on disk, removing project entry: %s\n", fullPath);
+        int tabIdx = FindTabByPath(fullPath);
+        if (tabIdx >= 0) {
+            CloseTab(tabIdx);
+            RefreshTabControl();
+        }
+        TreeView_DeleteItem(hwndProjectTree, hItem);
+        RemoveFileFromProject(fullPath);
+        if (g_activeTab >= 0 && g_activeTab < g_tabCount) LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+        else {
+            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+            UpdateLineNumbers(hwndInput, hwndLineNumbers);
+        }
+        return;
+    }
+
+    char pathBuffer[MAX_PATH + 2] = {0};
+    size_t len = strlen(fullPath);
+    if (len >= MAX_PATH) return;
+    strcpy(pathBuffer, fullPath);
+    pathBuffer[len + 1] = '\0';
+
+    SHFILEOPSTRUCTA fileOp = {0};
+    fileOp.hwnd = hwndMain;
+    fileOp.wFunc = FO_DELETE;
+    fileOp.pFrom = pathBuffer;
+    fileOp.fFlags = FOF_ALLOWUNDO;
+
+    int result = SHFileOperationA(&fileOp);
+    if (result == 0 && !fileOp.fAnyOperationsAborted) {
+        DebugLog("[TREEVIEW] Deleted file via shell prompt: %s\n", fullPath);
+        TreeView_DeleteItem(hwndProjectTree, hItem);
+        int tabIdx = FindTabByPath(fullPath);
+        if (tabIdx >= 0) {
+            CloseTab(tabIdx);
+            RefreshTabControl();
+            if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+            } else {
+                SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                UpdateLineNumbers(hwndInput, hwndLineNumbers);
+            }
+        }
+        RemoveFileFromProject(fullPath);
+    }
+}
+
+LRESULT CALLBACK TreeViewSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+    if (msg == WM_KEYDOWN && wParam == VK_DELETE) {
+        PromptDeleteSelectedTreeItem();
+        return 0;
+    }
+    return CallWindowProc(hwndOldTreeProc, hwnd, msg, wParam, lParam);
 }
 
 /* Recursively scan folder for C/H files */
@@ -1322,8 +1622,9 @@ void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat) {
             else filename++;
             
             tvis.hParent = hRoot;
-            tvis.item.mask = TVIF_TEXT;
+            tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
             tvis.item.pszText = filename;
+            tvis.item.lParam = (LPARAM)g_openedFiles[i];
             TreeView_InsertItem(hwndTree, &tvis);
         }
     } else {
@@ -1353,8 +1654,9 @@ void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat) {
             else filename = files[i];
             
             tvis.hParent = hRoot;
-            tvis.item.mask = TVIF_TEXT;
+            tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
             tvis.item.pszText = filename;
+            tvis.item.lParam = (LPARAM)files[i];
             TreeView_InsertItem(hwndTree, &tvis);
         }
     }
@@ -1832,6 +2134,7 @@ void CreateMainLayout(HWND hwnd) {
     SendMessage(hwndInput, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
     SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
     hwndOldEditorProc = (WNDPROC)SetWindowLongPtr(hwndInput, GWLP_WNDPROC, (LONG_PTR)EditorSubclassProc);
+    hwndOldTreeProc = (WNDPROC)SetWindowLongPtr(hwndProjectTree, GWLP_WNDPROC, (LONG_PTR)TreeViewSubclassProc);
     
     /* Output code pane */
     hwndOutput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
@@ -1950,8 +2253,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     
     /* Create accelerator table for keyboard shortcuts */
     ACCEL accels[] = {
+        {FVIRTKEY | FCONTROL, 0x4E, IDM_FILE_NEW_FILE},           /* Ctrl+N */
         {FVIRTKEY | FCONTROL | FSHIFT, 0x4E, IDM_FILE_NEW},       /* Ctrl+Shift+N */
-        {FVIRTKEY | FCONTROL, 0x4F, IDM_FILE_OPEN},                /* Ctrl+O */
+        {FVIRTKEY | FCONTROL, 0x4F, IDM_FILE_OPEN_FILE},          /* Ctrl+O */
+        {FVIRTKEY | FCONTROL | FSHIFT, 0x4F, IDM_FILE_OPEN},      /* Ctrl+Shift+O */
         {FVIRTKEY | FCONTROL, 0x53, IDM_FILE_SAVE},                /* Ctrl+S */
         {FVIRTKEY | FCONTROL | FSHIFT, 0x53, IDM_FILE_SAVEAS},     /* Ctrl+Shift+S */
         {FVIRTKEY | FCONTROL | FSHIFT, 0x41, IDM_FILE_SAVEALL},    /* Ctrl+Shift+A */
@@ -2148,6 +2453,57 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             }
             UpdateStatusBar("New project created");
             break;
+        case IDM_FILE_NEW_FILE:
+            DebugLog("[MENU] FileNewFileMenuItemClick\n");
+            {
+                char newTitle[MAX_PATH];
+                GenerateUniqueUntitledName(newTitle, sizeof(newTitle));
+
+                int tabIdx = CreateNewTab("", newTitle);
+                if (tabIdx < 0) break;
+
+                g_activeTab = tabIdx;
+                RefreshTabControl();
+                AddTreeItem(hwndProjectTree, newTitle, "");
+                TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
+                EnsureTabVisible(g_activeTab);
+                SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+                UpdateLineNumbers(hwndInput, hwndLineNumbers);
+                g_projectOpened = TRUE;
+                UpdateSaveMenuState(TRUE);
+                UpdateStatusBar("Added new untitled file to project");
+            }
+            break;
+        case IDM_FILE_OPEN_FILE:
+            DebugLog("[MENU] FileOpenFileMenuItemClick\n");
+            {
+                OPENFILENAME ofn;
+                char fileBuffer[MAX_PATH] = {0};
+
+                memset(&ofn, 0, sizeof(ofn));
+                ofn.lStructSize = sizeof(ofn);
+                ofn.hwndOwner = hwnd;
+                ofn.lpstrFile = fileBuffer;
+                ofn.nMaxFile = sizeof(fileBuffer);
+                ofn.lpstrFilter = "C/H Files (*.c;*.h)\0*.c;*.h\0All Files (*.*)\0*.*\0";
+                ofn.lpstrDefExt = "c";
+                ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST;
+
+                if (GetOpenFileName(&ofn)) {
+                    if (!IsFileAlreadyOpen(fileBuffer)) {
+                        char* filename = strrchr(fileBuffer, '\\');
+                        if (filename) filename++;
+                        else filename = fileBuffer;
+
+                        AddFileToProject(fileBuffer);
+                        AddTreeItem(hwndProjectTree, filename, g_openedFiles[g_openedFileCount - 1]);
+                    }
+                    UpdateSaveMenuState(TRUE);
+                    g_projectOpened = TRUE;
+                    UpdateStatusBar("Added file to project tree");
+                }
+            }
+            break;
         case IDM_FILE_OPEN:
             DebugLog("[MENU] FileOpenProjectMenuItemClick\n");
             /* Prompt to save before opening new project */
@@ -2175,8 +2531,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             
         case IDC_CODE_INPUT:
             if (HIWORD(wParam) == EN_CHANGE) {
-                /* Mark current file as modified and update TreeView */
+                /* Preserve current in-memory text for this tab before switching away. */
                 if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                    char content[65536];
+                    SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
+                    strncpy(g_tabs[g_activeTab].content, content, sizeof(g_tabs[g_activeTab].content) - 1);
+                    g_tabs[g_activeTab].content[sizeof(g_tabs[g_activeTab].content) - 1] = '\0';
+                    DebugLog("[EDIT] EN_CHANGE on tab %d (%s), len=%u, preview='%s'\n",
+                        g_activeTab, g_tabs[g_activeTab].title, (unsigned)strlen(g_tabs[g_activeTab].content),
+                        g_tabs[g_activeTab].content[0] ? g_tabs[g_activeTab].content : "<empty>");
                     if (!g_tabs[g_activeTab].isModified) {
                         g_tabs[g_activeTab].isModified = TRUE;
                         UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, TRUE);
@@ -2382,12 +2745,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             LPNMHDR pnmh = (LPNMHDR)lParam;
             int code = pnmh ? (int)pnmh->code : 0;
             DebugLog("[TREEVIEW] NM code: 0x%X\n", code);
-            if (code == (int)TVN_SELCHANGED) {
-                DebugLog("[TREEVIEW] TVN_SELCHANGED - selection changed\n");
+            if (code == (int)NM_DBLCLK) {
+                DebugLog("[TREEVIEW] NM_DBLCLK - open selected file in tab\n");
                 ActivateSelectedTreeFile();
-            } else if (code == (int)NM_CLICK || code == (int)NM_DBLCLK) {
-                DebugLog("[TREEVIEW] Click/double-click on tree item\n");
-                ActivateSelectedTreeFile();
+            } else if (code == (int)TVN_SELCHANGED || code == (int)NM_CLICK) {
+                DebugLog("[TREEVIEW] Selection changed or click event - no immediate open\n");
             } else {
                 DebugLog("[TREEVIEW] Unknown NM code: 0x%X\n", code);
             }
@@ -2399,16 +2761,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 if (g_ignoreTabSelectionChange) break;
                 DebugLog("[TAB] TCN_SELCHANGE\n");
                 int newTab = TabCtrl_GetCurSel(hwndCodeTab);
-                DebugLog("[TAB] Selected tab: %d\n", newTab);
+                int oldTab = g_activeTab;
+                DebugLog("[TAB] Selected tab: %d (old=%d)\n", newTab, oldTab);
                 if (newTab >= 0 && newTab < g_tabCount) {
-                    g_activeTab = newTab;
-                    EnsureTabVisible(newTab);
-                    /* Load the file for this tab */
-                    if (g_tabs[newTab].filePath[0]) {
-                        DebugLog("[TAB] TabClick(%s)\n", g_tabs[newTab].title);
-                        LoadFileIntoEditor(g_tabs[newTab].filePath);
+                    if (oldTab >= 0 && oldTab < g_tabCount) {
+                        SaveCurrentEditorBufferToTab(oldTab);
                     }
-                    /* Update close button position */
+
+                    g_activeTab = newTab;
+                    DebugLog("[TAB] Switching from tab %d to %d\n", oldTab, newTab);
+                    EnsureTabVisible(newTab);
+                    RestoreEditorBufferFromTab(newTab);
+
                     PositionTabCloseButton();
                 }
             } else if (pnmh->code == TCN_RCLICK) {
