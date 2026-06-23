@@ -1,8 +1,0 @@
-[
-{
-  "directory": "C:/Users/kris/Desktop/Orca-main/Win32/build",
-  "command": "C:\\MinGW\\bin\\gcc.exe  @CMakeFiles/orca.dir/includes_C.rsp -std=gnu11 -o CMakeFiles\\orca.dir\\src\\main.c.obj -c C:\\Users\\kris\\Desktop\\Orca-main\\Win32\\src\\main.c",
-  "file": "C:/Users/kris/Desktop/Orca-main/Win32/src/main.c",
-  "output": "CMakeFiles/orca.dir/src/main.c.obj"
-}
-]
