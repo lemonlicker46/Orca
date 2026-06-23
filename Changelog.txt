@@ -152,6 +152,16 @@ v1.32 - (jun 16, 2026)
 - made the run option in the build menu run the program, if it was created and still exists. For now its path is just hardcoded to the project folder root, and its name is hardcoded to main.exe, also no real compiler options are specified yet, just the bare minimum that GCC can take.
 - made compile & run build menu option compile and run the program.
 
-v.33 - (jun 17, 2026)
+v1.33 - (jun 17, 2026)
 - added compiler output dialog after user clicks compile from the build menu, this shows if the program compiled or not as well as the compiler return value if it did not compile. This dialog will become a command prompt pane within orca later but for now the dialog will get more information about compile errors and warnings .
 - fixed bug where the prompt to save unsaved changes was writing the same output to every tab (and therefore every file in the project)
+
+v1.34 - (Jun 19, 2026)
+- added options dialog with tabs and project settings, in the project settings menu
+- fixed bug where code was not being shown in the command prompt when doing a quick compile & run
+- added 2 more GCC compiler flags to make quick compile & run more lightweight
+- made compiler flags for quick compile & run be different compared to a normal compile operation
+
+v1.35 (20 jun, 2026)
+- added QuickBuildCleanupType config.ini option for file cleanup
+- began work on the top insertion toolbar, this is what dynamically generates categories of code snippets and inserts them

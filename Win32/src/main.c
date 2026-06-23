@@ -12,6 +12,8 @@
 #include <string.h>
 #include <errno.h>
 
+#include "generation.h"
+
 #ifndef TCN_RCLICK
 #define TCN_RCLICK (TCN_FIRST - 5)
 #endif
@@ -32,6 +34,17 @@
 #define IDC_TAB_NEXT       1011
 #define IDC_CODE_SPLITTER  1012
 #define IDC_TAB_COUNT      1013
+#define IDC_SETTINGS_TAB            1200
+#define IDC_SETTINGS_PLATFORM_LABEL 1201
+#define IDC_SETTINGS_PLATFORM_COMBO 1202
+#define IDC_SETTINGS_COMPILER_LABEL 1203
+#define IDC_SETTINGS_COMPILER_COMBO 1204
+#define IDC_SETTINGS_ARCH_LABEL     1205
+#define IDC_SETTINGS_ARCH_COMBO     1206
+#define IDC_SETTINGS_BUILD_LABEL    1207
+#define IDC_BUILD_CLEANUP_NONE      1208
+#define IDC_BUILD_CLEANUP_OBJECTS   1209
+#define IDC_BUILD_CLEANUP_ALL       1210
 
 /* Tab context menu IDs */
 #define IDM_TAB_CLOSE_SINGLE 4001
@@ -55,6 +68,7 @@
 #define IDM_EDIT_PASTE     1205
 #define IDM_EDIT_SELECTALL 1206
 #define IDM_EDIT_DELETE    1207
+#define IDM_EDIT_QUICK_COMPILE_SELECTION 1208
 #define IDM_PROJECT_NEW    1301
 #define IDM_PROJECT_SETTINGS 1302
 #define IDM_BUILD_COMPILE  1401
@@ -89,7 +103,6 @@
 /* Global state */
 static HWND hwndMain;
 static HWND hwndInput, hwndOutput;
-static HWND hwndToolbarMain, hwndToolbarCode;
 static HWND hwndStatusBar;
 static HWND hwndProjectTree;
 static HWND hwndLineNumbers;
@@ -100,6 +113,17 @@ static HWND hwndTabCount;  /* Tab count display */
 static HWND hwndTabPrev;   /* Previous-tab button */
 static HWND hwndTabNext;   /* Next-tab button */
 static HWND hwndCodeSplitter; /* Vertical splitter between code and properties */
+static HWND hSettingsTab;
+static HWND hSettingsPlatformLabel;
+static HWND hSettingsCompilerLabel;
+static HWND hSettingsArchLabel;
+static HWND hSettingsBuildLabel;
+static HWND hCleanupNone;
+static HWND hCleanupObjects;
+static HWND hCleanupAll;
+static HWND hPlatform;
+static HWND hCompiler;
+static HWND hArch;
 static WNDPROC hwndOldEditorProc;
 static HFONT g_codeFont;
 #define DEFAULT_LINE_NUMBER_WIDTH 35
@@ -117,6 +141,10 @@ static int g_splitterDragStartX = 0;
 static int g_splitterStartPropertiesWidth = 0;
 static int g_dragInitialInputWidth = 0;
 char g_configPath[MAX_PATH] = "";
+static char g_quickBuildCleanupType[32] = "None";
+static const char* const QUICK_BUILD_CLEANUP_TYPE_NONE = "None";
+static const char* const QUICK_BUILD_CLEANUP_TYPE_OBJECT_FILES = "ObjectFiles";
+static const char* const QUICK_BUILD_CLEANUP_TYPE_ALL = "All";
 static BOOL g_treeViewAutoExpand = TRUE;
 static int g_rightClickedTab = -1; /* last tab index right-clicked */
 
@@ -163,10 +191,7 @@ LRESULT CALLBACK LineNumberWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void CreateMainLayout(HWND hwnd);
 void CreateMenus(HWND hwnd);
-void CreateMainToolbar(HWND hwnd);
-void CreateCodeToolbar(HWND hwnd);
 void CreateStatusBar(HWND hwnd);
-void InsertCodeTemplate(int templateId);
 void ShowManipulationToolbar(BOOL show);
 void UpdateStatusBar(LPCTSTR text);
 void UpdateTabCountLabel(void);
@@ -179,6 +204,7 @@ const char* GetCompilerPathC(void);
 void SetCompilerPathC(const char* path);
 void ValidateCompilerPathAtStartup(void);
 BOOL CompileProjectSources(HWND hwndParent, char sourceFiles[][MAX_PATH], int fileCount, const char* outputPath);
+BOOL CompileSelectionFromStdin(HWND hwndParent, const char* sourceCode);
 
 /* Debug console functions */
 void InitDebugConsole(void) {
@@ -278,6 +304,66 @@ static BOOL ParseConfigTreeViewAutoExpand(const char* path) {
     return TRUE;
 }
 
+static void ParseConfigQuickBuildCleanupType(const char* path) {
+    char buffer[32] = {0};
+    GetPrivateProfileStringA("build", "QuickBuildCleanupType", QUICK_BUILD_CLEANUP_TYPE_NONE, buffer, sizeof(buffer), path);
+    if (buffer[0] == '\0') {
+        strcpy(g_quickBuildCleanupType, QUICK_BUILD_CLEANUP_TYPE_NONE);
+    } else {
+        strncpy(g_quickBuildCleanupType, buffer, sizeof(g_quickBuildCleanupType) - 1);
+        g_quickBuildCleanupType[sizeof(g_quickBuildCleanupType) - 1] = '\0';
+    }
+}
+
+static void UpdateProjectSettingsTabVisibility(void) {
+    int selected = TabCtrl_GetCurSel(hSettingsTab);
+    BOOL showGeneral = (selected == 0);
+    BOOL showBuild = (selected == 1);
+
+    ShowWindow(hSettingsPlatformLabel, showGeneral ? SW_SHOW : SW_HIDE);
+    ShowWindow(hPlatform, showGeneral ? SW_SHOW : SW_HIDE);
+    ShowWindow(hSettingsCompilerLabel, showGeneral ? SW_SHOW : SW_HIDE);
+    ShowWindow(hCompiler, showGeneral ? SW_SHOW : SW_HIDE);
+    ShowWindow(hSettingsArchLabel, showGeneral ? SW_SHOW : SW_HIDE);
+    ShowWindow(hArch, showGeneral ? SW_SHOW : SW_HIDE);
+
+    ShowWindow(hSettingsBuildLabel, showBuild ? SW_SHOW : SW_HIDE);
+    ShowWindow(hCleanupNone, showBuild ? SW_SHOW : SW_HIDE);
+    ShowWindow(hCleanupObjects, showBuild ? SW_SHOW : SW_HIDE);
+    ShowWindow(hCleanupAll, showBuild ? SW_SHOW : SW_HIDE);
+}
+
+static DLGTEMPLATE* CreateProjectSettingsDialogTemplate(void) {
+    const char* title = "Project Settings";
+    const char* fontName = "MS Shell Dlg";
+    WORD fontSize = 8;
+    int bufferSize = 512;
+    BYTE* buffer = (BYTE*)GlobalAlloc(GPTR, bufferSize);
+    if (!buffer) {
+        return NULL;
+    }
+
+    DLGTEMPLATE* dlg = (DLGTEMPLATE*)buffer;
+    dlg->style = DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU | DS_SETFONT;
+    dlg->dwExtendedStyle = 0;
+    dlg->cdit = 0;
+    dlg->x = 0;
+    dlg->y = 0;
+    dlg->cx = 260;
+    dlg->cy = 220;
+
+    BYTE* ptr = buffer + sizeof(DLGTEMPLATE);
+    ptr = (BYTE*)(((ULONG_PTR)ptr + 3) & ~3);
+    *(WORD*)ptr = 0; ptr += 2; /* no menu */
+    *(WORD*)ptr = 0; ptr += 2; /* no class */
+    strcpy((char*)ptr, title);
+    ptr += strlen(title) + 1;
+    *(WORD*)ptr = fontSize; ptr += 2;
+    strcpy((char*)ptr, fontName);
+
+    return dlg;
+}
+
 void LoadConfig(void) {
     if (g_configPath[0] == '\0') {
         InitializeConfigPath();
@@ -294,7 +380,8 @@ void LoadConfig(void) {
         g_currentInputWidth = 0;
     }
     g_treeViewAutoExpand = ParseConfigTreeViewAutoExpand(g_configPath);
-    DebugLog("[CONFIG] Loaded config from %s, CodePaneWidth=%d, TreeViewAutoExpand=%s\n", g_configPath, g_currentInputWidth, g_treeViewAutoExpand ? "True" : "False");
+    ParseConfigQuickBuildCleanupType(g_configPath);
+    DebugLog("[CONFIG] Loaded config from %s, CodePaneWidth=%d, TreeViewAutoExpand=%s, QuickBuildCleanupType=%s\n", g_configPath, g_currentInputWidth, g_treeViewAutoExpand ? "True" : "False", g_quickBuildCleanupType);
 }
 
 void SaveConfig(void) {
@@ -312,6 +399,8 @@ void SaveConfig(void) {
     }
     WritePrivateProfileStringA("Layout", "TreeViewAutoExpand", g_treeViewAutoExpand ? "True" : "False", g_configPath);
     DebugLog("[CONFIG] Saved TreeViewAutoExpand=%s to %s\n", g_treeViewAutoExpand ? "True" : "False", g_configPath);
+    WritePrivateProfileStringA("build", "QuickBuildCleanupType", g_quickBuildCleanupType, g_configPath);
+    DebugLog("[CONFIG] Saved QuickBuildCleanupType=%s to %s\n", g_quickBuildCleanupType, g_configPath);
     SaveCompilerPathC();
 }
 
@@ -597,10 +686,7 @@ void CreateUntitledTab(void);
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void CreateMainLayout(HWND hwnd);
 void CreateMenus(HWND hwnd);
-void CreateMainToolbar(HWND hwnd);
-void CreateCodeToolbar(HWND hwnd);
 void CreateStatusBar(HWND hwnd);
-void InsertCodeTemplate(int templateId);
 void ShowManipulationToolbar(BOOL show);
 void UpdateStatusBar(LPCTSTR text);
 void PositionTabCloseButton(void);
@@ -609,60 +695,138 @@ static BOOL TabControlNeedsScroll(void);
 static void UpdateTabNavigationButtons(void);
 static void EnsureTabVisible(int tabIndex);
 
-/* Code templates */
-static const char* codeTemplates[] = {
-    "void function_name(void) {\n    \n}",                           /* IDT_INSERT_FUNC */
-    "if (condition) {\n    \n}",                                      /* IDT_INSERT_IF */
-    "for (int i = 0; i < n; i++) {\n    \n}",                           /* IDT_INSERT_FOR */
-    "while (condition) {\n    \n}",                                     /* IDT_INSERT_WHILE */
-    "switch (value) {\n    case 1:\n        break;\n    default:\n        break;\n}",                                              /* IDT_INSERT_SWITCH */
-    "typedef struct {\n    \n} StructName;",                                 /* IDT_INSERT_STRUCT */
-    "typedef union {\n    \n} UnionName;",                                  /* IDT_INSERT_UNION */
-    "typedef enum {\n    \n} EnumName;",                                    /* IDT_INSERT_ENUM */
-    "typedef existing_type new_type;",                                   /* IDT_INSERT_TYPEDEF */
-    "#include \"header.h\"",                                             /* IDT_INSERT_INCLUDE */
-    "#define NAME value",                                                /* IDT_INSERT_DEFINE */
-};
-
-void InsertCodeTemplate(int templateId) {
-    int index = templateId - IDT_INSERT_FUNC;
-    if (index >= 0 && index < 12) {
-        SendMessage(hwndInput, EM_REPLACESEL, TRUE, (LPARAM)codeTemplates[index]);
-        SetFocus(hwndInput);
-    }
-}
-
 /* Project Settings Dialog */
 INT_PTR CALLBACK ProjectSettingsDlg(HWND hdlg, UINT msg, WPARAM wParam, LPARAM lParam) {
     (void)lParam;
-    static HWND hPlatform, hCompiler, hArch;
     switch (msg) {
-    case WM_INITDIALOG:
-        hPlatform = GetDlgItem(hdlg, 100);
-        hCompiler = GetDlgItem(hdlg, 101);
-        hArch = GetDlgItem(hdlg, 102);
+    case WM_INITDIALOG: {
+        hSettingsTab = CreateWindowExA(0, WC_TABCONTROL, NULL,
+            WS_CHILD | WS_VISIBLE | TCS_TABS | WS_TABSTOP,
+            10, 10, 390, 24, hdlg, (HMENU)IDC_SETTINGS_TAB, GetModuleHandle(NULL), NULL);
+        if (hSettingsTab) {
+            TCITEMA tci = {0};
+            tci.mask = TCIF_TEXT;
+            tci.pszText = "General";
+            TabCtrl_InsertItem(hSettingsTab, 0, &tci);
+            tci.pszText = "Build";
+            TabCtrl_InsertItem(hSettingsTab, 1, &tci);
+            TabCtrl_SetCurSel(hSettingsTab, 0);
+        }
+
+        hSettingsPlatformLabel = CreateWindowExA(0, "STATIC", "Platform:",
+            WS_CHILD | WS_VISIBLE,
+            10, 45, 80, 20, hdlg, NULL, GetModuleHandle(NULL), NULL);
+        hPlatform = CreateWindowExA(0, "COMBOBOX", NULL,
+            WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,
+            100, 45, 140, 120, hdlg, (HMENU)100, GetModuleHandle(NULL), NULL);
+
+        hSettingsCompilerLabel = CreateWindowExA(0, "STATIC", "Compiler:",
+            WS_CHILD | WS_VISIBLE,
+            10, 75, 80, 20, hdlg, NULL, GetModuleHandle(NULL), NULL);
+        hCompiler = CreateWindowExA(0, "COMBOBOX", NULL,
+            WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,
+            100, 75, 140, 120, hdlg, (HMENU)101, GetModuleHandle(NULL), NULL);
+
+        hSettingsArchLabel = CreateWindowExA(0, "STATIC", "Architecture:",
+            WS_CHILD | WS_VISIBLE,
+            10, 105, 80, 20, hdlg, NULL, GetModuleHandle(NULL), NULL);
+        hArch = CreateWindowExA(0, "COMBOBOX", NULL,
+            WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP,
+            100, 105, 140, 120, hdlg, (HMENU)102, GetModuleHandle(NULL), NULL);
+
+        hSettingsBuildLabel = CreateWindowExA(0, "STATIC", "Cleanup Settings:",
+            WS_CHILD,
+            10, 45, 150, 20, hdlg, NULL, GetModuleHandle(NULL), NULL);
+        hCleanupNone = CreateWindowExA(0, "BUTTON", "None",
+            WS_CHILD | BS_GROUPBOX | BS_AUTORADIOBUTTON | WS_TABSTOP,
+            30, 70, 200, 20, hdlg, (HMENU)IDC_BUILD_CLEANUP_NONE, GetModuleHandle(NULL), NULL);
+        hCleanupObjects = CreateWindowExA(0, "BUTTON", "Object Files",
+            WS_CHILD | BS_AUTORADIOBUTTON | WS_TABSTOP,
+            30, 95, 200, 20, hdlg, (HMENU)IDC_BUILD_CLEANUP_OBJECTS, GetModuleHandle(NULL), NULL);
+        hCleanupAll = CreateWindowExA(0, "BUTTON", "All",
+            WS_CHILD | BS_AUTORADIOBUTTON | WS_TABSTOP,
+            30, 120, 200, 20, hdlg, (HMENU)IDC_BUILD_CLEANUP_ALL, GetModuleHandle(NULL), NULL);
+
+        CreateWindowExA(0, "BUTTON", "OK",
+            WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON,
+            250, 180, 80, 24, hdlg, (HMENU)IDOK, GetModuleHandle(NULL), NULL);
+        CreateWindowExA(0, "BUTTON", "Cancel",
+            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+            335, 180, 80, 24, hdlg, (HMENU)IDCANCEL, GetModuleHandle(NULL), NULL);
+
         /* Populate combo boxes */
         SendMessage(hPlatform, CB_ADDSTRING, 0, (LPARAM)"Windows");
         SendMessage(hPlatform, CB_ADDSTRING, 0, (LPARAM)"Linux");
         SendMessage(hPlatform, CB_ADDSTRING, 0, (LPARAM)"macOS");
         SendMessage(hPlatform, CB_ADDSTRING, 0, (LPARAM)"Embedded");
         SendMessage(hPlatform, CB_ADDSTRING, 0, (LPARAM)"FreeBSD");
-        
+
         SendMessage(hCompiler, CB_ADDSTRING, 0, (LPARAM)"GCC");
         SendMessage(hCompiler, CB_ADDSTRING, 0, (LPARAM)"Clang");
         SendMessage(hCompiler, CB_ADDSTRING, 0, (LPARAM)"MSVC");
-        
+
         SendMessage(hArch, CB_ADDSTRING, 0, (LPARAM)"x86");
         SendMessage(hArch, CB_ADDSTRING, 0, (LPARAM)"x64");
         SendMessage(hArch, CB_ADDSTRING, 0, (LPARAM)"ARM");
         SendMessage(hArch, CB_ADDSTRING, 0, (LPARAM)"ARM64");
         SendMessage(hArch, CB_ADDSTRING, 0, (LPARAM)"RISC-V");
-        
-        /* Set defaults */
-        SendMessage(hPlatform, CB_SETCURSEL, 0, 0);
-        SendMessage(hCompiler, CB_SETCURSEL, 0, 0);
-        SendMessage(hArch, CB_SETCURSEL, 0, 0);
+
+        /* Set current values from config */
+        const char* currentPlatform = g_platform;
+        const char* currentCompiler = g_compiler;
+        const char* currentArch = g_architecture;
+        for (int i = 0; i < SendMessage(hPlatform, CB_GETCOUNT, 0, 0); i++) {
+            char item[64] = {0};
+            SendMessage(hPlatform, CB_GETLBTEXT, i, (LPARAM)item);
+            if (lstrcmpiA(item, currentPlatform) == 0) {
+                SendMessage(hPlatform, CB_SETCURSEL, i, 0);
+                break;
+            }
+        }
+        if (SendMessage(hPlatform, CB_GETCURSEL, 0, 0) == CB_ERR) {
+            SendMessage(hPlatform, CB_SETCURSEL, 0, 0);
+        }
+
+        for (int i = 0; i < SendMessage(hCompiler, CB_GETCOUNT, 0, 0); i++) {
+            char item[64] = {0};
+            SendMessage(hCompiler, CB_GETLBTEXT, i, (LPARAM)item);
+            if (lstrcmpiA(item, currentCompiler) == 0) {
+                SendMessage(hCompiler, CB_SETCURSEL, i, 0);
+                break;
+            }
+        }
+        if (SendMessage(hCompiler, CB_GETCURSEL, 0, 0) == CB_ERR) {
+            SendMessage(hCompiler, CB_SETCURSEL, 0, 0);
+        }
+
+        for (int i = 0; i < SendMessage(hArch, CB_GETCOUNT, 0, 0); i++) {
+            char item[64] = {0};
+            SendMessage(hArch, CB_GETLBTEXT, i, (LPARAM)item);
+            if (lstrcmpiA(item, currentArch) == 0) {
+                SendMessage(hArch, CB_SETCURSEL, i, 0);
+                break;
+            }
+        }
+        if (SendMessage(hArch, CB_GETCURSEL, 0, 0) == CB_ERR) {
+            SendMessage(hArch, CB_SETCURSEL, 0, 0);
+        }
+
+        if (lstrcmpiA(g_quickBuildCleanupType, QUICK_BUILD_CLEANUP_TYPE_OBJECT_FILES) == 0) {
+            SendMessage(hCleanupObjects, BM_SETCHECK, BST_CHECKED, 0);
+        } else if (lstrcmpiA(g_quickBuildCleanupType, QUICK_BUILD_CLEANUP_TYPE_ALL) == 0) {
+            SendMessage(hCleanupAll, BM_SETCHECK, BST_CHECKED, 0);
+        } else {
+            SendMessage(hCleanupNone, BM_SETCHECK, BST_CHECKED, 0);
+        }
+
+        UpdateProjectSettingsTabVisibility();
         return TRUE;
+    }
+    case WM_NOTIFY:
+        if (((LPNMHDR)lParam)->idFrom == IDC_SETTINGS_TAB && ((LPNMHDR)lParam)->code == TCN_SELCHANGE) {
+            UpdateProjectSettingsTabVisibility();
+        }
+        break;
     case WM_COMMAND:
         if (LOWORD(wParam) == IDOK) {
             char buf[64];
@@ -672,18 +836,32 @@ INT_PTR CALLBACK ProjectSettingsDlg(HWND hdlg, UINT msg, WPARAM wParam, LPARAM l
             strcpy(g_compiler, buf);
             SendMessage(hArch, WM_GETTEXT, 64, (LPARAM)buf);
             strcpy(g_architecture, buf);
+
+            if (SendMessage(hCleanupObjects, BM_GETCHECK, 0, 0) == BST_CHECKED) {
+                strcpy(g_quickBuildCleanupType, QUICK_BUILD_CLEANUP_TYPE_OBJECT_FILES);
+            } else if (SendMessage(hCleanupAll, BM_GETCHECK, 0, 0) == BST_CHECKED) {
+                strcpy(g_quickBuildCleanupType, QUICK_BUILD_CLEANUP_TYPE_ALL);
+            } else {
+                strcpy(g_quickBuildCleanupType, QUICK_BUILD_CLEANUP_TYPE_NONE);
+            }
+
             EndDialog(hdlg, IDOK);
         } else if (LOWORD(wParam) == IDCANCEL) {
             EndDialog(hdlg, IDCANCEL);
         }
         break;
-    
     }
     return FALSE;
 }
 
 void ShowProjectSettings(HWND parent) {
-    DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(1), parent, ProjectSettingsDlg);
+    DLGTEMPLATE* dlgTemplate = CreateProjectSettingsDialogTemplate();
+    if (!dlgTemplate) {
+        return;
+    }
+    DialogBoxIndirectParamA(GetModuleHandle(NULL), dlgTemplate, parent, ProjectSettingsDlg, 0);
+    GlobalFree((HGLOBAL)dlgTemplate);
+
     char status[256];
     sprintf(status, "Platform: %s | Compiler: %s | Architecture: %s", g_platform, g_compiler, g_architecture);
     UpdateStatusBar(status);
@@ -712,6 +890,50 @@ void GetSelectedText(HWND hwndEdit, char* buffer, int bufsize) {
     } else {
         buffer[0] = '\0';
     }
+}
+
+static BOOL GetSelectedTextDynamic(HWND hwndEdit, char** outText) {
+    if (!hwndEdit || !outText) return FALSE;
+
+    int start, end;
+    SendMessage(hwndEdit, EM_GETSEL, (WPARAM)&start, (LPARAM)&end);
+    if (start == end) {
+        *outText = NULL;
+        return FALSE;
+    }
+
+    int totalLen = GetWindowTextLengthA(hwndEdit);
+    if (totalLen < 0) {
+        *outText = NULL;
+        return FALSE;
+    }
+
+    char* allText = (char*)GlobalAlloc(GPTR, totalLen + 1);
+    if (!allText) {
+        *outText = NULL;
+        return FALSE;
+    }
+
+    SendMessage(hwndEdit, WM_GETTEXT, totalLen + 1, (LPARAM)allText);
+    int len = end - start;
+    if (len <= 0) {
+        GlobalFree((HGLOBAL)allText);
+        *outText = NULL;
+        return FALSE;
+    }
+
+    char* result = (char*)malloc(len + 1);
+    if (!result) {
+        GlobalFree((HGLOBAL)allText);
+        *outText = NULL;
+        return FALSE;
+    }
+
+    memcpy(result, allText + start, len);
+    result[len] = '\0';
+    GlobalFree((HGLOBAL)allText);
+    *outText = result;
+    return TRUE;
 }
 
 /* Manipulation functions */
@@ -770,14 +992,6 @@ void ManipulateSelection(int manipId) {
     
     SendMessage(hwndInput, EM_SETSEL, start, end);
     SendMessage(hwndInput, EM_REPLACESEL, TRUE, (LPARAM)result);
-}
-
-void ShowManipulationToolbar(BOOL show) {
-    if (show) {
-        ShowWindow(hwndToolbarCode, SW_SHOW);
-    } else {
-        ShowWindow(hwndToolbarCode, SW_HIDE);
-    }
 }
 
 void UpdateStatusBar(LPCTSTR text) {
@@ -1764,6 +1978,69 @@ LRESULT CALLBACK EditorSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM l
         UpdateLineNumbers(hwndInput, hwndLineNumbers);
         return result;
     }
+
+    if (msg == WM_CONTEXTMENU) {
+        POINT pt;
+        if ((short)LOWORD(lParam) == -1 && (short)HIWORD(lParam) == -1) {
+            GetCursorPos(&pt);
+        } else {
+            pt.x = (int)(short)LOWORD(lParam);
+            pt.y = (int)(short)HIWORD(lParam);
+        }
+
+        int start, end;
+        SendMessage(hwnd, EM_GETSEL, (WPARAM)&start, (LPARAM)&end);
+
+        HMENU hMenu = CreatePopupMenu();
+        AppendMenu(hMenu, MF_STRING, IDM_EDIT_UNDO, "Undo");
+        AppendMenu(hMenu, MF_STRING, IDM_EDIT_REDO, "Redo");
+        AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
+        AppendMenu(hMenu, MF_STRING, IDM_EDIT_CUT, "Cut");
+        AppendMenu(hMenu, MF_STRING, IDM_EDIT_COPY, "Copy");
+        AppendMenu(hMenu, MF_STRING, IDM_EDIT_PASTE, "Paste");
+        AppendMenu(hMenu, MF_STRING, IDM_EDIT_SELECTALL, "Select All");
+        if (start != end) {
+            AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
+            AppendMenu(hMenu, MF_STRING, IDM_EDIT_QUICK_COMPILE_SELECTION, "Compile & Run Selection");
+        }
+        SetForegroundWindow(hwnd);
+        int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwnd, NULL);
+        DestroyMenu(hMenu);
+
+        switch (cmd) {
+            case IDM_EDIT_UNDO:
+                SendMessage(hwnd, EM_UNDO, 0, 0);
+                break;
+            case IDM_EDIT_REDO:
+                SendMessage(hwnd, EM_UNDO, 1, 0);
+                break;
+            case IDM_EDIT_CUT:
+                SendMessage(hwnd, WM_CUT, 0, 0);
+                break;
+            case IDM_EDIT_COPY:
+                SendMessage(hwnd, WM_COPY, 0, 0);
+                break;
+            case IDM_EDIT_PASTE:
+                SendMessage(hwnd, WM_PASTE, 0, 0);
+                break;
+            case IDM_EDIT_SELECTALL:
+                SendMessage(hwnd, EM_SETSEL, 0, -1);
+                break;
+            case IDM_EDIT_QUICK_COMPILE_SELECTION: {
+                char* selectedText = NULL;
+                if (GetSelectedTextDynamic(hwnd, &selectedText)) {
+                    CompileSelectionFromStdin(hwndMain, selectedText);
+                    free(selectedText);
+                } else {
+                    MessageBox(hwndMain, "No code is selected.", "Quick Compile", MB_ICONINFORMATION);
+                }
+                break;
+            }
+        }
+
+        return 0;
+    }
+
     return CallWindowProc((WNDPROC)hwndOldEditorProc, hwnd, msg, wParam, lParam);
 }
 
@@ -1860,48 +2137,6 @@ void CreateMenus(HWND hwnd) {
     
     SetMenu(hwnd, hMenuBar);
     DebugLog("[FUNC] CreateMenus complete\n");
-}
-
-void CreateMainToolbar(HWND hwnd) {
-    hwndToolbarMain = CreateWindowEx(0, TOOLBARCLASSNAME, NULL,
-        WS_CHILD | WS_VISIBLE | TBSTYLE_FLAT | CCS_TOP,
-        0, 0, 0, 0, hwnd, (HMENU)IDC_TOOLBAR_MAIN, GetModuleHandle(NULL), NULL);
-    
-    TBBUTTON tbb[8];
-    memset(tbb, 0, sizeof(tbb));
-    tbb[0].iBitmap = 0; tbb[0].idCommand = IDM_FILE_NEW; tbb[0].fsState = TBSTATE_ENABLED; tbb[0].fsStyle = BTNS_BUTTON; tbb[0].iString = -1;
-    tbb[1].iBitmap = 0; tbb[1].idCommand = IDM_FILE_OPEN; tbb[1].fsState = TBSTATE_ENABLED; tbb[1].fsStyle = BTNS_BUTTON; tbb[1].iString = -1;
-    tbb[2].iBitmap = 0; tbb[2].idCommand = IDM_FILE_SAVE; tbb[2].fsState = TBSTATE_ENABLED; tbb[2].fsStyle = BTNS_BUTTON; tbb[2].iString = -1;
-    tbb[3].iBitmap = 0; tbb[3].idCommand = 0; tbb[3].fsState = 0; tbb[3].fsStyle = BTNS_SEP; tbb[3].iString = -1;
-    tbb[4].iBitmap = 0; tbb[4].idCommand = IDM_EDIT_UNDO; tbb[4].fsState = TBSTATE_ENABLED; tbb[4].fsStyle = BTNS_BUTTON; tbb[4].iString = -1;
-    tbb[5].iBitmap = 0; tbb[5].idCommand = IDM_EDIT_REDO; tbb[5].fsState = TBSTATE_ENABLED; tbb[5].fsStyle = BTNS_BUTTON; tbb[5].iString = -1;
-    tbb[6].iBitmap = 0; tbb[6].idCommand = 0; tbb[6].fsState = 0; tbb[6].fsStyle = BTNS_SEP; tbb[6].iString = -1;
-    tbb[7].iBitmap = 0; tbb[7].idCommand = IDM_PROJECT_SETTINGS; tbb[7].fsState = TBSTATE_ENABLED; tbb[7].fsStyle = BTNS_BUTTON; tbb[7].iString = -1;
-    
-    SendMessage(hwndToolbarMain, TB_ADDBUTTONS, 8, (LPARAM)tbb);
-    SendMessage(hwndToolbarMain, TB_AUTOSIZE, 0, 0);
-}
-
-void CreateCodeToolbar(HWND hwnd) {
-    hwndToolbarCode = CreateWindowEx(0, TOOLBARCLASSNAME, NULL,
-        WS_CHILD | WS_VISIBLE | TBSTYLE_FLAT | CCS_TOP,
-        0, 40, 0, 0, hwnd, (HMENU)IDC_TOOLBAR_CODE, GetModuleHandle(NULL), NULL);
-    
-    /* Code insertion buttons */
-    TBBUTTON codeTbb[11];
-    memset(codeTbb, 0, sizeof(codeTbb));
-    int i;
-    int cmdIds[] = {IDT_INSERT_FUNC, IDT_INSERT_IF, IDT_INSERT_FOR, IDT_INSERT_WHILE, IDT_INSERT_SWITCH,
-                    IDT_INSERT_STRUCT, IDT_INSERT_UNION, IDT_INSERT_ENUM, IDT_INSERT_TYPEDEF, IDT_INSERT_INCLUDE, IDT_INSERT_DEFINE};
-    for (i = 0; i < 11; i++) {
-        codeTbb[i].iBitmap = 0; codeTbb[i].idCommand = cmdIds[i]; codeTbb[i].fsState = TBSTATE_ENABLED; codeTbb[i].fsStyle = BTNS_BUTTON; codeTbb[i].iString = -1;
-    }
-    
-    SendMessage(hwndToolbarCode, TB_ADDBUTTONS, 11, (LPARAM)codeTbb);
-    SendMessage(hwndToolbarCode, TB_AUTOSIZE, 0, 0);
-    
-    /* Initially hidden until selection */
-    ShowWindow(hwndToolbarCode, SW_HIDE);
 }
 
 void CreateStatusBar(HWND hwnd) {
@@ -2327,6 +2562,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             DebugLog("[MENU] EditDeleteMenuItemClick\n");
             DeleteTreeFileItem();
             break;
+        case IDM_EDIT_QUICK_COMPILE_SELECTION:
+            DebugLog("[MENU] QuickCompileSelection\n");
+            {
+                char* selectedText = NULL;
+                if (GetSelectedTextDynamic(hwndInput, &selectedText)) {
+                    CompileSelectionFromStdin(hwnd, selectedText);
+                    free(selectedText);
+                } else {
+                    MessageBox(hwnd, "No code is selected.", "Quick Compile", MB_ICONINFORMATION);
+                }
+            }
+            break;
             
         /* Build menu */
         case IDM_BUILD_COMPILE:
@@ -2454,51 +2701,21 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             DebugLog("[MENU] ProjectSettingsMenuItemClick\n");
             ShowProjectSettings(hwnd);
             break;
-            
+        
         /* Code insertion toolbar */
         case IDT_INSERT_FUNC:
-            DebugLog("[TOOLBAR] Insert Function button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_IF:
-            DebugLog("[TOOLBAR] Insert If statement button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_FOR:
-            DebugLog("[TOOLBAR] Insert For loop button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_WHILE:
-            DebugLog("[TOOLBAR] Insert While loop button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_SWITCH:
-            DebugLog("[TOOLBAR] Insert Switch statement button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_STRUCT:
-            DebugLog("[TOOLBAR] Insert Struct button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_UNION:
-            DebugLog("[TOOLBAR] Insert Union button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_ENUM:
-            DebugLog("[TOOLBAR] Insert Enum button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_TYPEDEF:
-            DebugLog("[TOOLBAR] Insert Typedef button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_INCLUDE:
-            DebugLog("[TOOLBAR] Insert Include button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
-            break;
         case IDT_INSERT_DEFINE:
-            DebugLog("[TOOLBAR] Insert Define button clicked\n");
-            InsertCodeTemplate(LOWORD(wParam));
+            DebugLog("[TOOLBAR] Insert code template button clicked\n");
+            InsertCodeTemplate(hwndInput, LOWORD(wParam));
             break;
         default:
             DebugLog("[COMMAND] Unknown command ID: 0x%X (wParam=0x%X, lParam=0x%X)\n", LOWORD(wParam), wParam, lParam);
@@ -2813,6 +3030,56 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     }
 case WM_CONTEXTMENU: {
         HWND hWndCtrl = (HWND)wParam;
+        if (hWndCtrl == hwndInput) {
+            POINT pt;
+            if ((short)LOWORD(lParam) == -1 && (short)HIWORD(lParam) == -1) {
+                GetCursorPos(&pt);
+            } else {
+                pt.x = (int)(short)LOWORD(lParam);
+                pt.y = (int)(short)HIWORD(lParam);
+            }
+
+            int start, end;
+            SendMessage(hwndInput, EM_GETSEL, (WPARAM)&start, (LPARAM)&end);
+            HMENU hMenu = CreatePopupMenu();
+            AppendMenu(hMenu, MF_STRING, IDM_EDIT_UNDO, "Undo");
+            AppendMenu(hMenu, MF_STRING, IDM_EDIT_REDO, "Redo");
+            AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
+            AppendMenu(hMenu, MF_STRING, IDM_EDIT_CUT, "Cut");
+            AppendMenu(hMenu, MF_STRING, IDM_EDIT_COPY, "Copy");
+            AppendMenu(hMenu, MF_STRING, IDM_EDIT_PASTE, "Paste");
+            AppendMenu(hMenu, MF_STRING, IDM_EDIT_SELECTALL, "Select All");
+            if (start != end) {
+                AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
+                AppendMenu(hMenu, MF_STRING, IDM_EDIT_QUICK_COMPILE_SELECTION, "Quick Compile Selection");
+            }
+            SetForegroundWindow(hwndInput);
+            int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndInput, NULL);
+            DestroyMenu(hMenu);
+            if (cmd == IDM_EDIT_QUICK_COMPILE_SELECTION) {
+                char* selectedText = NULL;
+                if (GetSelectedTextDynamic(hwndInput, &selectedText)) {
+                    CompileSelectionFromStdin(hwnd, selectedText);
+                    free(selectedText);
+                } else {
+                    MessageBox(hwnd, "No code is selected.", "Quick Compile", MB_ICONINFORMATION);
+                }
+            } else if (cmd == IDM_EDIT_UNDO) {
+                SendMessage(hwndInput, EM_UNDO, 0, 0);
+            } else if (cmd == IDM_EDIT_REDO) {
+                SendMessage(hwndInput, EM_UNDO, 1, 0);
+            } else if (cmd == IDM_EDIT_CUT) {
+                SendMessage(hwndInput, WM_CUT, 0, 0);
+            } else if (cmd == IDM_EDIT_COPY) {
+                SendMessage(hwndInput, WM_COPY, 0, 0);
+            } else if (cmd == IDM_EDIT_PASTE) {
+                SendMessage(hwndInput, WM_PASTE, 0, 0);
+            } else if (cmd == IDM_EDIT_SELECTALL) {
+                SendMessage(hwndInput, EM_SETSEL, 0, -1);
+            }
+            return 0;
+        }
+
         if (hWndCtrl == hwndCodeTab) {
             POINT pt;
             if ((short)LOWORD(lParam) == -1 && (short)HIWORD(lParam) == -1) {
