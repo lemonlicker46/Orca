@@ -1,3 +1,0 @@
-C:/Users/kris/Desktop/Orca-main/Win32/build/CMakeFiles/orca.dir
-C:/Users/kris/Desktop/Orca-main/Win32/build/CMakeFiles/edit_cache.dir
-C:/Users/kris/Desktop/Orca-main/Win32/build/CMakeFiles/rebuild_cache.dir

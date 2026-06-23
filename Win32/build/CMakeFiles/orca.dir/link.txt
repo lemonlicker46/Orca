@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\orca.dir/objects.a
-C:\MinGW\bin\ar.exe qc CMakeFiles\orca.dir/objects.a @CMakeFiles\orca.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe -Wl,--whole-archive CMakeFiles\orca.dir/objects.a -Wl,--no-whole-archive -o orca.exe -Wl,--out-implib,liborca.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\orca.dir\linkLibs.rsp
