@@ -1,253 +1,21 @@
 #define _WIN32_WINNT 0x0501
 #define _WIN32_IE 0x0501
+
 #include <windows.h>
 #include <commctrl.h>
-#include <shellapi.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <ctype.h>
 #include <tchar.h>
 #include <string.h>
-
-static const unsigned char icon_image_0[] = {
-    0x28, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x01, 0x00, 0x20, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x40, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xEE, 0xEE, 0xEE, 0xFF, 0xFA, 0xFB, 0xFB, 0xFF, 0xFA, 0xFB, 0xFC, 0xFF, 0xA6, 0xA0, 0xA5, 0xFF,
-    0xE0, 0xDF, 0xE0, 0xFF, 0xEC, 0xEC, 0xEC, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF,
-    0xE8, 0xE8, 0xE8, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xEB, 0xEB, 0xEB, 0xFF, 0xFC, 0xFE, 0xFD, 0xFF,
-    0xF0, 0xF1, 0xF2, 0xFF, 0xC1, 0xBD, 0xC1, 0xFF, 0x6D, 0x5F, 0x62, 0xFF, 0x6E, 0x60, 0x64, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0xF4, 0xF5, 0xF5, 0xFF, 0xEA, 0xEA, 0xEA, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE8, 0xE8, 0xE8, 0xFF, 0xE7, 0xE7, 0xE7, 0xFF,
-    0xEA, 0xE9, 0xE9, 0xFF, 0xF5, 0xF6, 0xF6, 0xFF, 0xF6, 0xF8, 0xF9, 0xFF, 0xA1, 0x9A, 0x9F, 0xFF,
-    0x53, 0x43, 0x49, 0xFF, 0x23, 0x08, 0x08, 0xFF, 0x2C, 0x15, 0x15, 0xFF, 0x8A, 0x81, 0x85, 0xFF,
-    0xBB, 0xB6, 0xB9, 0xFF, 0xDA, 0xD9, 0xDC, 0xFF, 0xFB, 0xFC, 0xFC, 0xFF, 0xEE, 0xEE, 0xEE, 0xFF,
-    0xE7, 0xE7, 0xE7, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEA, 0xEA, 0xEA, 0xFF, 0xEE, 0xED, 0xEE, 0xFF,
-    0xE7, 0xE7, 0xE7, 0xFF, 0xD4, 0xD2, 0xD3, 0xFF, 0x6E, 0x60, 0x64, 0xFF, 0x10, 0x00, 0x00, 0xFF,
-    0x2C, 0x1A, 0x1B, 0xFF, 0x5D, 0x54, 0x56, 0xFF, 0x35, 0x25, 0x2B, 0xFF, 0x16, 0x01, 0x07, 0xFF,
-    0x1C, 0x05, 0x07, 0xFF, 0x2E, 0x1A, 0x1D, 0xFF, 0x7B, 0x6F, 0x74, 0xFF, 0xEF, 0xEF, 0xEE, 0xFF,
-    0xF0, 0xF0, 0xF0, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xF1, 0xF1, 0xF1, 0xFF,
-    0xE2, 0xE0, 0xE1, 0xFF, 0x70, 0x66, 0x69, 0xFF, 0x41, 0x30, 0x2E, 0xFF, 0x56, 0x43, 0x3E, 0xFF,
-    0x9F, 0x99, 0x9A, 0xFF, 0xE7, 0xEA, 0xED, 0xFF, 0xCD, 0xCB, 0xCC, 0xFF, 0x5E, 0x52, 0x55, 0xFF,
-    0x37, 0x26, 0x33, 0xFF, 0x36, 0x1F, 0x20, 0xFF, 0x38, 0x28, 0x32, 0xFF, 0x7A, 0x6F, 0x77, 0xFF,
-    0xF3, 0xF3, 0xF2, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE7, 0xE7, 0xFF,
-    0xEB, 0xEA, 0xEA, 0xFF, 0xEF, 0xF0, 0xF0, 0xFF, 0xF4, 0xF7, 0xF7, 0xFF, 0xED, 0xEF, 0xF0, 0xFF,
-    0xF4, 0xF4, 0xF5, 0xFF, 0xF0, 0xEF, 0xEF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xDB, 0xDC, 0xDE, 0xFF,
-    0x67, 0x61, 0x7A, 0xFF, 0x58, 0x4B, 0x5C, 0xFF, 0x5D, 0x54, 0x68, 0xFF, 0x5D, 0x57, 0x6C, 0xFF,
-    0xBF, 0xBC, 0xBD, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE8, 0xE8, 0xE8, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xEB, 0xEB, 0xEB, 0xFF, 0xED, 0xEC, 0xED, 0xFF, 0xA6, 0x9E, 0xA2, 0xFF, 0xE6, 0xE6, 0xE7, 0xFF,
-    0xF4, 0xF4, 0xF4, 0xFF, 0xEF, 0xEF, 0xEF, 0xFF, 0xF9, 0xFA, 0xF7, 0xFF, 0x9C, 0x95, 0xA0, 0xFF,
-    0x5B, 0x51, 0x6C, 0xFF, 0x4D, 0x3D, 0x4E, 0xFF, 0x39, 0x1F, 0x1E, 0xFF, 0x75, 0x75, 0x8A, 0xFF,
-    0xBA, 0xBF, 0xC9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE8, 0xE8, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF,
-    0xF7, 0xF8, 0xF8, 0xFF, 0xBC, 0xB8, 0xBC, 0xFF, 0x0C, 0x00, 0x00, 0xFF, 0x53, 0x43, 0x46, 0xFF,
-    0xF4, 0xF4, 0xF3, 0xFF, 0xEC, 0xEC, 0xEB, 0xFF, 0x90, 0x8A, 0x9A, 0xFF, 0x4A, 0x3D, 0x57, 0xFF,
-    0x45, 0x2D, 0x30, 0xFF, 0x5A, 0x3D, 0x30, 0xFF, 0x47, 0x2F, 0x29, 0xFF, 0x6D, 0x6D, 0x78, 0xFF,
-    0xC7, 0xCD, 0xD6, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE8, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xF6, 0xF6, 0xF6, 0xFF, 0xC1, 0xC0, 0xC3, 0xFF, 0x1B, 0x09, 0x10, 0xFF, 0x12, 0x00, 0x00, 0xFF,
-    0x7C, 0x70, 0x76, 0xFF, 0x84, 0x7D, 0x92, 0xFF, 0x63, 0x5C, 0x7B, 0xFF, 0x47, 0x30, 0x33, 0xFF,
-    0x5B, 0x3D, 0x2E, 0xFF, 0x5D, 0x49, 0x42, 0xFF, 0x32, 0x1C, 0x1B, 0xFF, 0x68, 0x62, 0x68, 0xFF,
-    0xD8, 0xDA, 0xDF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE8, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xF0, 0xF0, 0xF0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x83, 0x82, 0x85, 0xFF, 0x18, 0x04, 0x0E, 0xFF,
-    0x4C, 0x3C, 0x56, 0xFF, 0x6D, 0x66, 0x83, 0xFF, 0x47, 0x35, 0x3F, 0xFF, 0x52, 0x37, 0x2D, 0xFF,
-    0x4D, 0x3C, 0x3E, 0xFF, 0x32, 0x1F, 0x24, 0xFF, 0x3F, 0x25, 0x1D, 0xFF, 0x8D, 0x86, 0x8A, 0xFF,
-    0xF3, 0xF4, 0xF5, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEA, 0xEA, 0xEA, 0xFF, 0xF6, 0xF6, 0xF4, 0xFF,
-    0xE8, 0xE7, 0xE6, 0xFF, 0xB6, 0xAF, 0xB5, 0xFF, 0x89, 0x81, 0x92, 0xFF, 0x72, 0x6E, 0x89, 0xFF,
-    0xA3, 0xAE, 0xCD, 0xFF, 0xA2, 0xB2, 0xC8, 0xFF, 0x38, 0x24, 0x24, 0xFF, 0x31, 0x1B, 0x20, 0xFF,
-    0x30, 0x1B, 0x20, 0xFF, 0x45, 0x29, 0x22, 0xFF, 0x5F, 0x4C, 0x47, 0xFF, 0xD5, 0xD5, 0xD7, 0xFF,
-    0xF3, 0xF3, 0xF3, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEF, 0xF0, 0xEF, 0xFF, 0xB6, 0xB4, 0xBF, 0xFF,
-    0x7C, 0x79, 0x92, 0xFF, 0x89, 0x91, 0xAD, 0xFF, 0xA5, 0xB6, 0xD1, 0xFF, 0xAD, 0xBF, 0xD4, 0xFF,
-    0x8A, 0x94, 0x9F, 0xFF, 0x56, 0x4F, 0x55, 0xFF, 0x2E, 0x19, 0x1C, 0xFF, 0x39, 0x22, 0x21, 0xFF,
-    0x52, 0x35, 0x2B, 0xFF, 0x58, 0x44, 0x3D, 0xFF, 0x67, 0x5C, 0x62, 0xFF, 0xF9, 0xFB, 0xFC, 0xFF,
-    0xEA, 0xEA, 0xEA, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xB0, 0xAC, 0xB2, 0xFF, 0x48, 0x3B, 0x47, 0xFF,
-    0x51, 0x45, 0x4C, 0xFF, 0x4F, 0x46, 0x53, 0xFF, 0x65, 0x63, 0x71, 0xFF, 0x9F, 0xB1, 0xC0, 0xFF,
-    0x8B, 0x96, 0xA5, 0xFF, 0x45, 0x34, 0x36, 0xFF, 0x46, 0x28, 0x20, 0xFF, 0x5E, 0x41, 0x30, 0xFF,
-    0x73, 0x66, 0x59, 0xFF, 0x3F, 0x2E, 0x2D, 0xFF, 0x37, 0x22, 0x26, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF,
-    0xF5, 0xF6, 0xF6, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xBE, 0xBC, 0xBF, 0xFF, 0x55, 0x44, 0x3F, 0xFF,
-    0x39, 0x1A, 0x0E, 0xFF, 0x32, 0x17, 0x17, 0xFF, 0x84, 0x87, 0x92, 0xFF, 0xA9, 0xB9, 0xC6, 0xFF,
-    0x80, 0x7E, 0x82, 0xFF, 0x5E, 0x42, 0x32, 0xFF, 0x6B, 0x51, 0x3D, 0xFF, 0x95, 0x92, 0x90, 0xFF,
-    0xA5, 0xA3, 0xA6, 0xFF, 0x5E, 0x4A, 0x45, 0xFF, 0x36, 0x21, 0x1D, 0xFF, 0x64, 0x56, 0x58, 0xFF,
-    0xDA, 0xD9, 0xDB, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xF8, 0xF8, 0xF8, 0xFF, 0xD1, 0xD1, 0xD4, 0xFF,
-    0x6C, 0x5E, 0x5A, 0xFF, 0x58, 0x40, 0x35, 0xFF, 0x50, 0x34, 0x28, 0xFF, 0x48, 0x2A, 0x1E, 0xFF,
-    0x58, 0x3F, 0x33, 0xFF, 0x85, 0x7D, 0x77, 0xFF, 0xBD, 0xBF, 0xC3, 0xFF, 0xEF, 0xF0, 0xF3, 0xFF,
-    0xF7, 0xF7, 0xF8, 0xFF, 0xE3, 0xE5, 0xE6, 0xFF, 0xC6, 0xC7, 0xC8, 0xFF, 0xAE, 0xAD, 0xAF, 0xFF,
-    0xD4, 0xD3, 0xD5, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE8, 0xE9, 0xFF, 0xF3, 0xF4, 0xF4, 0xFF,
-    0xE5, 0xE7, 0xEA, 0xFF, 0xBB, 0xBA, 0xBC, 0xFF, 0xA9, 0xA6, 0xA3, 0xFF, 0xAB, 0xA5, 0xA7, 0xFF,
-    0xCA, 0xCA, 0xCD, 0xFF, 0xE9, 0xEB, 0xEE, 0xFF, 0xF5, 0xF5, 0xF6, 0xFF, 0xEC, 0xEC, 0xEC, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xEF, 0xEF, 0xEF, 0xFF, 0xF5, 0xF5, 0xF5, 0xFF, 0xF5, 0xF6, 0xF6, 0xFF,
-    0xED, 0xED, 0xED, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-static const unsigned int icon_image_0_len = 1128;
-
-static const unsigned char icon_image_1[] = {
-    0x28, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x30, 0x00, 0x00, 0x00, 0x01, 0x00, 0x20, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x60, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE7, 0xE7, 0xE7, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xEA, 0xEA, 0xEB, 0xFF, 0xFC, 0xFE, 0xFD, 0xFF,
-    0xC0, 0xBE, 0xC2, 0xFF, 0xD0, 0xCE, 0xD0, 0xFF, 0xEE, 0xEE, 0xEE, 0xFF, 0xEA, 0xE9, 0xE9, 0xFF,
-    0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE9, 0xFF,
-    0xE8, 0xE7, 0xE8, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE9, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xE8, 0xE8, 0xE9, 0xFF,
-    0xF1, 0xF1, 0xF1, 0xFF, 0xFA, 0xFB, 0xFB, 0xFF, 0xFE, 0xFF, 0xFF, 0xFF, 0xC9, 0xC5, 0xC9, 0xFF,
-    0x3D, 0x2C, 0x35, 0xFF, 0xC8, 0xC5, 0xC7, 0xFF, 0xF4, 0xF4, 0xF4, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE8, 0xE8, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xE8, 0xE8, 0xE8, 0xFF, 0xEA, 0xEA, 0xEA, 0xFF, 0xF7, 0xF8, 0xF8, 0xFF, 0xFA, 0xFB, 0xFB, 0xFF,
-    0xDE, 0xDD, 0xE0, 0xFF, 0xAA, 0xA4, 0xAA, 0xFF, 0x69, 0x5C, 0x62, 0xFF, 0x20, 0x09, 0x0C, 0xFF,
-    0x55, 0x44, 0x46, 0xFF, 0xFC, 0xFE, 0xFE, 0xFF, 0xF2, 0xF2, 0xF2, 0xFF, 0xEA, 0xEA, 0xEA, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xE8, 0xE8, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE8, 0xE8, 0xE9, 0xFF, 0xE9, 0xE8, 0xE8, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xED, 0xED, 0xED, 0xFF, 0xF6, 0xF6, 0xF7, 0xFF, 0xC9, 0xC6, 0xC9, 0xFF, 0xAB, 0xA5, 0xAA, 0xFF,
-    0x2F, 0x1C, 0x23, 0xFF, 0x23, 0x0B, 0x0D, 0xFF, 0x2D, 0x13, 0x11, 0xFF, 0x41, 0x2B, 0x29, 0xFF,
-    0xB5, 0xAF, 0xB3, 0xFF, 0xF0, 0xF1, 0xF2, 0xFF, 0xEB, 0xEB, 0xED, 0xFF, 0xFA, 0xFB, 0xFB, 0xFF,
-    0xF7, 0xF8, 0xF7, 0xFF, 0xEB, 0xEA, 0xEA, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE8, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF,
-    0xE8, 0xE7, 0xE8, 0xFF, 0xE8, 0xE7, 0xE8, 0xFF, 0xED, 0xEE, 0xEE, 0xFF, 0xF6, 0xF7, 0xF7, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0x91, 0x89, 0x8F, 0xFF, 0x18, 0x02, 0x09, 0xFF, 0x1C, 0x08, 0x10, 0xFF,
-    0x30, 0x18, 0x17, 0xFF, 0x47, 0x2E, 0x28, 0xFF, 0x50, 0x41, 0x40, 0xFF, 0x38, 0x2A, 0x35, 0xFF,
-    0x3C, 0x2B, 0x34, 0xFF, 0x37, 0x25, 0x29, 0xFF, 0x40, 0x2E, 0x36, 0xFF, 0x73, 0x67, 0x6E, 0xFF,
-    0xC1, 0xBD, 0xC2, 0xFF, 0xFC, 0xFD, 0xFD, 0xFF, 0xF1, 0xF1, 0xF0, 0xFF, 0xE8, 0xE7, 0xE8, 0xFF,
-    0xE8, 0xE8, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEF, 0xEF, 0xEF, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xF1, 0xF0, 0xF1, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xDD, 0xDB, 0xDC, 0xFF, 0xD5, 0xD2, 0xD5, 0xFF,
-    0x71, 0x64, 0x6C, 0xFF, 0x1E, 0x06, 0x0B, 0xFF, 0x31, 0x19, 0x18, 0xFF, 0x34, 0x1E, 0x1E, 0xFF,
-    0x57, 0x51, 0x53, 0xFF, 0x66, 0x67, 0x6D, 0xFF, 0x3A, 0x2D, 0x34, 0xFF, 0x20, 0x0A, 0x0F, 0xFF,
-    0x1C, 0x07, 0x0C, 0xFF, 0x23, 0x0F, 0x13, 0xFF, 0x2A, 0x14, 0x13, 0xFF, 0x23, 0x0C, 0x0E, 0xFF,
-    0x1C, 0x06, 0x0D, 0xFF, 0x6C, 0x5E, 0x64, 0xFF, 0xEF, 0xEF, 0xF0, 0xFF, 0xF2, 0xF3, 0xF2, 0xFF,
-    0xE7, 0xE7, 0xE7, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE8, 0xE7, 0xE7, 0xFF, 0xE9, 0xE9, 0xEA, 0xFF,
-    0xF0, 0xEF, 0xF0, 0xFF, 0xF4, 0xF5, 0xF5, 0xFF, 0x98, 0x8F, 0x93, 0xFF, 0x37, 0x27, 0x29, 0xFF,
-    0x29, 0x12, 0x11, 0xFF, 0x3C, 0x25, 0x1F, 0xFF, 0x43, 0x2A, 0x23, 0xFF, 0x53, 0x41, 0x3F, 0xFF,
-    0xAE, 0xAE, 0xB3, 0xFF, 0xE0, 0xE1, 0xE5, 0xFF, 0xD3, 0xD2, 0xD4, 0xFF, 0x9D, 0x99, 0x9C, 0xFF,
-    0x3D, 0x2D, 0x2E, 0xFF, 0x2E, 0x1B, 0x24, 0xFF, 0x38, 0x25, 0x2E, 0xFF, 0x38, 0x22, 0x1F, 0xFF,
-    0x3C, 0x27, 0x27, 0xFF, 0x28, 0x15, 0x1C, 0xFF, 0x55, 0x44, 0x4A, 0xFF, 0xF1, 0xF2, 0xF3, 0xFF,
-    0xEF, 0xEF, 0xEF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEA, 0xEA, 0xEA, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE8, 0xE7, 0xE7, 0xFF, 0xEA, 0xEA, 0xEA, 0xFF, 0xEE, 0xEE, 0xEE, 0xFF, 0xC8, 0xC8, 0xC9, 0xFF,
-    0xAB, 0xAB, 0xAD, 0xFF, 0x9E, 0x9F, 0x9C, 0xFF, 0xAB, 0xA6, 0xA7, 0xFF, 0xD7, 0xD7, 0xDA, 0xFF,
-    0xF8, 0xF8, 0xF8, 0xFF, 0xF1, 0xF1, 0xF0, 0xFF, 0xF5, 0xF5, 0xF4, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-    0xBB, 0xBA, 0xBC, 0xFF, 0x4F, 0x47, 0x55, 0xFF, 0x63, 0x58, 0x72, 0xFF, 0x51, 0x41, 0x4C, 0xFF,
-    0x3D, 0x28, 0x27, 0xFF, 0x98, 0x9F, 0xBF, 0xFF, 0x44, 0x39, 0x48, 0xFF, 0x8D, 0x83, 0x86, 0xFF,
-    0xFA, 0xFB, 0xFB, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE8, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xEB, 0xEA, 0xEB, 0xFF, 0xF2, 0xF2, 0xF2, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF5, 0xF6, 0xF6, 0xFF, 0xF1, 0xF1, 0xF1, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xEE, 0xEE, 0xEE, 0xFF,
-    0xFA, 0xFB, 0xF9, 0xFF, 0x75, 0x71, 0x81, 0xFF, 0x69, 0x60, 0x7B, 0xFF, 0x74, 0x6C, 0x81, 0xFF,
-    0x36, 0x23, 0x28, 0xFF, 0x6C, 0x66, 0x81, 0xFF, 0x6C, 0x68, 0x81, 0xFF, 0x61, 0x5A, 0x63, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xEF, 0xF0, 0xF0, 0xFF,
-    0xD6, 0xD4, 0xD6, 0xFF, 0xD3, 0xD1, 0xD4, 0xFF, 0xF9, 0xFA, 0xFA, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE8, 0xE8, 0xE8, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xEA, 0xEA, 0xEA, 0xFF, 0xFE, 0xFF, 0xFD, 0xFF,
-    0xC2, 0xBE, 0xC2, 0xFF, 0x54, 0x48, 0x5D, 0xFF, 0x76, 0x70, 0x8B, 0xFF, 0x5D, 0x53, 0x6C, 0xFF,
-    0x27, 0x11, 0x1E, 0xFF, 0x39, 0x1E, 0x1A, 0xFF, 0x6B, 0x65, 0x79, 0xFF, 0x8A, 0x91, 0xA9, 0xFF,
-    0xD4, 0xD3, 0xD4, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE8, 0xFF,
-    0xE9, 0xE8, 0xE9, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xEE, 0xEE, 0xEE, 0xFF, 0xED, 0xED, 0xEE, 0xFF,
-    0x43, 0x31, 0x38, 0xFF, 0x27, 0x12, 0x16, 0xFF, 0xC1, 0xBE, 0xC1, 0xFF, 0xFD, 0xFE, 0xFE, 0xFF,
-    0xE8, 0xE7, 0xE7, 0xFF, 0xF0, 0xF0, 0xEF, 0xFF, 0xFA, 0xFB, 0xF8, 0xFF, 0xB7, 0xB2, 0xB6, 0xFF,
-    0x52, 0x45, 0x5A, 0xFF, 0x4B, 0x3D, 0x56, 0xFF, 0x4B, 0x3A, 0x4B, 0xFF, 0x45, 0x2D, 0x2D, 0xFF,
-    0x52, 0x36, 0x2C, 0xFF, 0x51, 0x3C, 0x37, 0xFF, 0x6D, 0x6A, 0x7B, 0xFF, 0xA5, 0xB6, 0xCD, 0xFF,
-    0xCE, 0xCB, 0xCD, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEA, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE8, 0xFF,
-    0xE9, 0xE8, 0xE8, 0xFF, 0xE9, 0xE8, 0xE9, 0xFF, 0xFA, 0xFA, 0xF9, 0xFF, 0xAB, 0xA7, 0xAD, 0xFF,
-    0x17, 0x02, 0x0A, 0xFF, 0x26, 0x0F, 0x11, 0xFF, 0x2B, 0x16, 0x1A, 0xFF, 0xC0, 0xBC, 0xBE, 0xFF,
-    0xFF, 0xFF, 0xFF, 0xFF, 0xEB, 0xEA, 0xE9, 0xFF, 0x8A, 0x82, 0x8E, 0xFF, 0x60, 0x57, 0x71, 0xFF,
-    0x57, 0x4C, 0x67, 0xFF, 0x41, 0x2C, 0x34, 0xFF, 0x51, 0x36, 0x2A, 0xFF, 0x58, 0x3B, 0x2E, 0xFF,
-    0x68, 0x52, 0x47, 0xFF, 0x31, 0x1D, 0x20, 0xFF, 0x51, 0x44, 0x45, 0xFF, 0xA6, 0xB5, 0xC6, 0xFF,
-    0xD7, 0xD4, 0xD5, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE8, 0xE8, 0xE8, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE9, 0xFF, 0xF6, 0xF7, 0xF6, 0xFF, 0xBB, 0xBA, 0xBE, 0xFF,
-    0x1E, 0x0D, 0x15, 0xFF, 0x2A, 0x14, 0x18, 0xFF, 0x1F, 0x09, 0x0C, 0xFF, 0x54, 0x44, 0x47, 0xFF,
-    0xD9, 0xD8, 0xDA, 0xFF, 0x67, 0x5C, 0x6D, 0xFF, 0x68, 0x60, 0x7D, 0xFF, 0x70, 0x6A, 0x87, 0xFF,
-    0x40, 0x2C, 0x34, 0xFF, 0x53, 0x36, 0x2B, 0xFF, 0x54, 0x37, 0x2D, 0xFF, 0x6F, 0x58, 0x49, 0xFF,
-    0x48, 0x38, 0x3B, 0xFF, 0x30, 0x17, 0x15, 0xFF, 0x5A, 0x4F, 0x50, 0xFF, 0x9E, 0xA5, 0xB3, 0xFF,
-    0xEA, 0xE8, 0xE7, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE9, 0xFF,
-    0xE9, 0xE8, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF, 0xEF, 0xEE, 0xEE, 0xFF, 0xE6, 0xE7, 0xE8, 0xFF,
-    0x4F, 0x4E, 0x57, 0xFF, 0x1A, 0x05, 0x0C, 0xFF, 0x22, 0x0C, 0x12, 0xFF, 0x27, 0x13, 0x20, 0xFF,
-    0x5D, 0x52, 0x68, 0xFF, 0x75, 0x6E, 0x8A, 0xFF, 0x81, 0x7D, 0x9A, 0xFF, 0x43, 0x31, 0x40, 0xFF,
-    0x46, 0x2B, 0x23, 0xFF, 0x58, 0x3C, 0x31, 0xFF, 0x66, 0x51, 0x48, 0xFF, 0x48, 0x3B, 0x40, 0xFF,
-    0x33, 0x1E, 0x20, 0xFF, 0x41, 0x27, 0x1F, 0xFF, 0x65, 0x5F, 0x65, 0xFF, 0xB3, 0xB3, 0xBB, 0xFF,
-    0xF6, 0xF5, 0xF4, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEA, 0xEA, 0xEA, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE8, 0xE8, 0xE8, 0xFF, 0xE8, 0xE8, 0xE9, 0xFF, 0xEA, 0xEA, 0xEA, 0xFF, 0xFC, 0xFC, 0xFA, 0xFF,
-    0xDE, 0xE2, 0xE4, 0xFF, 0x52, 0x51, 0x57, 0xFF, 0x1C, 0x07, 0x12, 0xFF, 0x52, 0x44, 0x5B, 0xFF,
-    0x71, 0x68, 0x83, 0xFF, 0x70, 0x68, 0x81, 0xFF, 0x3C, 0x2C, 0x3E, 0xFF, 0x41, 0x28, 0x24, 0xFF,
-    0x5B, 0x3F, 0x36, 0xFF, 0x5B, 0x4B, 0x4B, 0xFF, 0x35, 0x27, 0x32, 0xFF, 0x2C, 0x16, 0x1B, 0xFF,
-    0x43, 0x2C, 0x27, 0xFF, 0x4E, 0x32, 0x28, 0xFF, 0x71, 0x69, 0x6E, 0xFF, 0xEA, 0xEA, 0xEB, 0xFF,
-    0xEF, 0xEF, 0xEF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE9, 0xE9, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xEA, 0xEA, 0xEB, 0xFF, 0xF4, 0xF5, 0xF4, 0xFF, 0xF7, 0xF8, 0xF6, 0xFF, 0xDB, 0xD9, 0xD9, 0xFF,
-    0xB2, 0xAA, 0xB0, 0xFF, 0x61, 0x55, 0x66, 0xFF, 0x5A, 0x4E, 0x68, 0xFF, 0x7B, 0x75, 0x92, 0xFF,
-    0x8B, 0x8D, 0xAA, 0xFF, 0xA1, 0xAF, 0xCA, 0xFF, 0x47, 0x3A, 0x3D, 0xFF, 0x3D, 0x24, 0x22, 0xFF,
-    0x39, 0x24, 0x2A, 0xFF, 0x29, 0x16, 0x1F, 0xFF, 0x30, 0x1A, 0x1C, 0xFF, 0x43, 0x2C, 0x28, 0xFF,
-    0x4E, 0x32, 0x29, 0xFF, 0x5F, 0x50, 0x4B, 0xFF, 0xBB, 0xBC, 0xC0, 0xFF, 0xF7, 0xF7, 0xF6, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE7, 0xE7, 0xE7, 0xFF, 0xF3, 0xF2, 0xF1, 0xFF,
-    0xF4, 0xF5, 0xF2, 0xFF, 0xC7, 0xC3, 0xC5, 0xFF, 0x80, 0x74, 0x82, 0xFF, 0x54, 0x47, 0x5E, 0xFF,
-    0x65, 0x5F, 0x7C, 0xFF, 0x97, 0x9F, 0xBB, 0xFF, 0xAE, 0xBE, 0xD8, 0xFF, 0xBE, 0xD7, 0xF1, 0xFF,
-    0xD3, 0xF5, 0xFF, 0xFF, 0xB8, 0xD1, 0xE2, 0xFF, 0x49, 0x3D, 0x42, 0xFF, 0x26, 0x0F, 0x14, 0xFF,
-    0x2E, 0x1B, 0x1E, 0xFF, 0x3B, 0x25, 0x24, 0xFF, 0x4C, 0x33, 0x2E, 0xFF, 0x55, 0x39, 0x2E, 0xFF,
-    0x5D, 0x46, 0x3B, 0xFF, 0x6B, 0x63, 0x6C, 0xFF, 0xF8, 0xF9, 0xFA, 0xFF, 0xEC, 0xEB, 0xEB, 0xFF,
-    0xE6, 0xE5, 0xE6, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xF1, 0xF1, 0xF1, 0xFF, 0xD8, 0xD7, 0xD9, 0xFF,
-    0x81, 0x7B, 0x8D, 0xFF, 0x69, 0x65, 0x83, 0xFF, 0x8A, 0x91, 0xAF, 0xFF, 0xB5, 0xC8, 0xE4, 0xFF,
-    0xCD, 0xEA, 0xFF, 0xFF, 0xB3, 0xC9, 0xE1, 0xFF, 0xB0, 0xC6, 0xD8, 0xFF, 0x7B, 0x80, 0x88, 0xFF,
-    0x53, 0x49, 0x4D, 0xFF, 0x2A, 0x14, 0x16, 0xFF, 0x2E, 0x17, 0x19, 0xFF, 0x39, 0x24, 0x25, 0xFF,
-    0x43, 0x2D, 0x2A, 0xFF, 0x50, 0x35, 0x2E, 0xFF, 0x53, 0x34, 0x2B, 0xFF, 0x6F, 0x60, 0x58, 0xFF,
-    0x35, 0x29, 0x2E, 0xFF, 0x82, 0x77, 0x7D, 0xFF, 0xFD, 0xFF, 0xFF, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF,
-    0xE9, 0xE8, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE9, 0xE8, 0xE8, 0xFF, 0x77, 0x72, 0x84, 0xFF,
-    0x55, 0x50, 0x67, 0xFF, 0x5F, 0x5A, 0x68, 0xFF, 0x63, 0x60, 0x68, 0xFF, 0x63, 0x5F, 0x6C, 0xFF,
-    0x4A, 0x3E, 0x4A, 0xFF, 0x4F, 0x45, 0x4C, 0xFF, 0x78, 0x7C, 0x86, 0xFF, 0x64, 0x60, 0x69, 0xFF,
-    0x5F, 0x5A, 0x62, 0xFF, 0x3F, 0x2C, 0x2E, 0xFF, 0x3D, 0x26, 0x25, 0xFF, 0x4D, 0x34, 0x2F, 0xFF,
-    0x5A, 0x3C, 0x30, 0xFF, 0x66, 0x46, 0x34, 0xFF, 0x86, 0x7E, 0x71, 0xFF, 0x59, 0x51, 0x53, 0xFF,
-    0x19, 0x02, 0x07, 0xFF, 0x61, 0x52, 0x54, 0xFF, 0xFD, 0xFF, 0xFF, 0xFF, 0xED, 0xEE, 0xEE, 0xFF,
-    0xE8, 0xE8, 0xE8, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xCD, 0xCC, 0xD0, 0xFF, 0x34, 0x23, 0x27, 0xFF,
-    0x4C, 0x2F, 0x20, 0xFF, 0x4D, 0x31, 0x26, 0xFF, 0x2D, 0x14, 0x12, 0xFF, 0x1C, 0x03, 0x11, 0xFF,
-    0x5A, 0x52, 0x64, 0xFF, 0xC4, 0xE1, 0xF2, 0xFF, 0xDB, 0xFF, 0xFF, 0xFF, 0xDD, 0xFF, 0xFF, 0xFF,
-    0xB8, 0xD1, 0xE3, 0xFF, 0x59, 0x4A, 0x49, 0xFF, 0x52, 0x33, 0x28, 0xFF, 0x6B, 0x49, 0x35, 0xFF,
-    0x6C, 0x53, 0x41, 0xFF, 0x7E, 0x81, 0x7D, 0xFF, 0x64, 0x5C, 0x57, 0xFF, 0x40, 0x21, 0x18, 0xFF,
-    0x36, 0x1D, 0x1B, 0xFF, 0x28, 0x11, 0x13, 0xFF, 0xAA, 0xA2, 0xA5, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-    0xEC, 0xEC, 0xEB, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEC, 0xEC, 0xEC, 0xFF, 0x9D, 0x9A, 0x9F, 0xFF,
-    0x4F, 0x41, 0x3F, 0xFF, 0x46, 0x2A, 0x21, 0xFF, 0x4A, 0x2F, 0x29, 0xFF, 0x44, 0x2E, 0x2C, 0xFF,
-    0x79, 0x76, 0x79, 0xFF, 0x91, 0x98, 0xA2, 0xFF, 0x87, 0x88, 0x8F, 0xFF, 0x68, 0x5C, 0x5B, 0xFF,
-    0x48, 0x2C, 0x23, 0xFF, 0x62, 0x40, 0x2C, 0xFF, 0x7C, 0x5E, 0x42, 0xFF, 0x73, 0x67, 0x5B, 0xFF,
-    0x8F, 0x93, 0x99, 0xFF, 0xD2, 0xD2, 0xD9, 0xFF, 0x9E, 0x96, 0x98, 0xFF, 0x6B, 0x5D, 0x58, 0xFF,
-    0x59, 0x49, 0x43, 0xFF, 0x41, 0x2B, 0x26, 0xFF, 0x30, 0x1A, 0x18, 0xFF, 0x85, 0x7D, 0x82, 0xFF,
-    0xE9, 0xEA, 0xEB, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEC, 0xEB, 0xEB, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-    0xA9, 0xA9, 0xAD, 0xFF, 0x52, 0x42, 0x3D, 0xFF, 0x55, 0x39, 0x2C, 0xFF, 0x51, 0x33, 0x29, 0xFF,
-    0x48, 0x27, 0x1D, 0xFF, 0x44, 0x23, 0x18, 0xFF, 0x49, 0x28, 0x1A, 0xFF, 0x4E, 0x2D, 0x1E, 0xFF,
-    0x61, 0x46, 0x35, 0xFF, 0x73, 0x67, 0x5B, 0xFF, 0x83, 0x84, 0x87, 0xFF, 0xB7, 0xB9, 0xC2, 0xFF,
-    0xF1, 0xF1, 0xF2, 0xFF, 0xF5, 0xF5, 0xF4, 0xFF, 0xF8, 0xF9, 0xF9, 0xFF, 0xE3, 0xE5, 0xE7, 0xFF,
-    0xBF, 0xC2, 0xC6, 0xFF, 0xAC, 0xAF, 0xB1, 0xFF, 0x99, 0x9D, 0x9B, 0xFF, 0xA1, 0x9F, 0xA3, 0xFF,
-    0xE4, 0xE2, 0xE4, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xE7, 0xE7, 0xE7, 0xFF, 0xEA, 0xEA, 0xEB, 0xFF,
-    0xF6, 0xF6, 0xF6, 0xFF, 0xC3, 0xC4, 0xC8, 0xFF, 0x86, 0x82, 0x85, 0xFF, 0x72, 0x68, 0x61, 0xFF,
-    0x70, 0x61, 0x56, 0xFF, 0x65, 0x53, 0x4A, 0xFF, 0x60, 0x4F, 0x49, 0xFF, 0x71, 0x68, 0x66, 0xFF,
-    0x94, 0x94, 0x98, 0xFF, 0xB8, 0xBB, 0xC2, 0xFF, 0xE9, 0xE9, 0xEB, 0xFF, 0xF6, 0xF6, 0xF5, 0xFF,
-    0xEB, 0xEB, 0xEB, 0xFF, 0xE8, 0xE7, 0xE8, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xEF, 0xEF, 0xEF, 0xFF,
-    0xF3, 0xF2, 0xF2, 0xFF, 0xF3, 0xF3, 0xF4, 0xFF, 0xF5, 0xF5, 0xF6, 0xFF, 0xF4, 0xF4, 0xF4, 0xFF,
-    0xE9, 0xE9, 0xE9, 0xFF, 0x00, 0x00, 0x00, 0x00, 0xEB, 0xEB, 0xEB, 0xFF, 0xE8, 0xE7, 0xE8, 0xFF,
-    0xE8, 0xE8, 0xE9, 0xFF, 0xF5, 0xF6, 0xF6, 0xFF, 0xF0, 0xF1, 0xF3, 0xFF, 0xD8, 0xDA, 0xDE, 0xFF,
-    0xCD, 0xD0, 0xD3, 0xFF, 0xC9, 0xCA, 0xCE, 0xFF, 0xD6, 0xD7, 0xDA, 0xFF, 0xE9, 0xEA, 0xED, 0xFF,
-    0xF1, 0xF1, 0xF2, 0xFF, 0xF5, 0xF5, 0xF4, 0xFF, 0xEE, 0xEE, 0xED, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xE9, 0xE8, 0xE8, 0xFF, 0xEA, 0xE9, 0xE9, 0xFF, 0xE9, 0xE8, 0xE8, 0xFF, 0xE8, 0xE8, 0xE8, 0xFF,
-    0xEA, 0xE9, 0xEA, 0xFF, 0xEA, 0xE9, 0xEA, 0xFF, 0xE9, 0xE9, 0xE9, 0xFF, 0xEA, 0xE9, 0xEA, 0xFF,
-    0xEA, 0xEA, 0xEA, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-};
-
-static const unsigned int icon_image_1_len = 2440;
-
+#include <errno.h>
 
 #ifndef TCN_RCLICK
 #define TCN_RCLICK (TCN_FIRST - 5)
 #endif
-#include <errno.h>
+
 
 /* Control IDs */
 #define IDC_CODE_INPUT     1001
@@ -263,6 +31,7 @@ static const unsigned int icon_image_1_len = 2440;
 #define IDC_TAB_PREV       1010
 #define IDC_TAB_NEXT       1011
 #define IDC_CODE_SPLITTER  1012
+#define IDC_TAB_COUNT      1013
 
 /* Tab context menu IDs */
 #define IDM_TAB_CLOSE_SINGLE 4001
@@ -274,22 +43,23 @@ static const unsigned int icon_image_1_len = 2440;
 #define IDM_FILE_OPEN      1102
 #define IDM_FILE_SAVE      1103
 #define IDM_FILE_SAVEAS    1104
+#define IDM_FILE_SAVE_ORC  1107
 #define IDM_FILE_SAVEALL   1105
+#define IDM_FILE_OPEN_ORC  1108
+#define IDM_TREE_OPEN_ALL_TABS 1109
 #define IDM_FILE_EXIT      1106
-#define IDM_FILE_NEW_FILE  1107
-#define IDM_FILE_OPEN_FILE 1108
 #define IDM_EDIT_UNDO      1201
 #define IDM_EDIT_REDO      1202
 #define IDM_EDIT_CUT       1203
 #define IDM_EDIT_COPY      1204
 #define IDM_EDIT_PASTE     1205
 #define IDM_EDIT_SELECTALL 1206
+#define IDM_EDIT_DELETE    1207
 #define IDM_PROJECT_NEW    1301
 #define IDM_PROJECT_SETTINGS 1302
 #define IDM_BUILD_COMPILE  1401
 #define IDM_BUILD_RUN      1402
-
-#define IDI_MAINICON       201
+#define IDM_BUILD_COMPILE_RUN 1403
 
 /* Toolbar button IDs */
 #define IDT_INSERT_FUNC    2001
@@ -326,16 +96,19 @@ static HWND hwndLineNumbers;
 static HWND hwndProperties;
 static HWND hwndCodeTab;
 static HWND hwndTabClose;  /* Close button for tabs */
+static HWND hwndTabCount;  /* Tab count display */
 static HWND hwndTabPrev;   /* Previous-tab button */
 static HWND hwndTabNext;   /* Next-tab button */
 static HWND hwndCodeSplitter; /* Vertical splitter between code and properties */
 static WNDPROC hwndOldEditorProc;
-static WNDPROC hwndOldTreeProc;
 static HFONT g_codeFont;
-static int g_lineNumberWidth = 35;
-static int g_propertiesWidth = 150;
+#define DEFAULT_LINE_NUMBER_WIDTH 35
+#define DEFAULT_PROPERTIES_WIDTH 150
+#define DEFAULT_SPLITTER_WIDTH 2
+static int g_lineNumberWidth = DEFAULT_LINE_NUMBER_WIDTH;
+static int g_propertiesWidth = DEFAULT_PROPERTIES_WIDTH;
 static int g_currentInputWidth = 0;
-static int g_splitterWidth = 2;
+static int g_splitterWidth = DEFAULT_SPLITTER_WIDTH;
 static const int CONFIG_CODEPANE_MIN_WIDTH = 150;
 static const int CONFIG_CODEPANE_MAX_WIDTH = 870;
 
@@ -343,20 +116,72 @@ static BOOL g_isDraggingSplitter = FALSE;
 static int g_splitterDragStartX = 0;
 static int g_splitterStartPropertiesWidth = 0;
 static int g_dragInitialInputWidth = 0;
-static char g_configPath[MAX_PATH] = "";
+char g_configPath[MAX_PATH] = "";
+static BOOL g_treeViewAutoExpand = TRUE;
 static int g_rightClickedTab = -1; /* last tab index right-clicked */
 
 /* Layout helper functions */
 void RepositionCodeArea(int clientWidth, int clientHeight);
 void UpdateLineNumbers(HWND hwndEditor, HWND hwndGutter);
 LRESULT CALLBACK EditorSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
-LRESULT CALLBACK TreeViewSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void InitializeConfigPath(void);
 void LoadConfig(void);
 void SaveConfig(void);
+void InitDebugConsole(void);
+void DebugLog(const char* fmt, ...);
+void UpdateSaveMenuState(BOOL enable);
+void OpenFilesWithDialog(HWND hwnd);
+void OpenOrcFileWithDialog(HWND hwnd);
+void OpenFolder(HWND hwnd, const char* folderPath);
+void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat);
+void LoadFileIntoEditor(const char* filePath);
+int PromptSaveTab(int tabIdx);
+void UpdateTreeViewItemModified(const char* filePath, BOOL isModified);
+static void DeleteTreeFileItem(void);
+void UpdateTabTitle(int tabIdx, BOOL isModified);
+void SaveFileWithDialog(HWND hwnd, BOOL saveAs);
+void SaveOrcFileWithDialog(HWND hwnd);
+void SaveAllFiles(HWND hwnd);
+BOOL IsCOrHFile(const char* ext);
+void AddFileToProject(const char* filePath);
+void GetDirectoryFromPath(const char* filePath, char* dirPath, int maxLen);
+void OpenAllProjectFilesAsTabs(void);
+void ShowProjectSettings(HWND parent);
+void GetSelectedText(HWND hwndEdit, char* buffer, int bufsize);
+void ManipulateSelection(int manipId);
+int FindTabByPath(const char* filePath);
+int CreateNewTab(const char* filePath, const char* title);
+void CloseTab(int tabIdx);
+int CloseTabWithPrompt(int tabIdx);
+void RefreshTabControl(void);
+void PositionTabCloseButton(void);
+int PromptSaveAllTabs(void);
+void ActivateSelectedTreeFile(void);
+void ClearAllTabs(void);
+void ScanFolderForFiles(const char* folderPath, char files[][MAX_PATH], int* count, int maxCount);
+LRESULT CALLBACK LineNumberWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+void CreateMainLayout(HWND hwnd);
+void CreateMenus(HWND hwnd);
+void CreateMainToolbar(HWND hwnd);
+void CreateCodeToolbar(HWND hwnd);
+void CreateStatusBar(HWND hwnd);
+void InsertCodeTemplate(int templateId);
+void ShowManipulationToolbar(BOOL show);
+void UpdateStatusBar(LPCTSTR text);
+void UpdateTabCountLabel(void);
+
+/* Compiler configuration functions */
+void LoadCompilerPathC(void);
+void SaveCompilerPathC(void);
+BOOL ValidateCompilerPath(const char* compilerPath);
+const char* GetCompilerPathC(void);
+void SetCompilerPathC(const char* path);
+void ValidateCompilerPathAtStartup(void);
+BOOL CompileProjectSources(HWND hwndParent, char sourceFiles[][MAX_PATH], int fileCount, const char* outputPath);
 
 /* Debug console functions */
-void InitDebugConsole() {
+void InitDebugConsole(void) {
     /* Create a console window for debugging */
     if (AllocConsole()) {
         /* Redirect stdout to the new console */
@@ -405,10 +230,19 @@ void DebugLog(const char* fmt, ...) {
 
 void InitializeConfigPath(void) {
     char modulePath[MAX_PATH];
+    char fullModulePath[MAX_PATH];
     if (GetModuleFileNameA(NULL, modulePath, MAX_PATH)) {
+        if (GetFullPathNameA(modulePath, MAX_PATH, fullModulePath, NULL)) {
+            strcpy(modulePath, fullModulePath);
+        }
         char* p = strrchr(modulePath, '\\');
         if (p) *p = '\0';
-        snprintf(g_configPath, MAX_PATH, "%s\\..\\..\\config.ini", modulePath);
+        /* Strip "build" and "Win32" to write config.ini to the Orca root folder */
+        p = strrchr(modulePath, '\\');
+        if (p) *p = '\0';
+        p = strrchr(modulePath, '\\');
+        if (p) *p = '\0';
+        snprintf(g_configPath, MAX_PATH, "%s\\config.ini", modulePath);
     } else {
         strcpy(g_configPath, "config.ini");
     }
@@ -435,6 +269,15 @@ static int ParseConfigCodePaneWidth(const char* path) {
     return (int)parsed;
 }
 
+static BOOL ParseConfigTreeViewAutoExpand(const char* path) {
+    char buffer[32] = {0};
+    GetPrivateProfileStringA("Layout", "TreeViewAutoExpand", "True", buffer, sizeof(buffer), path);
+    if (lstrcmpiA(buffer, "False") == 0 || lstrcmpiA(buffer, "0") == 0 || lstrcmpiA(buffer, "No") == 0) {
+        return FALSE;
+    }
+    return TRUE;
+}
+
 void LoadConfig(void) {
     if (g_configPath[0] == '\0') {
         InitializeConfigPath();
@@ -450,7 +293,8 @@ void LoadConfig(void) {
         DebugLog("[CONFIG] Invalid or missing CodePaneWidth; resetting to default internal width\n");
         g_currentInputWidth = 0;
     }
-    DebugLog("[CONFIG] Loaded config from %s, CodePaneWidth=%d\n", g_configPath, g_currentInputWidth);
+    g_treeViewAutoExpand = ParseConfigTreeViewAutoExpand(g_configPath);
+    DebugLog("[CONFIG] Loaded config from %s, CodePaneWidth=%d, TreeViewAutoExpand=%s\n", g_configPath, g_currentInputWidth, g_treeViewAutoExpand ? "True" : "False");
 }
 
 void SaveConfig(void) {
@@ -466,24 +310,74 @@ void SaveConfig(void) {
     } else {
         DebugLog("[CONFIG] Internal width is default so SaveConfig will skip writing CodePaneWidth\n");
     }
+    WritePrivateProfileStringA("Layout", "TreeViewAutoExpand", g_treeViewAutoExpand ? "True" : "False", g_configPath);
+    DebugLog("[CONFIG] Saved TreeViewAutoExpand=%s to %s\n", g_treeViewAutoExpand ? "True" : "False", g_configPath);
+    SaveCompilerPathC();
+}
+
+/* Validate compiler path at startup and prompt user if invalid */
+void ValidateCompilerPathAtStartup(void) {
+    const char* currentPath = GetCompilerPathC();
+    
+    if (ValidateCompilerPath(currentPath)) {
+        DebugLog("[STARTUP] Compiler path valid: %s\n", currentPath);
+        return;
+    }
+    
+    DebugLog("[STARTUP] Compiler path invalid or not set. Prompting user to select compiler.\n");
+    
+    /* Show message box asking user to select compiler */
+    int result = MessageBoxA(hwndMain,
+        "No valid C compiler path found in configuration.\n\n"
+        "Would you like to select a compiler executable now?",
+        "Compiler Configuration",
+        MB_YESNO | MB_ICONQUESTION);
+    
+    if (result != IDYES) {
+        DebugLog("[STARTUP] User declined compiler setup. Continuing with no compiler.\n");
+        return;
+    }
+    
+    /* Open file browser dialog to select compiler */
+    OPENFILENAMEA ofn = {0};
+    char szFile[MAX_PATH] = "";
+    
+    ofn.lStructSize = sizeof(OPENFILENAMEA);
+    ofn.hwndOwner = hwndMain;
+    ofn.lpstrFile = szFile;
+    ofn.nMaxFile = sizeof(szFile);
+    ofn.lpstrFilter = "Executable Files (*.exe)\0*.exe\0All Files (*.*)\0*.*\0";
+    ofn.nFilterIndex = 1;
+    ofn.lpstrTitle = "Select C Compiler Executable";
+    ofn.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_READONLY;
+    
+    if (GetOpenFileNameA(&ofn)) {
+        SetCompilerPathC(szFile);
+        DebugLog("[STARTUP] Compiler path set to: %s\n", szFile);
+        MessageBoxA(hwndMain, "Compiler path configured successfully.", "Success", MB_OK | MB_ICONINFORMATION);
+    } else {
+        DebugLog("[STARTUP] User cancelled compiler selection.\n");
+    }
 }
 
 /* Integrated debug viewer removed: using console/debug.log only */
 
 /* Tab management */
-#define MAX_TABS 32
+#define MAX_TABS 256
 typedef struct {
     char filePath[MAX_PATH];
     char title[MAX_PATH];
     BOOL isModified;
     HWND editorWnd;
-    char content[65536];
+    char* content;
+    size_t contentLength;
 } TabInfo;
 
 static TabInfo g_tabs[MAX_TABS];
 static int g_tabCount = 0;
 static int g_activeTab = -1;
 static int g_tabScrollIndex = 0; /* highest-priority visible tab for scroll buttons */
+static int g_untitledCount = 1;
 static BOOL g_ignoreTabSelectionChange = FALSE;
 
 /* Recursive helper to update a treeview item by filename anywhere in the tree */
@@ -503,7 +397,10 @@ static BOOL UpdateTreeItemRecursive(HWND hwndTree, HTREEITEM hItem, const char* 
             TVITEM updateItem;
             updateItem.mask = TVIF_TEXT | TVIF_HANDLE;
             updateItem.hItem = it;
-            updateItem.pszText = (LPSTR)searchName;
+            char updateText[MAX_PATH];
+            strncpy(updateText, searchName, sizeof(updateText) - 1);
+            updateText[sizeof(updateText) - 1] = '\0';
+            updateItem.pszText = updateText;
             TreeView_SetItem(hwndTree, &updateItem);
             return TRUE;
         }
@@ -514,6 +411,43 @@ static BOOL UpdateTreeItemRecursive(HWND hwndTree, HTREEITEM hItem, const char* 
         }
     }
     return FALSE;
+}
+
+static BOOL UpdateTreeItemTextRecursive(HWND hwndTree, HTREEITEM hItem, const char* oldText, const char* newText) {
+    for (HTREEITEM it = hItem; it; it = TreeView_GetNextSibling(hwndTree, it)) {
+        TVITEM tvi;
+        char buffer[MAX_PATH];
+        tvi.mask = TVIF_TEXT | TVIF_HANDLE;
+        tvi.hItem = it;
+        tvi.pszText = buffer;
+        tvi.cchTextMax = sizeof(buffer);
+        TreeView_GetItem(hwndTree, &tvi);
+
+        const char* comparePtr = buffer;
+        if (buffer[0] == '*') comparePtr = buffer + 1;
+        if (strcmp(comparePtr, oldText) == 0) {
+            TVITEM updateItem;
+            char updateText[MAX_PATH];
+            strncpy(updateText, newText, sizeof(updateText) - 1);
+            updateText[sizeof(updateText) - 1] = '\0';
+            updateItem.mask = TVIF_TEXT | TVIF_HANDLE;
+            updateItem.hItem = it;
+            updateItem.pszText = updateText;
+            TreeView_SetItem(hwndTree, &updateItem);
+            return TRUE;
+        }
+
+        HTREEITEM child = TreeView_GetChild(hwndTree, it);
+        if (child && UpdateTreeItemTextRecursive(hwndTree, child, oldText, newText)) return TRUE;
+    }
+    return FALSE;
+}
+
+static void UpdateTreeViewItemText(const char* oldText, const char* newText) {
+    if (!oldText || !newText || !hwndProjectTree) return;
+    HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
+    if (!hRoot) return;
+    UpdateTreeItemTextRecursive(hwndProjectTree, hRoot, oldText, newText);
 }
 
 /* Project settings */
@@ -538,6 +472,110 @@ void UpdateSaveMenuState(BOOL enable) {
     EnableMenuItem(hFileMenu, IDM_FILE_SAVEALL, flags);
 }
 
+static void FreeTabContent(int tabIdx) {
+    if (tabIdx < 0 || tabIdx >= g_tabCount) return;
+    if (g_tabs[tabIdx].content) {
+        GlobalFree((HGLOBAL)g_tabs[tabIdx].content);
+        g_tabs[tabIdx].content = NULL;
+        g_tabs[tabIdx].contentLength = 0;
+    }
+}
+
+static void SaveCurrentEditorContentToActiveTab(void) {
+    if (g_activeTab < 0 || g_activeTab >= g_tabCount || !hwndInput) return;
+    int len = (int)SendMessage(hwndInput, WM_GETTEXTLENGTH, 0, 0);
+    char* buffer = (char*)GlobalAlloc(GPTR, len + 1);
+    if (!buffer) return;
+    SendMessage(hwndInput, WM_GETTEXT, len + 1, (LPARAM)buffer);
+    if (g_tabs[g_activeTab].content) {
+        GlobalFree((HGLOBAL)g_tabs[g_activeTab].content);
+    }
+    g_tabs[g_activeTab].content = buffer;
+    g_tabs[g_activeTab].contentLength = len;
+}
+
+static char* LoadFileTextToBuffer(const char* filePath, size_t* outLen) {
+    if (!filePath || !outLen) return NULL;
+    *outLen = 0;
+
+    FILE* fp = fopen(filePath, "rb");
+    if (!fp) return NULL;
+
+    fseek(fp, 0, SEEK_END);
+    long fileSize = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    if (fileSize < 0) {
+        fclose(fp);
+        return NULL;
+    }
+
+    char* raw = (char*)GlobalAlloc(GPTR, fileSize + 1);
+    if (!raw) {
+        fclose(fp);
+        return NULL;
+    }
+
+    size_t bytesRead = fread(raw, 1, (size_t)fileSize, fp);
+    fclose(fp);
+    raw[bytesRead] = '\0';
+
+    char* normalized = (char*)GlobalAlloc(GPTR, bytesRead * 2 + 1);
+    if (!normalized) {
+        GlobalFree((HGLOBAL)raw);
+        return NULL;
+    }
+
+    char* src = raw;
+    char* dst = normalized;
+    for (size_t i = 0; i < bytesRead; i++) {
+        if (src[i] == '\n') {
+            if (i == 0 || src[i - 1] != '\r') {
+                *dst++ = '\r';
+            }
+            *dst++ = '\n';
+        } else if (src[i] == '\r') {
+            *dst++ = '\r';
+            if (i + 1 >= bytesRead || src[i + 1] != '\n') {
+                *dst++ = '\n';
+            }
+        } else {
+            *dst++ = src[i];
+        }
+    }
+    *dst = '\0';
+    *outLen = dst - normalized;
+
+    GlobalFree((HGLOBAL)raw);
+    return normalized;
+}
+
+static void LoadTabContentIntoEditor(int tabIdx) {
+    if (tabIdx < 0 || tabIdx >= g_tabCount || !hwndInput) return;
+
+    if (g_tabs[tabIdx].content) {
+        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)g_tabs[tabIdx].content);
+    } else if (g_tabs[tabIdx].filePath[0]) {
+        size_t len;
+        char* content = LoadFileTextToBuffer(g_tabs[tabIdx].filePath, &len);
+        if (content) {
+            if (g_tabs[tabIdx].content) {
+                GlobalFree((HGLOBAL)g_tabs[tabIdx].content);
+            }
+            g_tabs[tabIdx].content = content;
+            g_tabs[tabIdx].contentLength = len;
+            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)content);
+        } else {
+            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+        }
+    } else {
+        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+    }
+
+    SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
+    UpdateLineNumbers(hwndInput, hwndLineNumbers);
+    UpdateStatusBar(g_tabs[tabIdx].filePath);
+}
+
 /* Forward declarations for file operations */
 void OpenFilesWithDialog(HWND hwnd);
 void OpenFolder(HWND hwnd, const char* folderPath);
@@ -546,13 +584,14 @@ void LoadFileIntoEditor(const char* filePath);
 int PromptSaveTab(int tabIdx);
 void UpdateTreeViewItemModified(const char* filePath, BOOL isModified);
 void UpdateTabTitle(int tabIdx, BOOL isModified);
-void RefreshTabControl(void);
-void EnsureUntitledTabExists(void);
 void SaveFileWithDialog(HWND hwnd, BOOL saveAs);
 void SaveAllFiles(HWND hwnd);
 BOOL IsCOrHFile(const char* ext);
 void AddFileToProject(const char* filePath);
-void AddUntitledToTreeView(void);
+void EnsureProjectTreeRoot(void);
+void AddUntitledTreeItem(const char* title);
+void DeleteTreeFileItem(void);
+void CreateUntitledTab(void);
 
 /* Forward declarations */
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -564,9 +603,8 @@ void CreateStatusBar(HWND hwnd);
 void InsertCodeTemplate(int templateId);
 void ShowManipulationToolbar(BOOL show);
 void UpdateStatusBar(LPCTSTR text);
-void PositionTabCloseButton();
-static void SaveCurrentEditorBufferToTab(int tabIdx);
-static void RestoreEditorBufferFromTab(int tabIdx);
+void PositionTabCloseButton(void);
+INT_PTR CALLBACK ProjectSettingsDlg(HWND hdlg, UINT msg, WPARAM wParam, LPARAM lParam);
 static BOOL TabControlNeedsScroll(void);
 static void UpdateTabNavigationButtons(void);
 static void EnsureTabVisible(int tabIndex);
@@ -746,6 +784,14 @@ void UpdateStatusBar(LPCTSTR text) {
     SendMessage(hwndStatusBar, SB_SETTEXT, 0, (LPARAM)text);
 }
 
+void UpdateTabCountLabel(void) {
+    if (!hwndTabCount) return;
+
+    char text[MAX_PATH];
+    snprintf(text, sizeof(text), "%d", g_tabCount);
+    SendMessage(hwndTabCount, WM_SETTEXT, 0, (LPARAM)text);
+}
+
 /* Tab management functions */
 int FindTabByPath(const char* filePath) {
     for (int i = 0; i < g_tabCount; i++) {
@@ -754,112 +800,6 @@ int FindTabByPath(const char* filePath) {
         }
     }
     return -1;
-}
-
-BOOL IsFileAlreadyOpen(const char* filePath) {
-    for (int i = 0; i < g_openedFileCount; i++) {
-        if (strcmp(g_openedFiles[i], filePath) == 0) {
-            return TRUE;
-        }
-    }
-    return FALSE;
-}
-
-static int GetUntitledIndex(const char* name) {
-    if (!name) return 0;
-    if (name[0] == '*') name++;
-    if (strncmp(name, "untitled", 8) != 0) return 0;
-    if (name[8] == '\0') return 1;
-    for (const char* p = name + 8; *p; p++) {
-        if (*p < '0' || *p > '9') return 0;
-    }
-    int idx = atoi(name + 8);
-    return idx > 0 ? idx : 0;
-}
-
-static void GenerateUniqueUntitledName(char* buffer, size_t bufferSize) {
-    int maxIndex = 0;
-    BOOL foundUntitled = FALSE;
-    HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
-    if (hRoot) {
-        for (HTREEITEM child = TreeView_GetChild(hwndProjectTree, hRoot); child; child = TreeView_GetNextSibling(hwndProjectTree, child)) {
-            char text[MAX_PATH];
-            TVITEM tvi;
-            tvi.mask = TVIF_TEXT | TVIF_HANDLE;
-            tvi.hItem = child;
-            tvi.pszText = text;
-            tvi.cchTextMax = MAX_PATH;
-            if (TreeView_GetItem(hwndProjectTree, &tvi)) {
-                int idx = GetUntitledIndex(text);
-                if (idx > 0) {
-                    foundUntitled = TRUE;
-                    if (idx > maxIndex) maxIndex = idx;
-                }
-            }
-        }
-    }
-    for (int i = 0; i < g_tabCount; i++) {
-        int idx = GetUntitledIndex(g_tabs[i].title);
-        if (idx > 0) {
-            foundUntitled = TRUE;
-            if (idx > maxIndex) maxIndex = idx;
-        }
-    }
-
-    if (!foundUntitled) {
-        strncpy(buffer, "untitled", bufferSize - 1);
-        buffer[bufferSize - 1] = '\0';
-    } else {
-        snprintf(buffer, bufferSize, "untitled%d", maxIndex + 1);
-    }
-}
-
-static BOOL TreeViewContainsText(HWND hwndTree, const char* text) {
-    HTREEITEM hItem = TreeView_GetRoot(hwndTree);
-    if (!hItem) return FALSE;
-
-    char buffer[MAX_PATH];
-    TVITEM tvi;
-    tvi.mask = TVIF_TEXT | TVIF_HANDLE;
-    tvi.pszText = buffer;
-    tvi.cchTextMax = MAX_PATH;
-
-    for (HTREEITEM child = TreeView_GetChild(hwndTree, hItem); child; child = TreeView_GetNextSibling(hwndTree, child)) {
-        tvi.hItem = child;
-        if (TreeView_GetItem(hwndTree, &tvi)) {
-            if (strcmp(buffer, text) == 0 || strcmp(buffer, text[0] == '*' ? text + 1 : text) == 0) {
-                return TRUE;
-            }
-        }
-    }
-    return FALSE;
-}
-
-static void AddTreeItem(HWND hwndTree, const char* displayName, const char* fullPath) {
-    HTREEITEM hRoot = TreeView_GetRoot(hwndTree);
-    if (!hRoot) {
-        TVINSERTSTRUCT tvis;
-        tvis.hParent = TVI_ROOT;
-        tvis.hInsertAfter = TVI_LAST;
-        tvis.item.mask = TVIF_TEXT;
-        tvis.item.pszText = "Project Files";
-        hRoot = TreeView_InsertItem(hwndTree, &tvis);
-    }
-
-    TVINSERTSTRUCT tvis;
-    tvis.hParent = hRoot;
-    tvis.hInsertAfter = TVI_LAST;
-    tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
-    tvis.item.pszText = (char*)displayName;
-    char* persistentPath = NULL;
-    if (fullPath && fullPath[0] != '\0') {
-        size_t len = strlen(fullPath) + 1;
-        persistentPath = (char*)GlobalAlloc(GPTR, len);
-        if (persistentPath) strcpy(persistentPath, fullPath);
-    }
-    tvis.item.lParam = (LPARAM)persistentPath;
-    TreeView_InsertItem(hwndTree, &tvis);
-    TreeView_Expand(hwndTree, hRoot, TVE_EXPAND);
 }
 
 int CreateNewTab(const char* filePath, const char* title) {
@@ -873,26 +813,16 @@ int CreateNewTab(const char* filePath, const char* title) {
     strcpy(g_tabs[idx].title, title);
     g_tabs[idx].isModified = FALSE;
     g_tabs[idx].editorWnd = NULL;
-    g_tabs[idx].content[0] = '\0';
+    g_tabs[idx].content = NULL;
+    g_tabs[idx].contentLength = 0;
     
     return idx;
 }
 
-void EnsureUntitledTabExists(void) {
-    if (g_tabCount > 0) {
-        return;
-    }
-
-    int untitledTab = CreateNewTab("", "untitled");
-    if (untitledTab >= 0) {
-        g_activeTab = untitledTab;
-        RefreshTabControl();
-        DebugLog("[TAB] Recreated untitled tab after closing the last tab\n");
-    }
-}
-
 void CloseTab(int tabIdx) {
     if (tabIdx < 0 || tabIdx >= g_tabCount) return;
+    
+    FreeTabContent(tabIdx);
     
     /* Shift remaining tabs */
     for (int i = tabIdx; i < g_tabCount - 1; i++) {
@@ -927,11 +857,6 @@ int CloseTabWithPrompt(int tabIdx) {
     /* Close the tab */
     CloseTab(tabIdx);
 
-    /* If the last tab was closed, recreate an untitled tab immediately. */
-    if (g_tabCount == 0) {
-        EnsureUntitledTabExists();
-    }
-
     return result;
 }
 
@@ -943,11 +868,6 @@ void UpdateTreeViewItemModified(const char* filePath, BOOL isModified) {
     const char* displayName = strrchr(filePath, '\\');
     if (displayName) displayName++;
     else displayName = filePath;
-    
-    /* Handle untitled files - check if active tab is untitled */
-    if ((filePath[0] == '\0' || displayName[0] == '\0') && g_activeTab >= 0 && g_activeTab < g_tabCount) {
-        displayName = g_tabs[g_activeTab].title;
-    }
     
     /* Build the name to search for (with or without asterisk) */
     char searchName[MAX_PATH];
@@ -987,7 +907,7 @@ void UpdateTabTitle(int tabIdx, BOOL isModified) {
     TabCtrl_SetItem(hwndCodeTab, tabIdx, &tci);
 }
 
-void RefreshTabControl() {
+void RefreshTabControl(void) {
     /* Clear all tabs */
     TabCtrl_DeleteAllItems(hwndCodeTab);
     
@@ -1013,23 +933,25 @@ void RefreshTabControl() {
     
     /* Select active tab */
     if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+        g_ignoreTabSelectionChange = TRUE;
         TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
+        g_ignoreTabSelectionChange = FALSE;
         EnsureTabVisible(g_activeTab);
     }
     
     UpdateTabNavigationButtons();
+    UpdateTabCountLabel();
     
     /* Position close button next to active tab */
     PositionTabCloseButton();
 }
 
-/* Position the close button next to the active tab */
-void PositionTabCloseButton() {
+void PositionTabCloseButton(void) {
     if (g_activeTab < 0 || g_activeTab >= g_tabCount) {
-        ShowWindow(hwndTabClose, SW_HIDE);
+        if (hwndTabClose) ShowWindow(hwndTabClose, SW_HIDE);
         return;
     }
-    
+
     /* Get the bounding rectangle of the active tab */
     RECT tabRect;
     if (TabCtrl_GetItemRect(hwndCodeTab, g_activeTab, &tabRect)) {
@@ -1096,6 +1018,9 @@ static void EnsureTabVisible(int tabIndex) {
         if (currentSel != tabIndex) {
             g_ignoreTabSelectionChange = TRUE;
             TabCtrl_SetCurSel(hwndCodeTab, tabIndex);
+            if (currentSel >= 0) {
+                TabCtrl_SetCurSel(hwndCodeTab, currentSel);
+            }
             g_ignoreTabSelectionChange = FALSE;
         }
         g_tabScrollIndex = tabIndex;
@@ -1113,58 +1038,20 @@ int PromptSaveTab(int tabIdx) {
     int result = MessageBox(hwndMain, msg, "Save", MB_YESNOCANCEL | MB_ICONQUESTION);
     
     if (result == IDYES) {
-        /* Check if this is an untitled file - if so, need SaveAs dialog */
-        if (g_tabs[tabIdx].filePath[0] == '\0' || strcmp(g_tabs[tabIdx].title, "untitled") == 0) {
-            DebugLog("[SAVE] Untitled file in PromptSaveTab, opening SaveAs dialog\n");
-            OPENFILENAME ofn;
-            char fileBuffer[MAX_PATH] = {0};
-            
-            memset(&ofn, 0, sizeof(ofn));
-            ofn.lStructSize = sizeof(ofn);
-            ofn.hwndOwner = hwndMain;
-            ofn.lpstrFile = fileBuffer;
-            ofn.nMaxFile = sizeof(fileBuffer);
-            ofn.lpstrFilter = "C Files (*.c)\0*.c\0Header Files (*.h)\0*.h\0All Files (*.*)\0*.*\0";
-            ofn.lpstrDefExt = "c";
-            ofn.Flags = OFN_EXPLORER | OFN_OVERWRITEPROMPT;
-            
-            if (GetSaveFileName(&ofn)) {
-                char content[65536];
-                SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
-                
-                FILE* fp = fopen(fileBuffer, "wb");
-                if (fp) {
-                    size_t len = strlen(content);
-                    if (len > 0) fwrite(content, 1, len, fp);
-                    fclose(fp);
-                    /* Update the tab's filepath and title */
-                    strcpy(g_tabs[tabIdx].filePath, fileBuffer);
-                    char* filename = strrchr(fileBuffer, '\\');
-                    if (filename) filename++;
-                    else filename = fileBuffer;
-                    strcpy(g_tabs[tabIdx].title, filename);
-                    AddFileToProject(fileBuffer);
-                    g_tabs[tabIdx].isModified = FALSE;
-                    UpdateTabTitle(tabIdx, FALSE);
-                    UpdateTreeViewItemModified(g_tabs[tabIdx].filePath, FALSE);
-                    return IDYES;
-                } else {
-                    MessageBox(hwndMain, "Failed to save file", "Error", MB_ICONERROR);
-                    return IDCANCEL;
-                }
-            } else {
-                /* User cancelled the SaveAs dialog */
-                return IDCANCEL;
-            }
+        if (tabIdx == g_activeTab) {
+            SaveCurrentEditorContentToActiveTab();
         }
-        
-        /* Regular file save */
+
+        if (g_tabs[tabIdx].content == NULL) {
+            g_tabs[tabIdx].content = (char*)GlobalAlloc(GPTR, 1);
+            g_tabs[tabIdx].contentLength = 0;
+        }
+
         FILE* fp = fopen(g_tabs[tabIdx].filePath, "wb");
         if (fp) {
-            char content[65536];
-            SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
-            size_t len = strlen(content);
-            if (len > 0) fwrite(content, 1, len, fp);
+            if (g_tabs[tabIdx].contentLength > 0) {
+                fwrite(g_tabs[tabIdx].content, 1, g_tabs[tabIdx].contentLength, fp);
+            }
             fclose(fp);
             g_tabs[tabIdx].isModified = FALSE;
             UpdateTabTitle(tabIdx, FALSE);
@@ -1178,12 +1065,33 @@ int PromptSaveTab(int tabIdx) {
     return result;
 }
 
-int PromptSaveAllTabs() {
+int PromptSaveAllTabs(void) {
     for (int i = 0; i < g_tabCount; i++) {
         int result = PromptSaveTab(i);
         if (result == IDCANCEL) return IDCANCEL;
     }
     return IDYES;
+}
+
+void GetDirectoryFromPath(const char* filePath, char* dirPath, int maxLen) {
+    if (!filePath || !dirPath || maxLen <= 0) return;
+    const char* lastSlash = strrchr(filePath, '\\');
+    if (lastSlash) {
+        int len = (int)(lastSlash - filePath);
+        if (len >= maxLen) len = maxLen - 1;
+        strncpy(dirPath, filePath, len);
+        dirPath[len] = '\0';
+    } else {
+        dirPath[0] = '\0';
+    }
+}
+
+static BOOL IsCSourceFile(const char* filePath) {
+    if (!filePath) return FALSE;
+    const char* ext = strrchr(filePath, '.');
+    if (!ext) return FALSE;
+    const char* candidate = ext + 1;
+    return (candidate[0] == 'c' || candidate[0] == 'C') && candidate[1] == '\0';
 }
 
 /* Activate the currently selected file in the project tree */
@@ -1193,13 +1101,11 @@ void ActivateSelectedTreeFile(void) {
 
     TVITEM tvi;
     char buffer[MAX_PATH];
-    tvi.mask = TVIF_TEXT | TVIF_HANDLE | TVIF_PARAM;
+    tvi.mask = TVIF_TEXT | TVIF_HANDLE;
     tvi.hItem = hItem;
     tvi.pszText = buffer;
     tvi.cchTextMax = MAX_PATH;
     TreeView_GetItem(hwndProjectTree, &tvi);
-
-    const char* fullPath = (const char*)tvi.lParam;
 
     if (strcmp(buffer, "Project Files") == 0) {
         DebugLog("[TREEVIEW] Root folder selected, skipping\n");
@@ -1207,60 +1113,11 @@ void ActivateSelectedTreeFile(void) {
     }
 
     const char* compareBuffer = buffer;
-    if (buffer[0] == '*') {
-        compareBuffer = buffer + 1;
-    }
-
-    if (fullPath && fullPath[0] != '\0') {
-        FILE* fp = fopen(fullPath, "rb");
-        if (fp) {
-            fclose(fp);
-            DebugLog("[TREEVIEW] Opening file from stored path: %s\n", fullPath);
-            char* filename = strrchr(fullPath, '\\');
-            if (filename) filename++;
-            else filename = (char*)fullPath;
-            int tabIdx = FindTabByPath(fullPath);
-            if (tabIdx == -1) {
-                tabIdx = CreateNewTab(fullPath, filename);
-                RefreshTabControl();
-            }
-            g_activeTab = tabIdx;
-            TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
-            EnsureTabVisible(g_activeTab);
-            LoadFileIntoEditor(fullPath);
-            return;
-        }
-        DebugLog("[TREEVIEW] Stored path is invalid, falling back to project file list: %s\n", fullPath);
-    }
-
-    /* Handle untitled tab special case */
-    if (strncmp(compareBuffer, "untitled", 8) == 0) {
-        DebugLog("[TREEVIEW] Untitled-like tab selected: %s\n", compareBuffer);
-        for (int i = 0; i < g_tabCount; i++) {
-            if (strcmp(g_tabs[i].title, compareBuffer) == 0) {
-                g_activeTab = i;
-                TabCtrl_SetCurSel(hwndCodeTab, i);
-                EnsureTabVisible(i);
-                RestoreEditorBufferFromTab(i);
-                return;
-            }
-        }
-
-        /* If the selected tree item has no matching tab yet, create it. */
-        int untitledTab = CreateNewTab("", compareBuffer);
-        if (untitledTab >= 0) {
-            g_activeTab = untitledTab;
-            RefreshTabControl();
-            TabCtrl_SetCurSel(hwndCodeTab, untitledTab);
-            EnsureTabVisible(untitledTab);
-            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-            UpdateLineNumbers(hwndInput, hwndLineNumbers);
-        }
-        return;
-    }
+    if (buffer[0] == '*') compareBuffer = buffer + 1;
 
     DebugLog("[TREEVIEW] Activating selected: '%s'\n", compareBuffer);
-    BOOL found = FALSE;
+
+    char selectedPath[MAX_PATH] = "";
     for (int i = 0; i < g_openedFileCount; i++) {
         char* filename = strrchr(g_openedFiles[i], '\\');
         if (filename) filename++;
@@ -1268,59 +1125,40 @@ void ActivateSelectedTreeFile(void) {
 
         if (strcmp(filename, compareBuffer) == 0) {
             DebugLog("[TREEVIEW] FOUND: %s\n", g_openedFiles[i]);
-            LoadFileIntoEditor(g_openedFiles[i]);
-            found = TRUE;
+            strncpy(selectedPath, g_openedFiles[i], sizeof(selectedPath) - 1);
+            selectedPath[sizeof(selectedPath) - 1] = '\0';
             break;
         }
     }
 
-    if (!found) {
+    if (selectedPath[0] == '\0') {
         DebugLog("[TREEVIEW] File not found in g_openedFiles\n");
+        return;
     }
+
+    LoadFileIntoEditor(selectedPath);
 }
 
-void ClearAllTabs() {
+void ClearAllTabs(void) {
+    for (int i = 0; i < g_tabCount; i++) {
+        FreeTabContent(i);
+    }
     g_tabCount = 0;
     g_activeTab = -1;
     TabCtrl_DeleteAllItems(hwndCodeTab);
+    UpdateTabCountLabel();
 }
 
 /* Check if file extension is .c or .h */
 BOOL IsCOrHFile(const char* ext) {
-    return (stricmp(ext, ".c") == 0 || stricmp(ext, ".h") == 0 || stricmp(ext, ".cpp") == 0 || stricmp(ext, ".hpp") == 0);
-}
-
-static void SaveCurrentEditorBufferToTab(int tabIdx) {
-    if (tabIdx < 0 || tabIdx >= g_tabCount) return;
-
-    char content[65536];
-    SendMessage(hwndInput, WM_GETTEXT, sizeof(content) - 1, (LPARAM)content);
-    content[sizeof(content) - 1] = '\0';
-
-    strncpy(g_tabs[tabIdx].content, content, sizeof(g_tabs[tabIdx].content) - 1);
-    g_tabs[tabIdx].content[sizeof(g_tabs[tabIdx].content) - 1] = '\0';
-
-    DebugLog("[TAB] Saved buffer for tab %d (%s), len=%u, preview='%s'\n",
-        tabIdx, g_tabs[tabIdx].title, (unsigned)strlen(g_tabs[tabIdx].content),
-        g_tabs[tabIdx].content[0] ? g_tabs[tabIdx].content : "<empty>");
-}
-
-static void RestoreEditorBufferFromTab(int tabIdx) {
-    if (tabIdx < 0 || tabIdx >= g_tabCount) return;
-
-    DebugLog("[TAB] Restoring tab %d (%s), cachedLen=%u, filePath='%s'\n",
-        tabIdx, g_tabs[tabIdx].title, (unsigned)strlen(g_tabs[tabIdx].content),
-        g_tabs[tabIdx].filePath[0] ? g_tabs[tabIdx].filePath : "<untitled>");
-
-    if (g_tabs[tabIdx].content[0] != '\0' || g_tabs[tabIdx].filePath[0] == '\0') {
-        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)g_tabs[tabIdx].content);
-        SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
-        UpdateLineNumbers(hwndInput, hwndLineNumbers);
-        DebugLog("[TAB] Restored cached text into editor for tab %d\n", tabIdx);
-    } else {
-        DebugLog("[TAB] Reloading file contents for tab %d from disk\n", tabIdx);
-        LoadFileIntoEditor(g_tabs[tabIdx].filePath);
+    if (!ext) return FALSE;
+    char lowerExt[16];
+    size_t i;
+    for (i = 0; i < sizeof(lowerExt) - 1 && ext[i]; i++) {
+        lowerExt[i] = (char)tolower((unsigned char)ext[i]);
     }
+    lowerExt[i] = '\0';
+    return (strcmp(lowerExt, ".c") == 0 || strcmp(lowerExt, ".h") == 0 || strcmp(lowerExt, ".cpp") == 0 || strcmp(lowerExt, ".hpp") == 0);
 }
 
 /* Add file to project tracking */
@@ -1330,132 +1168,70 @@ void AddFileToProject(const char* filePath) {
     }
 }
 
-/* Load file content into editor - preserve all formatting */
-void LoadFileIntoEditor(const char* filePath) {
-    DebugLog("[EDITOR] LoadFileIntoEditor called with: %s\n", filePath);
+void EnsureProjectTreeRoot(void) {
+    if (!hwndProjectTree) return;
+    if (TreeView_GetRoot(hwndProjectTree) != NULL) return;
 
-    if (!filePath || filePath[0] == '\0') {
-        DebugLog("[EDITOR] Untitled tab detected, clearing editor\n");
-        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-        if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
-            g_tabs[g_activeTab].content[0] = '\0';
-        }
-        SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
-        UpdateLineNumbers(hwndInput, hwndLineNumbers);
-        UpdateStatusBar("untitled");
-        return;
-    }
-
-    FILE* fp = fopen(filePath, "rb");
-    if (!fp) {
-        DebugLog("[ERROR] fopen failed for: %s (errno=%d)\n", filePath, errno);
-        MessageBox(hwndMain, "Failed to open file", "Error", MB_ICONERROR);
-        return;
-    }
-    
-    DebugLog("[EDITOR] File opened successfully\n");
-    
-    /* Get file size */
-    fseek(fp, 0, SEEK_END);
-    long fileSize = ftell(fp);
-    fseek(fp, 0, SEEK_SET);
-    
-    if (fileSize <= 0) {
-        fclose(fp);
-        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-        /* Add to tab if not already open */
-        char* filename = strrchr(filePath, '\\');
-        if (filename) filename++;
-        else filename = (char*)filePath;
-        int tabIdx = FindTabByPath(filePath);
-        if (tabIdx == -1) {
-            tabIdx = CreateNewTab(filePath, filename);
-            RefreshTabControl();
-        }
-        g_tabs[tabIdx].content[0] = '\0';
-        g_activeTab = tabIdx;
-        TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
-        EnsureTabVisible(g_activeTab);
-        UpdateStatusBar(filePath);
-        return;
-    }
-    
-    /* Allocate buffer and read raw bytes */
-    char* buffer = (char*)GlobalAlloc(GPTR, fileSize + 1);
-    if (!buffer) {
-        fclose(fp);
-        MessageBox(hwndMain, "Out of memory", "Error", MB_ICONERROR);
-        return;
-    }
-    
-    size_t bytesRead = fread(buffer, 1, fileSize, fp);
-    fclose(fp);
-    
-    /* Strip UTF-8 BOM if present so ANSI edit control does not get weird characters */
-    if (bytesRead >= 3 && (unsigned char)buffer[0] == 0xEF && (unsigned char)buffer[1] == 0xBB && (unsigned char)buffer[2] == 0xBF) {
-        memmove(buffer, buffer + 3, bytesRead - 3);
-        bytesRead -= 3;
-        DebugLog("[EDITOR] Stripped UTF-8 BOM from file\n");
-    }
-
-    /* Normalize line endings to CRLF for Windows edit control compatibility */
-    char* normalized = (char*)GlobalAlloc(GPTR, bytesRead * 2 + 1);
-    if (!normalized) {
-        GlobalFree((HGLOBAL)buffer);
-        MessageBox(hwndMain, "Out of memory", "Error", MB_ICONERROR);
-        return;
-    }
-
-    char* src = buffer;
-    char* dst = normalized;
-    for (size_t i = 0; i < bytesRead; i++) {
-        if (src[i] == '\n') {
-            if (i == 0 || src[i - 1] != '\r') {
-                *dst++ = '\r';
-            }
-            *dst++ = '\n';
-        } else if (src[i] == '\r') {
-            *dst++ = '\r';
-            if (i + 1 >= bytesRead || src[i + 1] != '\n') {
-                *dst++ = '\n';
-            }
-        } else {
-            *dst++ = src[i];
-        }
-    }
-    *dst = '\0';
-
-    char* filename = strrchr(filePath, '\\');
-    if (filename) filename++;
-    else filename = (char*)filePath;
-
-    int tabIdx = FindTabByPath(filePath);
-    if (tabIdx == -1) {
-        tabIdx = CreateNewTab(filePath, filename);
-        RefreshTabControl();
-    }
-
-    /* Set the text - this preserves all whitespace */
-    SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)normalized);
-    strncpy(g_tabs[tabIdx].content, normalized, sizeof(g_tabs[tabIdx].content) - 1);
-    g_tabs[tabIdx].content[sizeof(g_tabs[tabIdx].content) - 1] = '\0';
-    /* Ensure the edit control does not auto-wrap lines */
-    SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
-    UpdateLineNumbers(hwndInput, hwndLineNumbers);
-
-    GlobalFree((HGLOBAL)normalized);
-    GlobalFree((HGLOBAL)buffer);
-
-    g_activeTab = tabIdx;
-    TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
-    EnsureTabVisible(g_activeTab);
-    
-    UpdateStatusBar(filePath);
+    TVINSERTSTRUCT tvis;
+    tvis.hParent = TVI_ROOT;
+    tvis.hInsertAfter = TVI_LAST;
+    tvis.item.mask = TVIF_TEXT;
+    tvis.item.pszText = "Project Files";
+    TreeView_InsertItem(hwndProjectTree, &tvis);
 }
 
-void RemoveFileFromProject(const char* filePath) {
+void AddUntitledTreeItem(const char* title) {
+    if (!hwndProjectTree || !title || title[0] == '\0') return;
+    EnsureProjectTreeRoot();
+
+    HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
+    if (!hRoot) return;
+
+    char text[MAX_PATH];
+    strncpy(text, title, sizeof(text) - 1);
+    text[sizeof(text) - 1] = '\0';
+
+    TVINSERTSTRUCT tvis;
+    tvis.hParent = hRoot;
+    tvis.hInsertAfter = TVI_LAST;
+    tvis.item.mask = TVIF_TEXT;
+    tvis.item.pszText = text;
+    TreeView_InsertItem(hwndProjectTree, &tvis);
+
+    if (g_treeViewAutoExpand) {
+        TreeView_Expand(hwndProjectTree, hRoot, TVE_EXPAND);
+    }
+}
+
+static void DeleteTreeFileItem(void) {
+    if (!hwndProjectTree) return;
+
+    HTREEITEM hItem = TreeView_GetSelection(hwndProjectTree);
+    if (!hItem) return;
+
+    TVITEM tvi = {0};
+    char textBuf[MAX_PATH] = {0};
+    tvi.mask = TVIF_TEXT;
+    tvi.hItem = hItem;
+    tvi.pszText = textBuf;
+    tvi.cchTextMax = sizeof(textBuf);
+    TreeView_GetItem(hwndProjectTree, &tvi);
+
+    if (strcmp(textBuf, "Project Files") == 0) return;
+
+    char prompt[MAX_PATH + 64];
+    sprintf(prompt, "Remove '%s' from the project tree?", textBuf);
+    if (MessageBox(hwndMain, prompt, "Confirm Delete", MB_YESNO | MB_ICONQUESTION) != IDYES) {
+        return;
+    }
+
+    /* Remove file from the opened-file list if it was tracked */
     for (int i = 0; i < g_openedFileCount; i++) {
-        if (strcmp(g_openedFiles[i], filePath) == 0) {
+        const char* filename = strrchr(g_openedFiles[i], '\\');
+        if (!filename) filename = g_openedFiles[i];
+        else filename++;
+
+        if (strcmp(filename, textBuf) == 0 || strcmp(g_openedFiles[i], textBuf) == 0) {
             for (int j = i; j < g_openedFileCount - 1; j++) {
                 strcpy(g_openedFiles[j], g_openedFiles[j + 1]);
             }
@@ -1463,111 +1239,100 @@ void RemoveFileFromProject(const char* filePath) {
             break;
         }
     }
+
+    TreeView_DeleteItem(hwndProjectTree, hItem);
 }
 
-void PromptDeleteSelectedTreeItem(void) {
-    HTREEITEM hItem = TreeView_GetSelection(hwndProjectTree);
-    if (!hItem) return;
-
-    TVITEM tvi;
-    char buffer[MAX_PATH];
-    tvi.mask = TVIF_TEXT | TVIF_HANDLE | TVIF_PARAM;
-    tvi.hItem = hItem;
-    tvi.pszText = buffer;
-    tvi.cchTextMax = MAX_PATH;
-    TreeView_GetItem(hwndProjectTree, &tvi);
-
-    const char* fullPath = (const char*)tvi.lParam;
-    if (strcmp(buffer, "Project Files") == 0) return;
-
-    /* If this tree item represents an untitled/unsaved tab (no path), prompt and remove the tab */
-    if (!fullPath || fullPath[0] == '\0') {
-        char msg[MAX_PATH + 64];
-        snprintf(msg, sizeof(msg), "Delete '%s'? This will remove the tab and the project entry.", buffer);
-        int confirm = MessageBoxA(hwndMain, msg, "Confirm Delete", MB_YESNO | MB_ICONWARNING);
-        if (confirm == IDYES) {
-            DebugLog("[TREEVIEW] Deleting untitled tree item: %s\n", buffer);
-            /* Remove any matching tab by title */
-            for (int i = 0; i < g_tabCount; i++) {
-                if (strcmp(g_tabs[i].title, buffer) == 0) {
-                    CloseTab(i);
-                    break;
-                }
-            }
-            TreeView_DeleteItem(hwndProjectTree, hItem);
-            RefreshTabControl();
-            if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
-                LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
-            } else {
-                SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-                UpdateLineNumbers(hwndInput, hwndLineNumbers);
-            }
-        }
-        return;
+void CreateUntitledTab(void) {
+    char title[MAX_PATH];
+    if (g_untitledCount == 1) {
+        snprintf(title, sizeof(title), "untitled");
+    } else {
+        snprintf(title, sizeof(title), "untitled%d", g_untitledCount);
     }
+    g_untitledCount++;
 
-    /* Existing file path case - ask the user for confirmation before delegating to Shell */
-    char confirmMsg[MAX_PATH + 128];
-    snprintf(confirmMsg, sizeof(confirmMsg), "Delete '%s'? This will move the file to the Recycle Bin.", fullPath);
-    int userChoice = MessageBoxA(hwndMain, confirmMsg, "Confirm Delete", MB_YESNO | MB_ICONWARNING);
-    if (userChoice != IDYES) return;
-
-    DWORD attrs = GetFileAttributesA(fullPath);
-    if (attrs == INVALID_FILE_ATTRIBUTES) {
-        /* File isn't present on disk - just remove from tree/project and close any tab */
-        DebugLog("[TREEVIEW] File not found on disk, removing project entry: %s\n", fullPath);
-        int tabIdx = FindTabByPath(fullPath);
-        if (tabIdx >= 0) {
-            CloseTab(tabIdx);
-            RefreshTabControl();
-        }
-        TreeView_DeleteItem(hwndProjectTree, hItem);
-        RemoveFileFromProject(fullPath);
-        if (g_activeTab >= 0 && g_activeTab < g_tabCount) LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
-        else {
-            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-            UpdateLineNumbers(hwndInput, hwndLineNumbers);
-        }
-        return;
-    }
-
-    char pathBuffer[MAX_PATH + 2] = {0};
-    size_t len = strlen(fullPath);
-    if (len >= MAX_PATH) return;
-    strcpy(pathBuffer, fullPath);
-    pathBuffer[len + 1] = '\0';
-
-    SHFILEOPSTRUCTA fileOp = {0};
-    fileOp.hwnd = hwndMain;
-    fileOp.wFunc = FO_DELETE;
-    fileOp.pFrom = pathBuffer;
-    fileOp.fFlags = FOF_ALLOWUNDO;
-
-    int result = SHFileOperationA(&fileOp);
-    if (result == 0 && !fileOp.fAnyOperationsAborted) {
-        DebugLog("[TREEVIEW] Deleted file via shell prompt: %s\n", fullPath);
-        TreeView_DeleteItem(hwndProjectTree, hItem);
-        int tabIdx = FindTabByPath(fullPath);
-        if (tabIdx >= 0) {
-            CloseTab(tabIdx);
-            RefreshTabControl();
-            if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
-                LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
-            } else {
-                SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-                UpdateLineNumbers(hwndInput, hwndLineNumbers);
-            }
-        }
-        RemoveFileFromProject(fullPath);
+    int idx = CreateNewTab("", title);
+    if (idx >= 0) {
+        g_activeTab = idx;
+        RefreshTabControl();
+        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+        UpdateSaveMenuState(TRUE);
+        UpdateStatusBar(title);
+        AddUntitledTreeItem(title);
+        g_projectOpened = TRUE;
     }
 }
 
-LRESULT CALLBACK TreeViewSubclassProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-    if (msg == WM_KEYDOWN && wParam == VK_DELETE) {
-        PromptDeleteSelectedTreeItem();
-        return 0;
+void OpenAllProjectFilesAsTabs(void) {
+    if (g_openedFileCount <= 0) {
+        return;
     }
-    return CallWindowProc(hwndOldTreeProc, hwnd, msg, wParam, lParam);
+
+    /* Preserve current active tab if possible */
+    int previousActive = g_activeTab;
+    char previousPath[MAX_PATH] = {0};
+    if (previousActive >= 0 && previousActive < g_tabCount) {
+        strcpy(previousPath, g_tabs[previousActive].filePath);
+    }
+
+    for (int i = 0; i < g_openedFileCount && g_tabCount < MAX_TABS; i++) {
+        if (FindTabByPath(g_openedFiles[i]) != -1) continue;
+        const char* filename = strrchr(g_openedFiles[i], '\\');
+        if (!filename) filename = g_openedFiles[i];
+        else filename++;
+        CreateNewTab(g_openedFiles[i], filename);
+    }
+
+    RefreshTabControl();
+
+    if (previousPath[0] != '\0') {
+        int restoredIdx = FindTabByPath(previousPath);
+        if (restoredIdx >= 0) {
+            g_activeTab = restoredIdx;
+            RefreshTabControl();
+            LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+            return;
+        }
+    }
+
+    if (g_activeTab < 0 && g_tabCount > 0) {
+        g_activeTab = 0;
+        RefreshTabControl();
+        LoadFileIntoEditor(g_tabs[g_activeTab].filePath);
+    }
+}
+
+/* Load file content into editor - preserve all formatting */
+void LoadFileIntoEditor(const char* filePath) {
+    if (!filePath || filePath[0] == '\0') {
+        DebugLog("[EDITOR] LoadFileIntoEditor called with empty path\n");
+        return;
+    }
+    DebugLog("[EDITOR] LoadFileIntoEditor called with: %s\n", filePath);
+
+    if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+        SaveCurrentEditorContentToActiveTab();
+    }
+
+    int tabIdx = FindTabByPath(filePath);
+    if (tabIdx == -1) {
+        const char* filename = strrchr(filePath, '\\');
+        if (filename) filename++;
+        else filename = filePath;
+        tabIdx = CreateNewTab(filePath, filename);
+        RefreshTabControl();
+    }
+
+    g_activeTab = tabIdx;
+    if (TabCtrl_GetCurSel(hwndCodeTab) != g_activeTab) {
+        g_ignoreTabSelectionChange = TRUE;
+        TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
+        g_ignoreTabSelectionChange = FALSE;
+    }
+
+    LoadTabContentIntoEditor(g_activeTab);
+    EnsureTabVisible(g_activeTab);
 }
 
 /* Recursively scan folder for C/H files */
@@ -1622,9 +1387,8 @@ void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat) {
             else filename++;
             
             tvis.hParent = hRoot;
-            tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
+            tvis.item.mask = TVIF_TEXT;
             tvis.item.pszText = filename;
-            tvis.item.lParam = (LPARAM)g_openedFiles[i];
             TreeView_InsertItem(hwndTree, &tvis);
         }
     } else {
@@ -1654,14 +1418,15 @@ void PopulateProjectTree(HWND hwndTree, const char* rootPath, BOOL isFlat) {
             else filename = files[i];
             
             tvis.hParent = hRoot;
-            tvis.item.mask = TVIF_TEXT | TVIF_PARAM;
+            tvis.item.mask = TVIF_TEXT;
             tvis.item.pszText = filename;
-            tvis.item.lParam = (LPARAM)files[i];
             TreeView_InsertItem(hwndTree, &tvis);
         }
     }
     
-    TreeView_Expand(hwndTree, TreeView_GetRoot(hwndTree), TVE_EXPAND);
+    if (g_treeViewAutoExpand) {
+        TreeView_Expand(hwndTree, TreeView_GetRoot(hwndTree), TVE_EXPAND);
+    }
 }
 
 /* Open folder and populate tree */
@@ -1678,19 +1443,6 @@ void OpenFolder(HWND hwnd, const char* folderPath) {
     char status[256];
     sprintf(status, "Opened folder: %s (%d files)", folderPath, g_openedFileCount);
     UpdateStatusBar(status);
-}
-
-/* Add untitled tab to the treeview */
-void AddUntitledToTreeView(void) {
-    TVINSERTSTRUCT tvis;
-    HTREEITEM hRoot = TreeView_GetRoot(hwndProjectTree);
-    if (!hRoot) return;
-    
-    tvis.hParent = hRoot;
-    tvis.hInsertAfter = TVI_FIRST;
-    tvis.item.mask = TVIF_TEXT;
-    tvis.item.pszText = "untitled";
-    TreeView_InsertItem(hwndProjectTree, &tvis);
 }
 
 /* Open files with dialog */
@@ -1713,11 +1465,6 @@ void OpenFilesWithDialog(HWND hwnd) {
     
     if (GetOpenFileName(&ofn)) {
         DebugLog("[DIALOG] GetOpenFileName returned TRUE\n");
-        ClearAllTabs();
-        SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-        SendMessage(hwndOutput, WM_SETTEXT, 0, (LPARAM)"");
-        TreeView_DeleteAllItems(hwndProjectTree);
-        g_openedFileCount = 0;
         char* p = fileBuffer;
         
         /* Check if single folder selected or multiple files */
@@ -1729,6 +1476,7 @@ void OpenFilesWithDialog(HWND hwnd) {
             /* Multiple files selected - format: "dir\0file1\0file2\0\0" */
             DebugLog("[DIALOG] Multi-file mode\n");
             g_isFolderBased = FALSE;
+            g_openedFileCount = 0;
             
             /* Determine whether a single file or multiple files were selected */
             char dirPath[MAX_PATH];
@@ -1788,35 +1536,50 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
     ofn.lpstrFilter = "C Files (*.c)\0*.c\0Header Files (*.h)\0*.h\0All Files (*.*)\0*.*\0";
     ofn.lpstrDefExt = "c";
     ofn.Flags = OFN_EXPLORER | OFN_OVERWRITEPROMPT;
-    
-    if (saveAs) {
+
+    if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+        SaveCurrentEditorContentToActiveTab();
+    }
+
+    char* saveContent = NULL;
+    size_t saveLen = 0;
+    if (g_activeTab >= 0 && g_activeTab < g_tabCount && g_tabs[g_activeTab].content) {
+        saveContent = g_tabs[g_activeTab].content;
+        saveLen = g_tabs[g_activeTab].contentLength;
+    } else {
+        int len = (int)SendMessage(hwndInput, WM_GETTEXTLENGTH, 0, 0);
+        char* temp = (char*)GlobalAlloc(GPTR, len + 1);
+        if (temp) {
+            SendMessage(hwndInput, WM_GETTEXT, len + 1, (LPARAM)temp);
+            saveContent = temp;
+            saveLen = len;
+        }
+    }
+
+    if (saveAs || g_activeTab < 0 || g_activeTab >= g_tabCount || g_tabs[g_activeTab].filePath[0] == '\0') {
         if (GetSaveFileName(&ofn)) {
-            char content[65536];
-            SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
-            
+            char oldTitle[MAX_PATH] = "";
+            if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+                strncpy(oldTitle, g_tabs[g_activeTab].title, sizeof(oldTitle) - 1);
+                oldTitle[sizeof(oldTitle) - 1] = '\0';
+            }
+
             FILE* fp = fopen(fileBuffer, "wb");
             if (fp) {
-                size_t len = strlen(content);
-                if (len > 0) fwrite(content, 1, len, fp);
+                if (saveLen > 0 && saveContent) fwrite(saveContent, 1, saveLen, fp);
                 fclose(fp);
                 UpdateStatusBar(fileBuffer);
-                /* Clear modified state and update tab if it was untitled */
                 if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
-                    /* Check if this was an untitled tab */
-                    if (g_tabs[g_activeTab].filePath[0] == '\0' || strcmp(g_tabs[g_activeTab].title, "untitled") == 0) {
-                        /* Update the tab's filepath and title to the new filename */
-                        strcpy(g_tabs[g_activeTab].filePath, fileBuffer);
-                        char* filename = strrchr(fileBuffer, '\\');
-                        if (filename) filename++;
-                        else filename = fileBuffer;
-                        strcpy(g_tabs[g_activeTab].title, filename);
-                        /* Add to opened files list */
-                        AddFileToProject(fileBuffer);
-                        /* Update treeview to show the real filename instead of untitled */
-                        PopulateProjectTree(hwndProjectTree, "", TRUE);
-                        RefreshTabControl();
-                    }
+                    strncpy(g_tabs[g_activeTab].filePath, fileBuffer, MAX_PATH - 1);
+                    g_tabs[g_activeTab].filePath[MAX_PATH - 1] = '\0';
+                    const char* filename = strrchr(fileBuffer, '\\');
+                    if (filename) filename++;
+                    else filename = fileBuffer;
+                    strncpy(g_tabs[g_activeTab].title, filename, MAX_PATH - 1);
+                    g_tabs[g_activeTab].title[MAX_PATH - 1] = '\0';
                     g_tabs[g_activeTab].isModified = FALSE;
+                    AddFileToProject(fileBuffer);
+                    UpdateTreeViewItemText(oldTitle, g_tabs[g_activeTab].title);
                     UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
                     UpdateTabTitle(g_activeTab, FALSE);
                 }
@@ -1824,46 +1587,108 @@ void SaveFileWithDialog(HWND hwnd, BOOL saveAs) {
                 MessageBox(hwnd, "Failed to save file", "Error", MB_ICONERROR);
             }
         }
+    } else if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
+        FILE* fp = fopen(g_tabs[g_activeTab].filePath, "wb");
+        if (fp) {
+            if (saveLen > 0 && saveContent) fwrite(saveContent, 1, saveLen, fp);
+            fclose(fp);
+            UpdateStatusBar(g_tabs[g_activeTab].filePath);
+            g_tabs[g_activeTab].isModified = FALSE;
+            UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
+            UpdateTabTitle(g_activeTab, FALSE);
+        }
     } else {
-        /* Simple save - just save current content */
-        char content[65536];
+        /* No valid active tab; force Save As instead of writing to the first opened file */
+        SaveFileWithDialog(hwnd, TRUE);
+    }
+
+    if (saveContent && (g_activeTab < 0 || g_activeTab >= g_tabCount || g_tabs[g_activeTab].content != saveContent)) {
+        GlobalFree((HGLOBAL)saveContent);
+    }
+}
+
+/* Save current editor content to a .orc file */
+void SaveOrcFileWithDialog(HWND hwnd) {
+    OPENFILENAME ofn;
+    char fileBuffer[MAX_PATH] = {0};
+    char content[65536];
+
+    memset(&ofn, 0, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = hwnd;
+    ofn.lpstrFile = fileBuffer;
+    ofn.nMaxFile = sizeof(fileBuffer);
+    ofn.lpstrFilter = ".orc Files (*.orc)\0*.orc\0All Files (*.*)\0*.*\0";
+    ofn.lpstrDefExt = "orc";
+    ofn.Flags = OFN_EXPLORER | OFN_OVERWRITEPROMPT;
+
+    if (GetSaveFileName(&ofn)) {
         SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
-        
-        if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
-            /* Check if this is an untitled file - if so, force SaveAs dialog */
-            if (g_tabs[g_activeTab].filePath[0] == '\0' || strcmp(g_tabs[g_activeTab].title, "untitled") == 0) {
-                DebugLog("[SAVE] Untitled file detected, forcing SaveAs dialog\n");
-                SaveFileWithDialog(hwnd, TRUE);
-                return;
-            }
-            FILE* fp = fopen(g_tabs[g_activeTab].filePath, "wb");
-            if (fp) {
-                size_t len = strlen(content);
-                if (len > 0) fwrite(content, 1, len, fp);
-                fclose(fp);
-                UpdateStatusBar(g_tabs[g_activeTab].filePath);
-                /* Clear modified state */
-                g_tabs[g_activeTab].isModified = FALSE;
-                UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
-                UpdateTabTitle(g_activeTab, FALSE);
-            }
-        } else if (g_openedFileCount > 0) {
-            FILE* fp = fopen(g_openedFiles[0], "wb");
-            if (fp) {
-                size_t len = strlen(content);
-                if (len > 0) fwrite(content, 1, len, fp);
-                fclose(fp);
-                UpdateStatusBar(g_openedFiles[0]);
-                /* Clear modified state */
-                if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
-                    g_tabs[g_activeTab].isModified = FALSE;
-                    UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, FALSE);
-                    UpdateTabTitle(g_activeTab, FALSE);
+        FILE* fp = fopen(fileBuffer, "wb");
+        if (fp) {
+            size_t len = strlen(content);
+            if (len > 0) fwrite(content, 1, len, fp);
+            fclose(fp);
+            UpdateStatusBar(fileBuffer);
+            AddFileToProject(fileBuffer);
+        } else {
+            MessageBox(hwnd, "Failed to save .orc file", "Error", MB_ICONERROR);
+        }
+    }
+}
+
+/* Open .orc files with dialog */
+void OpenOrcFileWithDialog(HWND hwnd) {
+    OPENFILENAME ofn;
+    char fileBuffer[65536] = {0};
+    char files[MAX_OPENED_FILES][MAX_PATH];
+    int fileCount = 0;
+
+    memset(&ofn, 0, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = hwnd;
+    ofn.lpstrFile = fileBuffer;
+    ofn.nMaxFile = sizeof(fileBuffer);
+    ofn.lpstrFilter = ".orc Files (*.orc)\0*.orc\0All Files (*.*)\0*.*\0";
+    ofn.lpstrDefExt = "orc";
+    ofn.Flags = OFN_ALLOWMULTISELECT | OFN_EXPLORER | OFN_FILEMUSTEXIST;
+
+    if (GetOpenFileName(&ofn)) {
+        char* p = fileBuffer;
+        g_isFolderBased = FALSE;
+        g_openedFileCount = 0;
+
+        if (strlen(p) > 0 && p[strlen(p) - 1] == '\\') {
+            /* Single folder selected - not expected for .orc files */
+            OpenFolder(hwnd, p);
+        } else {
+            char dirPath[MAX_PATH];
+            strcpy(dirPath, p);
+            p += strlen(p) + 1;
+
+            if (*p == '\0') {
+                if (fileCount < MAX_OPENED_FILES) {
+                    strcpy(files[fileCount++], dirPath);
+                    AddFileToProject(dirPath);
+                }
+            } else {
+                while (*p && fileCount < MAX_OPENED_FILES) {
+                    char fullPath[MAX_PATH];
+                    sprintf(fullPath, "%s\\%s", dirPath, p);
+                    strcpy(files[fileCount++], fullPath);
+                    AddFileToProject(fullPath);
+                    p += strlen(p) + 1;
                 }
             }
-        } else {
-            /* No file open, do Save As */
-            SaveFileWithDialog(hwnd, TRUE);
+
+            if (fileCount > 0) {
+                LoadFileIntoEditor(files[0]);
+                PopulateProjectTree(hwndProjectTree, "", TRUE);
+                char status[256];
+                sprintf(status, "Opened %d .orc file(s)", fileCount);
+                UpdateStatusBar(status);
+                g_projectOpened = TRUE;
+            }
         }
     }
 }
@@ -1886,8 +1711,13 @@ void RepositionCodeArea(int clientWidth, int clientHeight) {
     int outputWidth = clientWidth - outputX - g_propertiesWidth - 10;
     if (outputWidth < 100) outputWidth = 100;
 
+    int tabCountWidth = 90;
+    int tabControlWidth = inputWidth - tabCountWidth - 5;
+    if (tabControlWidth < 120) tabControlWidth = 120;
+
     MoveWindow(hwndProjectTree, 10, 90, 200, clientHeight - 150, TRUE);
     MoveWindow(hwndLineNumbers, 220, 115, g_lineNumberWidth, clientHeight - 165, TRUE);
+    if (hwndTabCount) MoveWindow(hwndTabCount, 220 + g_lineNumberWidth - 30, 90, 30, 20, TRUE);
     MoveWindow(hwndCodeTab, codeLeft, 90, inputWidth, 25, TRUE);
     /* Position tab navigation buttons on the right side of the tab bar */
     if (hwndTabPrev) MoveWindow(hwndTabPrev, codeLeft + inputWidth - 50, 88, 22, 22, TRUE);
@@ -1990,20 +1820,18 @@ void CreateMenus(HWND hwnd) {
     HMENU hEdit = CreateMenu();
     HMENU hProject = CreateMenu();
     HMENU hBuild = CreateMenu();
-    HMENU hTools = CreateMenu();
-    HMENU hOptions = CreateMenu();
     
     /* File menu with keyboard shortcuts */
-    AppendMenu(hFile, MF_STRING, IDM_FILE_NEW_FILE, "&New File\tCtrl+N");
-    AppendMenu(hFile, MF_STRING, IDM_FILE_NEW, "New &Project\tCtrl+Shift+N");
-    AppendMenu(hFile, MF_STRING, IDM_FILE_OPEN_FILE, "&Open File\tCtrl+O");
-    AppendMenu(hFile, MF_STRING, IDM_FILE_OPEN, "Open P&roject...\tCtrl+Shift+O");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_NEW, "New Tab\tCtrl+N");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_OPEN, "Open File(s)...\tCtrl+O");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_OPEN_ORC, "Open Project...\tCtrl+Shift+O");
     AppendMenu(hFile, MF_SEPARATOR, 0, NULL);
-    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVE, "&Save\tCtrl+S");
-    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVEAS, "Save &As...\tCtrl+Shift+S");
-    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVEALL, "Save A&ll\tCtrl+Shift+Alt+S");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVE, "Save\tCtrl+S");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVEAS, "Save As...\tCtrl+Shift+S");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVE_ORC, "Save Project...\tAlt+Shift+S");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_SAVEALL, "Save All\tCtrl+Alt+Shift+S");
     AppendMenu(hFile, MF_SEPARATOR, 0, NULL);
-    AppendMenu(hFile, MF_STRING, IDM_FILE_EXIT, "E&xit\tAlt+F4");
+    AppendMenu(hFile, MF_STRING, IDM_FILE_EXIT, "Exit\tAlt+F4");
     
     /* Edit menu with keyboard shortcuts */
     AppendMenu(hEdit, MF_STRING, IDM_EDIT_UNDO, "&Undo\tCtrl+Z");
@@ -2013,6 +1841,8 @@ void CreateMenus(HWND hwnd) {
     AppendMenu(hEdit, MF_STRING, IDM_EDIT_COPY, "&Copy\tCtrl+C");
     AppendMenu(hEdit, MF_STRING, IDM_EDIT_PASTE, "&Paste\tCtrl+V");
     AppendMenu(hEdit, MF_SEPARATOR, 0, NULL);
+    AppendMenu(hEdit, MF_STRING, IDM_EDIT_DELETE, "&Delete\tDel");
+    AppendMenu(hEdit, MF_SEPARATOR, 0, NULL);
     AppendMenu(hEdit, MF_STRING, IDM_EDIT_SELECTALL, "Select &All\tCtrl+A");
     
     /* Project menu with keyboard shortcuts */
@@ -2021,13 +1851,12 @@ void CreateMenus(HWND hwnd) {
     /* Build menu with keyboard shortcuts */
     AppendMenu(hBuild, MF_STRING, IDM_BUILD_COMPILE, "&Compile\tF5");
     AppendMenu(hBuild, MF_STRING, IDM_BUILD_RUN, "&Run\tF6");
+    AppendMenu(hBuild, MF_STRING, IDM_BUILD_COMPILE_RUN, "Compile && Run\tF7");
     
     AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hFile, "&File");
     AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hEdit, "&Edit");
     AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hProject, "&Project");
     AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hBuild, "&Build");
-    AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hTools, "&Tools");
-    AppendMenu(hMenuBar, MF_POPUP, (UINT_PTR)hOptions, "&Options");
     
     SetMenu(hwnd, hMenuBar);
     DebugLog("[FUNC] CreateMenus complete\n");
@@ -2110,18 +1939,14 @@ void CreateMainLayout(HWND hwnd) {
     
     /* Tab control for code files */
     hwndCodeTab = CreateWindowEx(0, WC_TABCONTROL, NULL,
-        WS_CHILD | WS_VISIBLE | TCS_TABS | TCS_OWNERDRAWFIXED,
+        WS_CHILD | WS_VISIBLE | TCS_TABS,
         255, 50, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
 
-    /* Tab navigation buttons (prev/next) */
-    hwndTabPrev = CreateWindowEx(0, "BUTTON", "<",
-        WS_CHILD | BS_CENTER | BS_PUSHBUTTON | WS_VISIBLE,
-        0, 0, 22, 22, hwnd, (HMENU)IDC_TAB_PREV, GetModuleHandle(NULL), NULL);
+    hwndTabCount = CreateWindowEx(0, "EDIT", "0",
+        WS_CHILD | WS_VISIBLE | ES_LEFT | ES_READONLY | ES_AUTOHSCROLL,
+        220, 90, 30, 20, hwnd, (HMENU)IDC_TAB_COUNT, GetModuleHandle(NULL), NULL);
+    SendMessage(hwndTabCount, EM_SETREADONLY, TRUE, 0);
 
-    hwndTabNext = CreateWindowEx(0, "BUTTON", ">",
-        WS_CHILD | BS_CENTER | BS_PUSHBUTTON | WS_VISIBLE,
-        0, 0, 22, 22, hwnd, (HMENU)IDC_TAB_NEXT, GetModuleHandle(NULL), NULL);
-    
     /* Input code pane - below tabs */
     hwndInput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
         WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_NOHIDESEL,
@@ -2134,7 +1959,6 @@ void CreateMainLayout(HWND hwnd) {
     SendMessage(hwndInput, WM_SETFONT, (WPARAM)g_codeFont, TRUE);
     SendMessage(hwndInput, EM_FMTLINES, FALSE, 0);
     hwndOldEditorProc = (WNDPROC)SetWindowLongPtr(hwndInput, GWLP_WNDPROC, (LONG_PTR)EditorSubclassProc);
-    hwndOldTreeProc = (WNDPROC)SetWindowLongPtr(hwndProjectTree, GWLP_WNDPROC, (LONG_PTR)TreeViewSubclassProc);
     
     /* Output code pane */
     hwndOutput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
@@ -2163,6 +1987,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     si.cb = sizeof(si);
     (void)hPrevInstance;
     (void)lpCmdLine;
+    (void)nCmdShow;
     
     /* Initialize console logging */
     InitDebugConsole();
@@ -2181,60 +2006,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     lnwc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
     RegisterClass(&lnwc);
 
-    WNDCLASSEX wc = {0};
-    wc.cbSize = sizeof(wc);
+    WNDCLASS wc = {0};
+    wc.lpfnWndProc = WndProc;
+    wc.hInstance = hInstance;
     wc.lpfnWndProc = WndProc;
     wc.hInstance = hInstance;
     wc.lpszClassName = "OrcaMainWnd";
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-
-    /* Load the embedded PE icon resource first, then fallback to generated data. */
-    HICON hIcon = (HICON)LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_MAINICON), IMAGE_ICON,
-        GetSystemMetrics(SM_CXICON), GetSystemMetrics(SM_CYICON), LR_DEFAULTCOLOR);
-    HICON hIconSm = (HICON)LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_MAINICON), IMAGE_ICON,
-        GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON), LR_DEFAULTCOLOR);
-
-    if (!hIcon || !hIconSm) {
-        if (icon_image_1_len > 0) {
-            HICON autoIcon = CreateIconFromResourceEx((PBYTE)icon_image_1, icon_image_1_len,
-                TRUE, 0x00030000,
-                GetSystemMetrics(SM_CXICON), GetSystemMetrics(SM_CYICON),
-                LR_DEFAULTCOLOR | LR_SHARED);
-            if (!hIcon) hIcon = autoIcon;
-        }
-        if (icon_image_0_len > 0) {
-            HICON autoIconSm = CreateIconFromResourceEx((PBYTE)icon_image_0, icon_image_0_len,
-                TRUE, 0x00030000,
-                GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON),
-                LR_DEFAULTCOLOR | LR_SHARED);
-            if (!hIconSm) hIconSm = autoIconSm;
-        }
-        if (!hIcon && icon_image_0_len > 0) {
-            hIcon = CreateIconFromResourceEx((PBYTE)icon_image_0, icon_image_0_len,
-                TRUE, 0x00030000,
-                GetSystemMetrics(SM_CXICON), GetSystemMetrics(SM_CYICON),
-                LR_DEFAULTCOLOR | LR_SHARED);
-        }
-        if (!hIconSm && icon_image_1_len > 0) {
-            hIconSm = CreateIconFromResourceEx((PBYTE)icon_image_1, icon_image_1_len,
-                TRUE, 0x00030000,
-                GetSystemMetrics(SM_CXSMICON), GetSystemMetrics(SM_CYSMICON),
-                LR_DEFAULTCOLOR | LR_SHARED);
-        }
-    }
-
+    
+    /* Load custom icon for high resolution displays */
+    HICON hIcon = (HICON)LoadImage(hInstance, "res\\MainProgramIconLarge.ico",
+        IMAGE_ICON, 0, 0, LR_LOADFROMFILE | LR_DEFAULTSIZE | LR_SHARED);
     if (!hIcon) {
+        /* Fallback to system icon if custom icon not found */
         hIcon = LoadIcon(NULL, IDI_APPLICATION);
     }
-    if (!hIconSm) {
-        hIconSm = LoadIcon(NULL, IDI_APPLICATION);
-    }
     wc.hIcon = hIcon;
-    wc.hIconSm = hIconSm;
     wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE+1);
-    RegisterClassEx(&wc);
+    RegisterClass(&wc);
 
     LoadConfig();
+    LoadCompilerPathC();
 
     hwndMain = CreateWindow("OrcaMainWnd", "Orca - C Code Generator & Manipulator", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT, 1400, 800, NULL, NULL, hInstance, NULL);
@@ -2242,10 +2034,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     /* Set custom icon for window (titlebar, taskbar, alt+tab) */
     if (hIcon) {
         SendMessage(hwndMain, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
-        SendMessage(hwndMain, WM_SETICON, ICON_SMALL, (LPARAM)hIconSm);
+        SendMessage(hwndMain, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
     }
+
+    /* Validate compiler path now that window is created */
+    ValidateCompilerPathAtStartup();
     
-    /* Start maximized by default */
     ShowWindow(hwndMain, SW_SHOWMAXIMIZED);
     UpdateWindow(hwndMain);
 
@@ -2253,13 +2047,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     
     /* Create accelerator table for keyboard shortcuts */
     ACCEL accels[] = {
-        {FVIRTKEY | FCONTROL, 0x4E, IDM_FILE_NEW_FILE},           /* Ctrl+N */
-        {FVIRTKEY | FCONTROL | FSHIFT, 0x4E, IDM_FILE_NEW},       /* Ctrl+Shift+N */
-        {FVIRTKEY | FCONTROL, 0x4F, IDM_FILE_OPEN_FILE},          /* Ctrl+O */
-        {FVIRTKEY | FCONTROL | FSHIFT, 0x4F, IDM_FILE_OPEN},      /* Ctrl+Shift+O */
+        {FVIRTKEY | FCONTROL, 0x4E, IDM_FILE_NEW},                 /* Ctrl+N */
+        {FVIRTKEY | FCONTROL, 0x4F, IDM_FILE_OPEN},                /* Ctrl+O */
+        {FVIRTKEY | FCONTROL | FSHIFT, 0x4F, IDM_FILE_OPEN_ORC},   /* Ctrl+Shift+O */
         {FVIRTKEY | FCONTROL, 0x53, IDM_FILE_SAVE},                /* Ctrl+S */
-        {FVIRTKEY | FCONTROL | FSHIFT, 0x53, IDM_FILE_SAVEAS},     /* Ctrl+Shift+S */
-        {FVIRTKEY | FCONTROL | FSHIFT, 0x41, IDM_FILE_SAVEALL},    /* Ctrl+Shift+A */
+        {FVIRTKEY | FCONTROL | FSHIFT, 0x53, IDM_FILE_SAVEAS},      /* Ctrl+Shift+S */
+        {FVIRTKEY | FALT | FSHIFT, 0x53, IDM_FILE_SAVE_ORC},        /* Alt+Shift+S */
+        {FVIRTKEY | FCONTROL | FALT | FSHIFT, 0x53, IDM_FILE_SAVEALL}, /* Ctrl+Alt+Shift+S */
         {FVIRTKEY | FCONTROL | FSHIFT, 0x50, IDM_PROJECT_NEW},     /* Ctrl+Shift+P */
         {FVIRTKEY | FCONTROL, 0x57, IDM_TAB_CLOSE_SINGLE},         /* Ctrl+W */
         {FVIRTKEY | FCONTROL | FSHIFT, 0x57, IDM_TAB_CLOSE_OTHERS},/* Ctrl+Shift+W */
@@ -2272,20 +2066,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         {FVIRTKEY, 0x70, IDM_PROJECT_SETTINGS},                    /* F9 */
         {FVIRTKEY, 0x74, IDM_BUILD_COMPILE},                        /* F5 */
         {FVIRTKEY, 0x75, IDM_BUILD_RUN},                            /* F6 */
+        {FVIRTKEY, 0x76, IDM_BUILD_COMPILE_RUN},                    /* F7 */
     };
     hAccel = CreateAcceleratorTable(accels, sizeof(accels) / sizeof(accels[0]));
     
     /* Parse command line parameters - load files passed as arguments */
-    BOOL filesLoaded = FALSE;
+    int fileCount = 0;
+    char filePaths[32][MAX_PATH];
     if (lpCmdLine && strlen(lpCmdLine) > 0) {
         DebugLog("[CMDLINE] Processing command line: %s\n", lpCmdLine);
         char cmdCopy[2048];
         strcpy(cmdCopy, lpCmdLine);
         
         /* Parse arguments separated by spaces/quotes */
-        char filePaths[32][MAX_PATH];
-        int fileCount = 0;
-        
         char* p = cmdCopy;
         while (*p && fileCount < 32) {
             /* Skip whitespace */
@@ -2328,33 +2121,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             char status[256];
             sprintf(status, "Loaded %d files from command line", fileCount);
             UpdateStatusBar(status);
-            filesLoaded = TRUE;
         }
     }
     
-    /* If no files were loaded from any source, create untitled tab */
-    if (!filesLoaded) {
-        DebugLog("[INIT] No files loaded - creating untitled tab\n");
-        g_projectOpened = TRUE;
-        int untitledTab = CreateNewTab("", "untitled");
-        if (untitledTab >= 0) {
-            g_activeTab = untitledTab;
-            RefreshTabControl();
-            /* Add to treeview */
-            TVINSERTSTRUCT tvis;
-            tvis.hParent = TVI_ROOT;
-            tvis.hInsertAfter = TVI_LAST;
-            tvis.item.mask = TVIF_TEXT;
-            tvis.item.pszText = "Project Files";
-            HTREEITEM hRoot = TreeView_InsertItem(hwndProjectTree, &tvis);
-            
-            tvis.hParent = hRoot;
-            tvis.item.pszText = "untitled";
-            TreeView_InsertItem(hwndProjectTree, &tvis);
-            TreeView_Expand(hwndProjectTree, hRoot, TVE_EXPAND);
-        }
-        UpdateSaveMenuState(TRUE);
-        UpdateStatusBar("Ready");
+    if (fileCount == 0) {
+        CreateUntitledTab();
     }
     
     MSG msg;
@@ -2422,92 +2193,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         /* File menu */
         case IDM_FILE_NEW:
             DebugLog("[MENU] FileNewProjectMenuItemClick\n");
-            /* Prompt to save before creating new project */
-            if (PromptSaveAllTabs() == IDCANCEL) break;
-            ClearAllTabs();
-            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-            SendMessage(hwndOutput, WM_SETTEXT, 0, (LPARAM)"");
-            g_openedFileCount = 0;
-            g_projectOpened = TRUE;
-            TreeView_DeleteAllItems(hwndProjectTree);
-            UpdateSaveMenuState(TRUE);
-            /* Create initial untitled tab */
-            {
-                int untitledTab = CreateNewTab("", "untitled");
-                if (untitledTab >= 0) {
-                    g_activeTab = untitledTab;
-                    RefreshTabControl();
-                    /* Add to treeview */
-                    TVINSERTSTRUCT tvis;
-                    tvis.hParent = TVI_ROOT;
-                    tvis.hInsertAfter = TVI_LAST;
-                    tvis.item.mask = TVIF_TEXT;
-                    tvis.item.pszText = "Project Files";
-                    HTREEITEM hRoot = TreeView_InsertItem(hwndProjectTree, &tvis);
-                    
-                    tvis.hParent = hRoot;
-                    tvis.item.pszText = "untitled";
-                    TreeView_InsertItem(hwndProjectTree, &tvis);
-                    TreeView_Expand(hwndProjectTree, hRoot, TVE_EXPAND);
-                }
-            }
-            UpdateStatusBar("New project created");
-            break;
-        case IDM_FILE_NEW_FILE:
-            DebugLog("[MENU] FileNewFileMenuItemClick\n");
-            {
-                char newTitle[MAX_PATH];
-                GenerateUniqueUntitledName(newTitle, sizeof(newTitle));
-
-                int tabIdx = CreateNewTab("", newTitle);
-                if (tabIdx < 0) break;
-
-                g_activeTab = tabIdx;
-                RefreshTabControl();
-                AddTreeItem(hwndProjectTree, newTitle, "");
-                TabCtrl_SetCurSel(hwndCodeTab, g_activeTab);
-                EnsureTabVisible(g_activeTab);
-                SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
-                UpdateLineNumbers(hwndInput, hwndLineNumbers);
-                g_projectOpened = TRUE;
-                UpdateSaveMenuState(TRUE);
-                UpdateStatusBar("Added new untitled file to project");
-            }
-            break;
-        case IDM_FILE_OPEN_FILE:
-            DebugLog("[MENU] FileOpenFileMenuItemClick\n");
-            {
-                OPENFILENAME ofn;
-                char fileBuffer[MAX_PATH] = {0};
-
-                memset(&ofn, 0, sizeof(ofn));
-                ofn.lStructSize = sizeof(ofn);
-                ofn.hwndOwner = hwnd;
-                ofn.lpstrFile = fileBuffer;
-                ofn.nMaxFile = sizeof(fileBuffer);
-                ofn.lpstrFilter = "C/H Files (*.c;*.h)\0*.c;*.h\0All Files (*.*)\0*.*\0";
-                ofn.lpstrDefExt = "c";
-                ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST;
-
-                if (GetOpenFileName(&ofn)) {
-                    if (!IsFileAlreadyOpen(fileBuffer)) {
-                        char* filename = strrchr(fileBuffer, '\\');
-                        if (filename) filename++;
-                        else filename = fileBuffer;
-
-                        AddFileToProject(fileBuffer);
-                        AddTreeItem(hwndProjectTree, filename, g_openedFiles[g_openedFileCount - 1]);
-                    }
-                    UpdateSaveMenuState(TRUE);
-                    g_projectOpened = TRUE;
-                    UpdateStatusBar("Added file to project tree");
-                }
-            }
+            CreateUntitledTab();
             break;
         case IDM_FILE_OPEN:
             DebugLog("[MENU] FileOpenProjectMenuItemClick\n");
             /* Prompt to save before opening new project */
             if (PromptSaveAllTabs() == IDCANCEL) break;
+            ClearAllTabs();
+            SendMessage(hwndInput, WM_SETTEXT, 0, (LPARAM)"");
+            SendMessage(hwndOutput, WM_SETTEXT, 0, (LPARAM)"");
             OpenFilesWithDialog(hwnd);
             g_projectOpened = TRUE;
             UpdateSaveMenuState(TRUE);
@@ -2520,6 +2214,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             DebugLog("[MENU] FileSaveAsMenuItemClick\n");
             SaveFileWithDialog(hwnd, TRUE);
             break;
+        case IDM_FILE_SAVE_ORC:
+            DebugLog("[MENU] FileSaveOrcMenuItemClick\n");
+            SaveOrcFileWithDialog(hwnd);
+            break;
+        case IDM_FILE_OPEN_ORC:
+            DebugLog("[MENU] FileOpenOrcMenuItemClick\n");
+            OpenOrcFileWithDialog(hwnd);
+            break;
         case IDM_FILE_SAVEALL:
             DebugLog("[MENU] FileSaveAllMenuItemClick\n");
             SaveAllFiles(hwnd);
@@ -2531,15 +2233,8 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             
         case IDC_CODE_INPUT:
             if (HIWORD(wParam) == EN_CHANGE) {
-                /* Preserve current in-memory text for this tab before switching away. */
+                /* Mark current file as modified and update TreeView */
                 if (g_activeTab >= 0 && g_activeTab < g_tabCount) {
-                    char content[65536];
-                    SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
-                    strncpy(g_tabs[g_activeTab].content, content, sizeof(g_tabs[g_activeTab].content) - 1);
-                    g_tabs[g_activeTab].content[sizeof(g_tabs[g_activeTab].content) - 1] = '\0';
-                    DebugLog("[EDIT] EN_CHANGE on tab %d (%s), len=%u, preview='%s'\n",
-                        g_activeTab, g_tabs[g_activeTab].title, (unsigned)strlen(g_tabs[g_activeTab].content),
-                        g_tabs[g_activeTab].content[0] ? g_tabs[g_activeTab].content : "<empty>");
                     if (!g_tabs[g_activeTab].isModified) {
                         g_tabs[g_activeTab].isModified = TRUE;
                         UpdateTreeViewItemModified(g_tabs[g_activeTab].filePath, TRUE);
@@ -2603,22 +2298,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 }
             }
             break;
-        /* Tab navigation buttons */
-        case IDC_TAB_PREV:
-            DebugLog("[TAB] Prev button clicked\n");
-            if (g_tabScrollIndex > 0) {
-                g_tabScrollIndex--;
-                EnsureTabVisible(g_tabScrollIndex);
-            }
-            break;
-        case IDC_TAB_NEXT:
-            DebugLog("[TAB] Next button clicked\n");
-            if (g_tabScrollIndex < g_tabCount - 1) {
-                g_tabScrollIndex++;
-                EnsureTabVisible(g_tabScrollIndex);
-            }
-            break;
-            
         /* Edit menu */
         case IDM_EDIT_UNDO:
             DebugLog("[MENU] EditUndoMenuItemClick\n");
@@ -2644,40 +2323,128 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             DebugLog("[MENU] EditSelectAllMenuItemClick\n");
             SendMessage(hwndInput, EM_SETSEL, 0, -1);
             break;
+        case IDM_EDIT_DELETE:
+            DebugLog("[MENU] EditDeleteMenuItemClick\n");
+            DeleteTreeFileItem();
+            break;
             
         /* Build menu */
         case IDM_BUILD_COMPILE:
             DebugLog("[MENU] BuildCompileMenuItemClick\n");
             {
-                /* Get current code and compile with GCC */
-                char content[65536];
-                SendMessage(hwndInput, WM_GETTEXT, sizeof(content), (LPARAM)content);
-                if (strlen(content) == 0) {
-                    MessageBox(hwnd, "No code to compile", "Compile", MB_ICONINFORMATION);
-                } else {
-                    /* Save to temp file and compile */
-                    FILE* fp = fopen("build\\temp.c", "wb");
-                    if (fp) {
-                        size_t len = strlen(content);
-                        if (len > 0) fwrite(content, 1, len, fp);
-                        fclose(fp);
-                        UpdateStatusBar("Compiling...");
-                        /* Note: Actual compilation would require running GCC */
-                        MessageBox(hwnd, "Compile feature ready. GCC would compile build\\temp.c", "Compile", MB_ICONINFORMATION);
+                if (PromptSaveAllTabs() == IDCANCEL) {
+                    UpdateStatusBar("Compile canceled");
+                    break;
+                }
+
+                char sourceFiles[MAX_OPENED_FILES][MAX_PATH];
+                int sourceCount = 0;
+                for (int i = 0; i < g_openedFileCount && sourceCount < MAX_OPENED_FILES; i++) {
+                    if (IsCSourceFile(g_openedFiles[i])) {
+                        strcpy(sourceFiles[sourceCount++], g_openedFiles[i]);
                     }
+                }
+
+                if (sourceCount == 0) {
+                    MessageBox(hwnd, "No C source files found in the project.", "Compile", MB_ICONINFORMATION);
+                    break;
+                }
+
+                char projectDir[MAX_PATH] = "";
+                GetDirectoryFromPath(sourceFiles[0], projectDir, sizeof(projectDir));
+                if (projectDir[0] == '\0') {
+                    MessageBox(hwnd, "Unable to determine project output directory.", "Compile", MB_ICONERROR);
+                    break;
+                }
+
+                char outputPath[MAX_PATH];
+                snprintf(outputPath, sizeof(outputPath), "%s\\main.exe", projectDir);
+
+                UpdateStatusBar("Compiling project...");
+                if (CompileProjectSources(hwnd, sourceFiles, sourceCount, outputPath)) {
+                    UpdateStatusBar("Compile succeeded");
+                    MessageBox(hwnd, "Compilation completed successfully.", "Compile", MB_ICONINFORMATION);
+                } else {
+                    UpdateStatusBar("Compile failed");
                 }
             }
             break;
         case IDM_BUILD_RUN:
             DebugLog("[MENU] BuildRunMenuItemClick\n");
             {
-                /* Check if there's an executable to run */
-                if (GetFileAttributes("build\temp.exe") != INVALID_FILE_ATTRIBUTES) {
-                    UpdateStatusBar("Running executable...");
-                    /* Would run the executable here */
-                    MessageBox(hwnd, "Run feature ready. Would execute build\temp.exe", "Run", MB_ICONINFORMATION);
+                if (g_openedFileCount == 0) {
+                    MessageBox(hwnd, "No project files are open. Please open a project first.", "Run", MB_ICONWARNING);
+                    break;
+                }
+
+                char projectDir[MAX_PATH] = "";
+                GetDirectoryFromPath(g_openedFiles[0], projectDir, sizeof(projectDir));
+                if (projectDir[0] == '\0') {
+                    MessageBox(hwnd, "Unable to determine project output directory.", "Run", MB_ICONERROR);
+                    break;
+                }
+
+                char exePath[MAX_PATH];
+                snprintf(exePath, sizeof(exePath), "%s\\main.exe", projectDir);
+
+                if (GetFileAttributesA(exePath) == INVALID_FILE_ATTRIBUTES) {
+                    MessageBox(hwnd, "Compiled executable not found. Please compile first.", "Run", MB_ICONWARNING);
+                    break;
+                }
+
+                UpdateStatusBar("Running executable...");
+                HINSTANCE result = ShellExecuteA(hwnd, "open", exePath, NULL, projectDir, SW_SHOWNORMAL);
+                if ((INT_PTR)result <= 32) {
+                    char errorText[256];
+                    snprintf(errorText, sizeof(errorText), "Failed to launch executable (error %d).", (int)(INT_PTR)result);
+                    MessageBox(hwnd, errorText, "Run", MB_ICONERROR);
+                    UpdateStatusBar("Run failed");
+                }
+            }
+            break;
+        case IDM_BUILD_COMPILE_RUN:
+            DebugLog("[MENU] BuildCompileRunMenuItemClick\n");
+            {
+                if (PromptSaveAllTabs() == IDCANCEL) {
+                    UpdateStatusBar("Compile & Run canceled");
+                    break;
+                }
+
+                char sourceFiles[MAX_OPENED_FILES][MAX_PATH];
+                int sourceCount = 0;
+                for (int i = 0; i < g_openedFileCount && sourceCount < MAX_OPENED_FILES; i++) {
+                    if (IsCSourceFile(g_openedFiles[i])) {
+                        strcpy(sourceFiles[sourceCount++], g_openedFiles[i]);
+                    }
+                }
+
+                if (sourceCount == 0) {
+                    MessageBox(hwnd, "No C source files found in the project.", "Compile & Run", MB_ICONINFORMATION);
+                    break;
+                }
+
+                char projectDir[MAX_PATH] = "";
+                GetDirectoryFromPath(sourceFiles[0], projectDir, sizeof(projectDir));
+                if (projectDir[0] == '\0') {
+                    MessageBox(hwnd, "Unable to determine project output directory.", "Compile & Run", MB_ICONERROR);
+                    break;
+                }
+
+                char outputPath[MAX_PATH];
+                snprintf(outputPath, sizeof(outputPath), "%s\\main.exe", projectDir);
+
+                UpdateStatusBar("Compiling project...");
+                if (CompileProjectSources(hwnd, sourceFiles, sourceCount, outputPath)) {
+                    UpdateStatusBar("Compile succeeded. Running...");
+                    HINSTANCE result = ShellExecuteA(hwnd, "open", outputPath, NULL, projectDir, SW_SHOWNORMAL);
+                    if ((INT_PTR)result <= 32) {
+                        char errorText[256];
+                        snprintf(errorText, sizeof(errorText), "Failed to launch executable (error %d).", (int)(INT_PTR)result);
+                        MessageBox(hwnd, errorText, "Compile & Run", MB_ICONERROR);
+                        UpdateStatusBar("Run failed");
+                    }
                 } else {
-                    MessageBox(hwnd, "No executable found. Please compile first.", "Run", MB_ICONWARNING);
+                    UpdateStatusBar("Compile failed");
                 }
             }
             break;
@@ -2746,12 +2513,59 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             int code = pnmh ? (int)pnmh->code : 0;
             DebugLog("[TREEVIEW] NM code: 0x%X\n", code);
             if (code == (int)NM_DBLCLK) {
-                DebugLog("[TREEVIEW] NM_DBLCLK - open selected file in tab\n");
+                DebugLog("[TREEVIEW] Double-click on tree item\n");
                 ActivateSelectedTreeFile();
-            } else if (code == (int)TVN_SELCHANGED || code == (int)NM_CLICK) {
-                DebugLog("[TREEVIEW] Selection changed or click event - no immediate open\n");
+            } else if (code == (int)TVN_KEYDOWN) {
+                if (GetFocus() == hwndProjectTree) {
+                    typedef struct {
+                        NMHDR hdr;
+                        UINT wVKey;
+                    } TVKEYINFO;
+                    TVKEYINFO* pKey = (TVKEYINFO*)lParam;
+                    if (pKey && pKey->wVKey == VK_DELETE) {
+                        DeleteTreeFileItem();
+                    }
+                }
+            } else if (code == (int)NM_RCLICK) {
+                DebugLog("[TREEVIEW] Right-click on tree item\n");
+                POINT pt;
+                GetCursorPos(&pt);
+                POINT clientPt = pt;
+                ScreenToClient(hwndProjectTree, &clientPt);
+                TVHITTESTINFO hti = {0};
+                hti.pt = clientPt;
+                HTREEITEM hItem = TreeView_HitTest(hwndProjectTree, &hti);
+                if (hItem) {
+                    TVITEM tvi = {0};
+                    char textBuf[MAX_PATH] = {0};
+                    tvi.mask = TVIF_TEXT;
+                    tvi.hItem = hItem;
+                    tvi.pszText = textBuf;
+                    tvi.cchTextMax = sizeof(textBuf);
+                    TreeView_GetItem(hwndProjectTree, &tvi);
+                    if (strcmp(textBuf, "Project Files") == 0) {
+                        HMENU hMenu = CreatePopupMenu();
+                        AppendMenu(hMenu, MF_STRING, IDM_TREE_OPEN_ALL_TABS, "Open All As Tabs");
+                        SetForegroundWindow(hwndProjectTree);
+                        int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndProjectTree, NULL);
+                        DestroyMenu(hMenu);
+                        if (cmd == IDM_TREE_OPEN_ALL_TABS) {
+                            OpenAllProjectFilesAsTabs();
+                        }
+                    } else {
+                        TreeView_SelectItem(hwndProjectTree, hItem);
+                        HMENU hMenu = CreatePopupMenu();
+                        AppendMenu(hMenu, MF_STRING, IDM_EDIT_DELETE, "Delete");
+                        SetForegroundWindow(hwndProjectTree);
+                        int cmd = TrackPopupMenu(hMenu, TPM_RIGHTBUTTON | TPM_RETURNCMD, pt.x, pt.y, 0, hwndProjectTree, NULL);
+                        DestroyMenu(hMenu);
+                        if (cmd == IDM_EDIT_DELETE) {
+                            DeleteTreeFileItem();
+                        }
+                    }
+                }
             } else {
-                DebugLog("[TREEVIEW] Unknown NM code: 0x%X\n", code);
+                DebugLog("[TREEVIEW] Ignoring tree notification code: 0x%X\n", code);
             }
         }
         /* Handle tab selection changes and right-clicks */
@@ -2761,18 +2575,17 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 if (g_ignoreTabSelectionChange) break;
                 DebugLog("[TAB] TCN_SELCHANGE\n");
                 int newTab = TabCtrl_GetCurSel(hwndCodeTab);
-                int oldTab = g_activeTab;
-                DebugLog("[TAB] Selected tab: %d (old=%d)\n", newTab, oldTab);
+                DebugLog("[TAB] Selected tab: %d\n", newTab);
                 if (newTab >= 0 && newTab < g_tabCount) {
-                    if (oldTab >= 0 && oldTab < g_tabCount) {
-                        SaveCurrentEditorBufferToTab(oldTab);
+                    if (newTab != g_activeTab) {
+                        EnsureTabVisible(newTab);
+                        /* Load the file for this tab after saving the previous active tab */
+                        if (g_tabs[newTab].filePath[0]) {
+                            DebugLog("[TAB] TabClick(%s)\n", g_tabs[newTab].title);
+                            LoadFileIntoEditor(g_tabs[newTab].filePath);
+                        }
                     }
-
-                    g_activeTab = newTab;
-                    DebugLog("[TAB] Switching from tab %d to %d\n", oldTab, newTab);
-                    EnsureTabVisible(newTab);
-                    RestoreEditorBufferFromTab(newTab);
-
+                    /* Update close button position */
                     PositionTabCloseButton();
                 }
             } else if (pnmh->code == TCN_RCLICK) {

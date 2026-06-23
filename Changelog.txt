@@ -59,7 +59,7 @@ v1.13 - (May 14, 2026)
 
 v1.14 - (May 16, 2026)
 - made sure sizing the source pane smaller then bigger does not destroy or corrupt how any GUI elements look
-- made TreeView have an asterisk prefix for filenames, if the file has been changed but is unsaved.
+- made TreeViewhave an asterisk prefix for filenames, if the file has been changed but is unsaved.
 
 v1.15 - (May 17, 2026)
 - made orca reset the 'CodePaneWidth' to 150 at least, or 870 at most by having orca overwrite the config with the max or min width, thus preventing someone editing the ini file in notepad from writing
@@ -106,7 +106,52 @@ v1.25 - (May 28, 2026)
 - fixed bug where creating a new untitled tab automatically was showing a 'failed to open  file' error dialog box.
 
 v1.26 - (may 30, 2026)
-- finally got just `CTRL + N` / `CTRL + O` working, the only caveat (for now) is that multi file selection is not working, however `CTRL + SHIFT + N` / `CTRL + SHIFT + O` allows that anyway.
+- finally got just `CTRL + N` / `CTRL + O` working, the only caveat (for now) is that multi file selection is not working, 
+however `CTRL + SHIFT + N` / `CTRL + SHIFT + O` allows that anyway.
 - got new tabs with the same name be automatically suffixed with a number and the number will be incremented if it's already in the workspace.
 - got the ability to delete files within the IDE with the  `DEL` keyboard key working.
-- made treeview open a file as a tab on double click, rather than as a single click.
+- made TreeView open a file as a tab on double click, rather than as a single click.
+
+v1.27 - (jun 5, 2026)
+- made double clicking the program icon on the left hand size of the TitleBar close
+- fixed several bugs that crept up causing the program to crash or behave incorrectly
+- made del and insert keys work in the code pane, del deletes the character to the right hand size of the cursor but it also does not move the cursor position, and insert overwrites anything to the right of the cursor when typing.
+
+v1.27 - (jun 7, 2026)
+- fixed more bugs and crashes that snuck their way in when trying to add the below features for v1.27
+- added a tabs count to the left of the tabs bar and made it be highlightable and be able to be copied to clipboard.
+- clicking and holding the < and > scroll buttons for the tabs bar now continually scrolls like a carousel
+
+v1.28 - (jun 8, 2026)
+- restored the option to delete files in TreeView by hitting the del key
+- added the delete file option in the edit menu
+- added a right click menu for TreeView to delete a file
+- added prompt and made the edit menu show what the hotkey is to delete a file
+
+v1.29 - (jun 11, 2026)
+- added an option for the project to open all files as tabs
+- fixed problem where files were not being cleared from TreeView
+-fixed problem where tabs were disappearing 
+- fixed problem where tabs were not opening by double clicking on a file in TreeView
+
+v1.30 - (jun 13, 2026)
+-fixed bug where TreeView stopped expanding the project tree by default
+- added TreeViewAutoExpand config.ini option
+- increased the max number of tabs from 32 to 256
+- created MaxTabs=256 config.ini option, you can go above 256 but I don't think there's any real need.
+- orca shows an error dialog if too many tabs are open rather than instantly crashing
+
+v1.31 - (jun 15, 2026)
+- compiler path is now checked automatically on program start, if it was not set, or was invalid, it then gives the user a change to re-set it via a prompt.
+- added CompilerPathC to config.ini for the C compiler, FreeBasic and FreePascal compilers might later work if orca supports FreeBasic and FreePascal.
+- made compile option check if any items are in TreeView but are unsaved or not as files yet, it then passes only the .c files that are in the project to gcc 
+- added compile & run option to build menu.
+
+v1.32 - (jun 16, 2026)
+- added "compile & run" option to the build menu
+- made the run option in the build menu run the program, if it was created and still exists. For now its path is just hardcoded to the project folder root, and its name is hardcoded to main.exe, also no real compiler options are specified yet, just the bare minimum that GCC can take.
+- made compile & run build menu option compile and run the program.
+
+v.33 - (jun 17, 2026)
+- added compiler output dialog after user clicks compile from the build menu, this shows if the program compiled or not as well as the compiler return value if it did not compile. This dialog will become a command prompt pane within orca later but for now the dialog will get more information about compile errors and warnings .
+- fixed bug where the prompt to save unsaved changes was writing the same output to every tab (and therefore every file in the project)
