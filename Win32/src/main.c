@@ -18,7 +18,6 @@
 #define TCN_RCLICK (TCN_FIRST - 5)
 #endif
 
-
 /* Control IDs */
 #define IDC_CODE_INPUT     1001
 #define IDC_CODE_OUTPUT    1002
@@ -29,6 +28,7 @@
 #define IDC_PROPERTIES     1007
 #define IDC_CODE_TAB       1008
 #define IDC_TAB_CLOSE      1009
+
 /* Tab navigation buttons */
 #define IDC_TAB_PREV       1010
 #define IDC_TAB_NEXT       1011
@@ -100,6 +100,13 @@
 #define IDM_CONVERT_TO_MACRO 3009
 #define IDM_EXTRACT_MACRO 3010
 
+#define DEFAULT_LINE_NUMBER_WIDTH 35
+#define DEFAULT_PROPERTIES_WIDTH 150
+#define DEFAULT_SPLITTER_WIDTH 2
+
+#define MAX_OPENED_FILES 256
+#define MAX_TABS 256
+
 /* Global state */
 static HWND hwndMain;
 static HWND hwndInput, hwndOutput;
@@ -126,9 +133,7 @@ static HWND hCompiler;
 static HWND hArch;
 static WNDPROC hwndOldEditorProc;
 static HFONT g_codeFont;
-#define DEFAULT_LINE_NUMBER_WIDTH 35
-#define DEFAULT_PROPERTIES_WIDTH 150
-#define DEFAULT_SPLITTER_WIDTH 2
+
 static int g_lineNumberWidth = DEFAULT_LINE_NUMBER_WIDTH;
 static int g_propertiesWidth = DEFAULT_PROPERTIES_WIDTH;
 static int g_currentInputWidth = 0;
@@ -452,7 +457,6 @@ void ValidateCompilerPathAtStartup(void) {
 /* Integrated debug viewer removed: using console/debug.log only */
 
 /* Tab management */
-#define MAX_TABS 256
 typedef struct {
     char filePath[MAX_PATH];
     char title[MAX_PATH];
@@ -545,7 +549,6 @@ static char g_compiler[64] = "GCC";
 static char g_architecture[64] = "x86";
 
 /* File tracking */
-#define MAX_OPENED_FILES 256
 static char g_openedFiles[MAX_OPENED_FILES][MAX_PATH];
 static int g_openedFileCount = 0;
 static BOOL g_isFolderBased = FALSE;
@@ -2162,7 +2165,7 @@ void CreateMainLayout(HWND hwnd) {
     /* Project explorer (left pane) - with buttons for expand/collapse */
     hwndProjectTree = CreateWindowEx(WS_EX_CLIENTEDGE, "SysTreeView32", NULL,
         WS_CHILD | WS_VISIBLE | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS | TVS_SHOWSELALWAYS,
-        10, 50, 200, 500, hwnd, (HMENU)IDC_PROJECT_TREE, GetModuleHandle(NULL), NULL);
+        10, 90, 200, 500, hwnd, (HMENU)IDC_PROJECT_TREE, GetModuleHandle(NULL), NULL);
     
     /* Line number gutter */
     hwndLineNumbers = CreateWindowEx(0, "OrcaLineNumberWnd", NULL,
@@ -2175,7 +2178,7 @@ void CreateMainLayout(HWND hwnd) {
     /* Tab control for code files */
     hwndCodeTab = CreateWindowEx(0, WC_TABCONTROL, NULL,
         WS_CHILD | WS_VISIBLE | TCS_TABS,
-        255, 50, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
+        255, 90, 415, 25, hwnd, (HMENU)IDC_CODE_TAB, GetModuleHandle(NULL), NULL);
 
     hwndTabCount = CreateWindowEx(0, "EDIT", "0",
         WS_CHILD | WS_VISIBLE | ES_LEFT | ES_READONLY | ES_AUTOHSCROLL,
@@ -2185,7 +2188,7 @@ void CreateMainLayout(HWND hwnd) {
     /* Input code pane - below tabs */
     hwndInput = CreateWindowEx(WS_EX_CLIENTEDGE, "EDIT", NULL,
         WS_CHILD | WS_VISIBLE | WS_HSCROLL | WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_NOHIDESEL,
-        255, 75, 415, 475, hwnd, (HMENU)IDC_CODE_INPUT, GetModuleHandle(NULL), NULL);
+        255, 115, 415, 475, hwnd, (HMENU)IDC_CODE_INPUT, GetModuleHandle(NULL), NULL);
     
     /* Set monospace font for code editor */
     g_codeFont = CreateFont(18, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
@@ -2263,7 +2266,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     LoadConfig();
     LoadCompilerPathC();
 
-    hwndMain = CreateWindow("OrcaMainWnd", "Orca - C Code Generator & Manipulator", WS_OVERLAPPEDWINDOW,
+    hwndMain = CreateWindow("OrcaMainWnd", "Orca v1.35", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT, 1400, 800, NULL, NULL, hInstance, NULL);
     
     /* Set custom icon for window (titlebar, taskbar, alt+tab) */
@@ -2411,8 +2414,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         /* Resize main toolbar */
         MoveWindow(GetDlgItem(hwnd, IDC_TOOLBAR_MAIN), 0, 0, width, 40, TRUE);
         
-        /* Resize code toolbar */
+        /* Resize code toolbar container and its buttons */
         MoveWindow(GetDlgItem(hwnd, IDC_TOOLBAR_CODE), 0, 40, width, 40, TRUE);
+        ResizeTypeToolbar(GetDlgItem(hwnd, IDC_TOOLBAR_CODE), width);
         
         /* Resize rest of layout */
         RepositionCodeArea(width, height);
@@ -2609,8 +2613,40 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
                 UpdateStatusBar("Compiling project...");
                 if (CompileProjectSources(hwnd, sourceFiles, sourceCount, outputPath)) {
-                    UpdateStatusBar("Compile succeeded");
-                    MessageBox(hwnd, "Compilation completed successfully.", "Compile", MB_ICONINFORMATION);
+                    UpdateStatusBar("Compile succeeded. Running in console...");
+                    /* Launch the produced executable in a new cmd.exe that stays open (/K) */
+                    char cmdline[4096];
+                    int w = snprintf(cmdline, sizeof(cmdline), "cmd.exe /K \"\"%s\"\"", outputPath);
+                    if (w > 0 && w < (int)sizeof(cmdline)) {
+                        STARTUPINFOA si;
+                        PROCESS_INFORMATION pi;
+                        ZeroMemory(&si, sizeof(si));
+                        ZeroMemory(&pi, sizeof(pi));
+                        si.cb = sizeof(si);
+                        BOOL created = CreateProcessA(
+                            NULL,
+                            cmdline,
+                            NULL,
+                            NULL,
+                            FALSE,
+                            CREATE_NEW_CONSOLE,
+                            NULL,
+                            projectDir,
+                            &si,
+                            &pi
+                        );
+                        if (!created) {
+                            char err[256];
+                            snprintf(err, sizeof(err), "Failed to launch console (error %lu)", (unsigned long)GetLastError());
+                            MessageBoxA(hwnd, err, "Run", MB_ICONERROR);
+                            UpdateStatusBar("Run failed");
+                        } else {
+                            CloseHandle(pi.hProcess);
+                            CloseHandle(pi.hThread);
+                        }
+                    } else {
+                        MessageBox(hwnd, "Compilation completed successfully.", "Compile", MB_ICONINFORMATION);
+                    }
                 } else {
                     UpdateStatusBar("Compile failed");
                 }
@@ -2715,7 +2751,59 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         case IDT_INSERT_INCLUDE:
         case IDT_INSERT_DEFINE:
             DebugLog("[TOOLBAR] Insert code template button clicked\n");
-            InsertCodeTemplate(hwndInput, LOWORD(wParam));
+            {
+                int cmdId = LOWORD(wParam);
+                const char* label = "Insert Action";
+                switch (cmdId) {
+                case IDT_INSERT_FUNC: label = "Function"; break;
+                case IDT_INSERT_IF: label = "If"; break;
+                case IDT_INSERT_FOR: label = "For"; break;
+                case IDT_INSERT_WHILE: label = "While"; break;
+                case IDT_INSERT_SWITCH: label = "Switch"; break;
+                case IDT_INSERT_STRUCT: label = "Struct"; break;
+                case IDT_INSERT_UNION: label = "Union"; break;
+                case IDT_INSERT_ENUM: label = "Enum"; break;
+                case IDT_INSERT_TYPEDEF: label = "Typedef"; break;
+                case IDT_INSERT_INCLUDE: label = "Include"; break;
+                case IDT_INSERT_DEFINE: label = "Define"; break;
+                }
+                char message[256];
+                snprintf(message, sizeof(message), "Clicked '%s'.\n\nThis would open the insertion dialog.", label);
+                MessageBoxA(hwnd, message, "Insertion Toolbar", MB_OK | MB_ICONINFORMATION);
+            }
+            break;
+        case IDT_INSERT_TYPE_C:
+        case IDT_INSERT_TYPE_sC:
+        case IDT_INSERT_TYPE_uC:
+        case IDT_INSERT_TYPE_S:
+        case IDT_INSERT_TYPE_Si:
+        case IDT_INSERT_TYPE_sS:
+        case IDT_INSERT_TYPE_sSi:
+        case IDT_INSERT_TYPE_uS:
+        case IDT_INSERT_TYPE_uSi:
+        case IDT_INSERT_TYPE_I:
+        case IDT_INSERT_TYPE_sI:
+        case IDT_INSERT_TYPE_uI:
+        case IDT_INSERT_TYPE_L:
+        case IDT_INSERT_TYPE_LI:
+        case IDT_INSERT_TYPE_sL:
+        case IDT_INSERT_TYPE_sLI:
+        case IDT_INSERT_TYPE_uL:
+        case IDT_INSERT_TYPE_uLI:
+        case IDT_INSERT_TYPE_LL:
+        case IDT_INSERT_TYPE_LLI:
+        case IDT_INSERT_TYPE_sLL:
+        case IDT_INSERT_TYPE_sLLI:
+        case IDT_INSERT_TYPE_uLL:
+        case IDT_INSERT_TYPE_uLLI:
+            DebugLog("[TOOLBAR] Insert type button clicked\n");
+            {
+                int cmdId = LOWORD(wParam);
+                const char* typeText = GetTypeInsertString(cmdId);
+                if (typeText && hwndInput) {
+                    InsertTextAtCursor(hwndInput, typeText);
+                }
+            }
             break;
         default:
             DebugLog("[COMMAND] Unknown command ID: 0x%X (wParam=0x%X, lParam=0x%X)\n", LOWORD(wParam), wParam, lParam);
